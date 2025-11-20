@@ -1,222 +1,929 @@
 <!DOCTYPE html>
-<!--[if lte IE 8]> <html class="oldie" lang="en"> <![endif]-->
-<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>Lalit Pathak</title>
-<!-- add fancybox.css -->
-	<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/all.css" />
-	<link rel="stylesheet" href="css/screen.css" />
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	<title>Portfolio | Lalit Pathak - Environmental Scientist</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary-color: #2a6e3f;
+			--primary-dark: #1e4f2d;
+			--primary-light: #3d8c55;
+			--secondary-color: #1a365d;
+			--accent-color: #e9c46a;
+			--light-color: #f8f9fa;
+			--dark-color: #343a40;
+			--gray-color: #6c757d;
+			--light-gray: #e9ecef;
+			--border-radius: 8px;
+			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s ease;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			color: var(--dark-color);
+			background-color: #fff;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
+			line-height: 1.3;
+			margin-bottom: 1rem;
+			color: var(--secondary-color);
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			font-weight: 700;
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-top: 2.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--light-gray);
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			color: var(--primary-color);
+		}
+
+		p {
+			margin-bottom: 1.5rem;
+		}
+
+		a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: var(--transition);
+		}
+
+		a:hover {
+			color: var(--primary-dark);
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 24px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: var(--border-radius);
+			font-weight: 600;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: var(--transition);
+			text-align: center;
+		}
+
+		.btn:hover {
+			background-color: var(--primary-dark);
+			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.btn-outline {
+			background-color: transparent;
+			border: 2px solid var(--primary-color);
+			color: var(--primary-color);
+		}
+
+		.btn-outline:hover {
+			background-color: var(--primary-color);
+			color: white;
+		}
+
+		/* Header Styles */
+		#header {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
+			color: white;
+			padding: 100px 0 80px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#header::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+			background-size: cover;
+			background-position: center bottom;
+		}
+
+		.header-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.page-title {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 1rem;
+			color: white;
+		}
+
+		.page-subtitle {
+			font-size: 1.3rem;
+			font-weight: 400;
+			margin-bottom: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Navigation */
+		#nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(255, 255, 255, 0.95);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+			padding: 15px 0;
+			transition: var(--transition);
+		}
+
+		.nav-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-logo {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 1.5rem;
+			color: var(--secondary-color);
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+		}
+
+		.nav-menu li {
+			margin-left: 2rem;
+		}
+
+		.nav-menu a {
+			color: var(--dark-color);
+			font-weight: 500;
+			padding: 5px 0;
+			position: relative;
+		}
+
+		.nav-menu a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background-color: var(--primary-color);
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover::after,
+		.nav-menu a.active::after {
+			width: 100%;
+		}
+
+		.nav-menu a.active {
+			color: var(--primary-color);
+		}
+
+		.menu_trigger {
+			display: none;
+			font-size: 1.5rem;
+			color: var(--dark-color);
+		}
+
+		/* Main Content */
+		#main {
+			padding: 80px 0;
+			flex: 1;
+		}
+
+		.section-intro {
+			margin-bottom: 3rem;
+		}
+
+		.intro-text {
+			font-size: 1.2rem;
+			line-height: 1.8;
+			color: var(--gray-color);
+		}
+
+		.highlight {
+			color: var(--primary-color);
+			font-weight: 600;
+		}
+
+		/* Portfolio Sections */
+		.portfolio-section {
+			margin-bottom: 4rem;
+		}
+
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.project-card {
+			background-color: white;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			overflow: hidden;
+			transition: var(--transition);
+		}
+
+		.project-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+		}
+
+		.project-header {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
+			color: white;
+			padding: 1.5rem;
+		}
+
+		.project-title {
+			font-size: 1.3rem;
+			margin-bottom: 0.5rem;
+			color: white;
+		}
+
+		.project-meta {
+			display: flex;
+			justify-content: space-between;
+			font-size: 0.9rem;
+			opacity: 0.9;
+			margin-bottom: 0.5rem;
+		}
+
+		.project-status {
+			display: inline-block;
+			padding: 3px 10px;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+
+		.status-ongoing {
+			background-color: var(--accent-color);
+			color: var(--dark-color);
+		}
+
+		.status-completed {
+			background-color: var(--primary-color);
+			color: white;
+		}
+
+		.project-body {
+			padding: 1.5rem;
+		}
+
+		.project-role {
+			font-weight: 600;
+			color: var(--primary-color);
+			margin-bottom: 0.5rem;
+		}
+
+		.project-description {
+			margin-bottom: 1rem;
+			color: var(--gray-color);
+		}
+
+		.project-responsibilities {
+			margin-top: 1rem;
+		}
+
+		.project-responsibilities h4 {
+			font-size: 1rem;
+			margin-bottom: 0.5rem;
+			color: var(--secondary-color);
+		}
+
+		.project-responsibilities ul {
+			padding-left: 1.2rem;
+			color: var(--gray-color);
+		}
+
+		.project-responsibilities li {
+			margin-bottom: 0.3rem;
+		}
+
+		/* Publications */
+		.publication-list {
+			margin-top: 2rem;
+		}
+
+		.publication-item {
+			background-color: var(--light-color);
+			padding: 1.5rem;
+			border-radius: var(--border-radius);
+			margin-bottom: 1.5rem;
+			transition: var(--transition);
+		}
+
+		.publication-item:hover {
+			transform: translateY(-3px);
+			box-shadow: var(--box-shadow);
+		}
+
+		.publication-title {
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+			color: var(--secondary-color);
+		}
+
+		.publication-authors {
+			font-style: italic;
+			margin-bottom: 0.5rem;
+			color: var(--gray-color);
+		}
+
+		.publication-journal {
+			margin-bottom: 0.5rem;
+			color: var(--primary-color);
+		}
+
+		.publication-link {
+			display: inline-block;
+			font-size: 0.9rem;
+			color: var(--primary-color);
+			font-weight: 500;
+		}
+
+		/* Experience Timeline */
+		.experience-timeline {
+			position: relative;
+			max-width: 800px;
+			margin: 2rem auto 0;
+		}
+
+		.experience-timeline::before {
+			content: '';
+			position: absolute;
+			left: 30px;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background-color: var(--light-gray);
+		}
+
+		.experience-item {
+			display: flex;
+			margin-bottom: 2.5rem;
+			position: relative;
+		}
+
+		.experience-date {
+			width: 60px;
+			flex-shrink: 0;
+			text-align: center;
+			padding-top: 5px;
+		}
+
+		.experience-year {
+			display: inline-block;
+			background-color: var(--primary-color);
+			color: white;
+			padding: 5px 10px;
+			border-radius: 20px;
+			font-size: 0.8rem;
+			font-weight: 600;
+		}
+
+		.experience-dot {
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+			background-color: var(--primary-color);
+			position: absolute;
+			left: 22px;
+			top: 10px;
+			z-index: 1;
+		}
+
+		.experience-content {
+			background-color: white;
+			padding: 1.5rem;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			margin-left: 1.5rem;
+			flex: 1;
+			transition: var(--transition);
+		}
+
+		.experience-content:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+		}
+
+		.experience-role {
+			font-weight: 600;
+			color: var(--primary-color);
+			margin-bottom: 0.3rem;
+		}
+
+		.experience-organization {
+			font-weight: 500;
+			margin-bottom: 0.5rem;
+			color: var(--secondary-color);
+		}
+
+		/* Training Section */
+		.training-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		.training-card {
+			background-color: var(--light-color);
+			padding: 1.5rem;
+			border-radius: var(--border-radius);
+			transition: var(--transition);
+		}
+
+		.training-card:hover {
+			transform: translateY(-3px);
+			box-shadow: var(--box-shadow);
+		}
+
+		.training-title {
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+			color: var(--secondary-color);
+		}
+
+		.training-meta {
+			font-size: 0.9rem;
+			color: var(--gray-color);
+			margin-bottom: 0.5rem;
+		}
+
+		.training-organization {
+			font-weight: 500;
+			color: var(--primary-color);
+		}
+
+		/* Footer */
+		#footer {
+			background-color: var(--secondary-color);
+			color: white;
+			padding: 60px 0 30px;
+			width: 100%;
+			margin-top: auto;
+		}
+
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.social {
+			display: flex;
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.social li {
+			margin: 0 10px;
+		}
+
+		.social a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			color: white;
+			transition: var(--transition);
+		}
+
+		.social a:hover {
+			background-color: var(--primary-color);
+			transform: translateY(-3px);
+		}
+
+		.copy {
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.9rem;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2rem;
+			}
+
+			h2 {
+				font-size: 1.75rem;
+			}
+
+			.page-title {
+				font-size: 2.5rem;
+			}
+
+			.page-subtitle {
+				font-size: 1.1rem;
+			}
+
+			.nav-menu {
+				position: fixed;
+				top: 70px;
+				right: -100%;
+				flex-direction: column;
+				background-color: white;
+				width: 80%;
+				height: calc(100vh - 70px);
+				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+				transition: var(--transition);
+				padding: 2rem;
+			}
+
+			.nav-menu.active {
+				right: 0;
+			}
+
+			.nav-menu li {
+				margin: 0 0 1.5rem 0;
+			}
+
+			.menu_trigger {
+				display: block;
+			}
+
+			.project-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.training-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.container {
+				padding: 0 15px;
+			}
+
+			#header {
+				padding: 80px 0 60px;
+			}
+
+			#main {
+				padding: 60px 0;
+			}
+
+			.experience-timeline::before {
+				left: 20px;
+			}
+
+			.experience-dot {
+				left: 12px;
+			}
+
+			.experience-date {
+				width: 40px;
+			}
+
+			.experience-content {
+				margin-left: 1rem;
+			}
+		}
+	</style>
 </head>
 <body>
-	<div id="wrapper" class="portfolio">
-		<div class="wrapper-holder">
-			<header id="header">
-				<a class="menu_trigger" href="#">menu</a>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="myskills.html">My skills</a></li>
-							<li><a class="active" href="portfolio.html">Portfolio</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</nav>
-			</header>
+	<nav id="nav">
+		<div class="container nav-container">
+			<a href="index.html" class="nav-logo">Lalit Pathak</a>
+			<ul class="nav-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="myskills.html">My Skills</a></li>
+				<li><a class="active" href="portfolio.html">Portfolio</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
 		</div>
-		<div class="wrapper-holder grey">
-			<section id="main">
-				<h2>All works that I made</h2>
-				<ul id="filters" class="sub_nav">
-					<li class="active" data-filter="*">All works</li>
-					<li data-filter=".web">Web design</li>
-					<li data-filter=".illustration">Illustration</li>
-					<li data-filter=".dtp">DTP</li>
-					<li data-filter=".key">Key Visual</li>
-					<li data-filter=".identity">Identity</li>
-				</ul>
-				<ul id="container" class="item-list">
-					<li class="item web key" >
-						<div class="image ">
-							<img src="images/pic_01.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_1">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+	</nav>
+
+	<header id="header">
+		<div class="container header-content">
+			<h1 class="page-title">Portfolio</h1>
+			<p class="page-subtitle">A showcase of my research projects, publications, and professional experience in environmental science and disaster risk management</p>
+		</div>
+	</header>
+
+	<div class="container">
+		<main id="main">
+			<section class="portfolio-section">
+				<h2>Professional Experience</h2>
+				<div class="experience-timeline">
+					<div class="experience-item">
+						<div class="experience-date">
+							<span class="experience-year">2024-Current</span>
 						</div>
-					</li>
-					<li class="item illustration identity">
-						<div class="image">
-							<img src="images/pic_1_1.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_2">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-									</a>
-							</div>
+						<div class="experience-dot"></div>
+						<div class="experience-content">
+							<div class="experience-role">Research Officer</div>
+							<div class="experience-organization">Center of Research for Environment, Energy and Water (CREEW)</div>
+							<p>Leading research initiatives in environmental science and disaster risk management.</p>
 						</div>
-					</li>
-					<li class="item web dtp">
-						<div class="image">
-							<img src="images/pic_02.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_3">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+					</div>
+					<div class="experience-item">
+						<div class="experience-date">
+							<span class="experience-year">2022-2024</span>
 						</div>
-					</li>
-					<li class="item illustration key">
-						<div class="image">
-							<img src="images/pic_03.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_4">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+						<div class="experience-dot"></div>
+						<div class="experience-content">
+							<div class="experience-role">Research Associate</div>
+							<div class="experience-organization">Center of Research for Environment, Energy and Water (CREEW)</div>
+							<p>Conducted research on climate resilience, disaster risk management, and environmental assessments.</p>
 						</div>
-					</li>
-					<li class="item web identity">
-						<div class="image">
-							<img src="images/pic_04.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_5">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+					</div>
+					<div class="experience-item">
+						<div class="experience-date">
+							<span class="experience-year">2021-2022</span>
 						</div>
-					</li>
-					<li class="item dtp identity">
-						<div class="image">
-							<img src="images/pic_05.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_6">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+						<div class="experience-dot"></div>
+						<div class="experience-content">
+							<div class="experience-role">Environmentalist</div>
+							<div class="experience-organization">BIOME Environmental Consulting and Research Pvt. Ltd.</div>
+							<p>Conducted environmental impact assessments and provided consulting services.</p>
 						</div>
-					</li>
-					<li class="item dtp key">
-						<div class="image">
-							<img src="images/pic_06.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_7">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+					</div>
+					<div class="experience-item">
+						<div class="experience-date">
+							<span class="experience-year">2020</span>
 						</div>
-					</li>
-					<li class="item web identity">
-						<div class="image">
-							<img src="images/pic_07.png"  alt="" />
-							<div class="hover">
-								<a class="fancybox" rel="gallery1" href="#portfolio_8">
-									<div class="item-content">
-										<h4>voluptas assumenda</h4>
-										<p>Sepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae</p>
-									</div>
-								</a>
-							</div>
+						<div class="experience-dot"></div>
+						<div class="experience-content">
+							<div class="experience-role">Research Intern</div>
+							<div class="experience-organization">Department of Environment, Ministry of Forest and Environment</div>
+							<p>Gained practical experience in environmental policy and research methodologies.</p>
 						</div>
-					</li>
-				</ul>
+					</div>
+				</div>
 			</section>
-		</div>
-		<footer id="footer">
+
+			<section class="portfolio-section">
+				<h2>Projects</h2>
+				<div class="project-grid">
+					<div class="project-card">
+						<div class="project-header">
+							<h3 class="project-title">Integrated Multi-Hazard Assessment</h3>
+							<div class="project-meta">
+								<span>June 2025 - Ongoing</span>
+								<span class="project-status status-ongoing">Ongoing</span>
+							</div>
+						</div>
+						<div class="project-body">
+							<div class="project-role">Project Lead</div>
+							<p class="project-description">Climate-resilient watershed management framework development for Nepal's Mid-Hills.</p>
+							<div class="project-responsibilities">
+								<h4>Responsibilities:</h4>
+								<ul>
+									<li>Overall project management and coordination</li>
+									<li>Multi-hazard assessment framework development</li>
+									<li>Stakeholder engagement and coordination</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-header">
+							<h3 class="project-title">Climate and Disaster Risk Resilience</h3>
+							<div class="project-meta">
+								<span>June 2025 - Oct 2025</span>
+								<span class="project-status status-ongoing">Ongoing</span>
+							</div>
+						</div>
+						<div class="project-body">
+							<div class="project-role">Research Associate</div>
+							<p class="project-description">Sustaining climate and disaster risk resilient development in South Asia.</p>
+							<div class="project-responsibilities">
+								<h4>Responsibilities:</h4>
+								<ul>
+									<li>Coordination and enumerator training</li>
+									<li>KII/GD and policy mapping in Dhanusha district</li>
+									<li>Data analysis and reporting</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-header">
+							<h3 class="project-title">GHG Mitigation from Open Waste Burning</h3>
+							<div class="project-meta">
+								<span>July 2023 - Oct 2025</span>
+								<span class="project-status status-ongoing">Ongoing</span>
+							</div>
+						</div>
+						<div class="project-body">
+							<div class="project-role">Research Associate</div>
+							<p class="project-description">Research on greenhouse gas emissions from open waste burning.</p>
+							<div class="project-responsibilities">
+								<h4>Responsibilities:</h4>
+								<ul>
+									<li>Proposal development</li>
+									<li>Field methodology development</li>
+									<li>Data analysis and report writing</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-header">
+							<h3 class="project-title">Wastewater Management Master Plan</h3>
+							<div class="project-meta">
+								<span>Nov 2022 - July 2023</span>
+								<span class="project-status status-completed">Completed</span>
+							</div>
+						</div>
+						<div class="project-body">
+							<div class="project-role">Research Associate</div>
+							<p class="project-description">Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.</p>
+							<div class="project-responsibilities">
+								<h4>Responsibilities:</h4>
+								<ul>
+									<li>Water sample collection from various sources</li>
+									<li>Laboratory analysis for physiochemical parameters</li>
+									<li>Reporting and documentation</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="portfolio-section">
+				<h2>Publications</h2>
+				<div class="publication-list">
+					<div class="publication-item">
+						<div class="publication-title">Influence of knowledge sources on climate change awareness and adaptation priorities in Central Nepal</div>
+						<div class="publication-authors">Pathak, L., & Joshi, K.</div>
+						<div class="publication-journal">Discover Environment, 3, Article 299 (2025)</div>
+						<a href="https://doi.org/10.1007/s44274-025-00299-3" class="publication-link" target="_blank">View Publication →</a>
+					</div>
+
+					<div class="publication-item">
+						<div class="publication-title">Resilience Under Threat: Climate Change Impacts and Adaptive Responses of Nepalese MSMEs</div>
+						<div class="publication-authors">Pathak, L., Malla, R., Lamichhane, B. K., & Dixit, A. M.</div>
+						<div class="publication-journal">Journal of Environment Sciences, 11(1), 53–62 (2025)</div>
+						<a href="https://doi.org/10.3126/jes.v11i1.80594" class="publication-link" target="_blank">View Publication →</a>
+					</div>
+
+					<div class="publication-item">
+						<div class="publication-title">Landslides in the Himalaya: The Role of Conditioning Factors and Their Resolution in Susceptibility Mapping</div>
+						<div class="publication-authors">Pathak, L., Baral, B., Joshi, K., & Godone, D.</div>
+						<div class="publication-journal">Geosciences, 15(4), 131 (2025)</div>
+						<a href="https://doi.org/10.3390/geosciences15040131" class="publication-link" target="_blank">View Publication →</a>
+					</div>
+
+					<div class="publication-item">
+						<div class="publication-title">Imprints of COVID-19 lockdown on the surface water quality of Bagmati river basin, Nepal</div>
+						<div class="publication-authors">Pant, R. R., Bishwakarma, K., Qaiser, F. U. R., Pathak, L., et al.</div>
+						<div class="publication-journal">Journal of Environmental Management, 289, 112522 (2021)</div>
+						<a href="https://doi.org/10.1016/j.jenvman.2021.112522" class="publication-link" target="_blank">View Publication →</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="portfolio-section">
+				<h2>Training & Professional Development</h2>
+				<div class="training-grid">
+					<div class="training-card">
+						<div class="training-title">Climate Data Analysis and Downscaling</div>
+						<div class="training-meta">23-25 Nov 2022</div>
+						<div class="training-organization">SEN under APN CAPaBLE</div>
+					</div>
+
+					<div class="training-card">
+						<div class="training-title">Ecohydrology Training Program</div>
+						<div class="training-meta">27-31 March 2023</div>
+						<div class="training-organization">Indian Institute of Technology, Roorkee</div>
+					</div>
+
+					<div class="training-card">
+						<div class="training-title">Water–Energy–Food Nexus</div>
+						<div class="training-meta">19 May–4 June 2020</div>
+						<div class="training-organization">ICIMOD-Himalayan University Consortium</div>
+					</div>
+
+					<div class="training-card">
+						<div class="training-title">Landslide Susceptibility Mapping</div>
+						<div class="training-meta">June 2024</div>
+						<div class="training-organization">CREEW (As Instructor)</div>
+					</div>
+
+					<div class="training-card">
+						<div class="training-title">Climate Change Adaptation for Businesses</div>
+						<div class="training-meta">August 2024</div>
+						<div class="training-organization">ICAS Office (As Lead Instructor)</div>
+					</div>
+
+					<div class="training-card">
+						<div class="training-title">GIS for Water Quality Analysis</div>
+						<div class="training-meta">2023-2025</div>
+						<div class="training-organization">CREEW (As Instructor)</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<footer id="footer">
+		<div class="container">
 			<div class="footer-content">
 				<ul class="social">
-					<li class="email"><a href="#">Email</a></li>
-					<li class="facebook"><a href="#">Facebook</a></li>
-					<li class="google"><a href="#">Google+</a></li>
-					<li class="twitter"><a href="#">Twitter</a></li>
-					<li class="pinterest"><a href="#">Pinterest</a></li>
+					<li><a href="mailto:lalit@creew.org.np" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+					<li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+					<li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+					<li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
-				<p class="copy">Copyright 2014 Lalit Pathak. All rights reserved.</p>
+				<p class="copy">Copyright 2024 Lalit Pathak. All rights reserved.</p>
 			</div>
-		</footer>	
-	</div>
-	<div style="display:none;">
-		<div id="portfolio_1" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
 		</div>
-		<div id="portfolio_2" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_3" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 3</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_4" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 4</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_5" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 5</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_6" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 6</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_7" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 7</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-		<div id="portfolio_8" class="popup_portfolio">
-			<img src="images/img_pf02.jpg"  alt="" />
-			<h3>Title of the work 8</h3>
-			<time datetime="2014-06-20">Made: 06/20/14</time>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
-	</div>
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/cells-by-row.js"></script>
-	<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	</footer>
+
+	<script>
+		// Mobile menu toggle
+		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
+			e.preventDefault();
+			document.querySelector('.nav-menu').classList.toggle('active');
+		});
+
+		// Close mobile menu when clicking on a link
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.querySelector('.nav-menu').classList.remove('active');
+			});
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', function() {
+			const nav = document.getElementById('nav');
+			if (window.scrollY > 50) {
+				nav.style.padding = '10px 0';
+				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+			} else {
+				nav.style.padding = '15px 0';
+				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+			}
+		});
+	</script>
 </body>
 </html>
