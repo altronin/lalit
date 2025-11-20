@@ -147,6 +147,34 @@
 		.header-content {
 			position: relative;
 			z-index: 1;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			text-align: left;
+		}
+
+		.header-text {
+			flex: 1;
+		}
+
+		.header-photo {
+			flex-shrink: 0;
+			margin-left: 3rem;
+		}
+
+		.profile-image {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 4px solid rgba(255, 255, 255, 0.3);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+			transition: var(--transition);
+		}
+
+		.profile-image:hover {
+			transform: scale(1.05);
+			border-color: rgba(255, 255, 255, 0.5);
 		}
 
 		.page-title {
@@ -162,8 +190,6 @@
 			margin-bottom: 2rem;
 			color: rgba(255, 255, 255, 0.9);
 			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
 		}
 
 		/* Navigation */
@@ -456,6 +482,21 @@
 			.location-container {
 				gap: 2rem;
 			}
+
+			.header-content {
+				flex-direction: column;
+				text-align: center;
+			}
+
+			.header-photo {
+				margin-left: 0;
+				margin-top: 2rem;
+			}
+
+			.profile-image {
+				width: 180px;
+				height: 180px;
+			}
 		}
 
 		@media (max-width: 768px) {
@@ -507,6 +548,11 @@
 			.location-container {
 				grid-template-columns: 1fr;
 			}
+
+			.profile-image {
+				width: 150px;
+				height: 150px;
+			}
 		}
 
 		@media (max-width: 576px) {
@@ -535,6 +581,11 @@
 				margin-right: 0;
 				margin-bottom: 1rem;
 			}
+
+			.profile-image {
+				width: 120px;
+				height: 120px;
+			}
 		}
 	</style>
 </head>
@@ -554,8 +605,13 @@
 
 	<header id="header">
 		<div class="container header-content">
-			<h1 class="page-title">Get In Touch</h1>
-			<p class="page-subtitle">I'm always interested in new opportunities and collaborations in environmental science and disaster risk management.</p>
+			<div class="header-text">
+				<h1 class="page-title">Get In Touch</h1>
+				<p class="page-subtitle">I'm always interested in new opportunities and collaborations in environmental science and disaster risk management.</p>
+			</div>
+			<div class="header-photo">
+				<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/pic_08.png" alt="Lalit Pathak" class="profile-image">
+			</div>
 		</div>
 	</header>
 
