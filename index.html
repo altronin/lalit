@@ -1,139 +1,731 @@
 <!DOCTYPE html>
-<!--[if lte IE 8]> <html class="oldie" lang="en"> <![endif]-->
-<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>Lalit Pathak - Environmental Scientist</title>
-	<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/all.css" />
-	<link rel="stylesheet" href="css/screen.css" />
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	<title>Lalit Pathak - Environmental Scientist | Disaster Risk Management & GIS Specialist</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary-color: #2a6e3f;
+			--primary-dark: #1e4f2d;
+			--primary-light: #3d8c55;
+			--secondary-color: #1a365d;
+			--accent-color: #e9c46a;
+			--light-color: #f8f9fa;
+			--dark-color: #343a40;
+			--gray-color: #6c757d;
+			--light-gray: #e9ecef;
+			--border-radius: 8px;
+			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s ease;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			color: var(--dark-color);
+			background-color: #fff;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
+			line-height: 1.3;
+			margin-bottom: 1rem;
+			color: var(--secondary-color);
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			font-weight: 700;
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-top: 2.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--light-gray);
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			color: var(--primary-color);
+		}
+
+		p {
+			margin-bottom: 1.5rem;
+		}
+
+		a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: var(--transition);
+		}
+
+		a:hover {
+			color: var(--primary-dark);
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 24px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: var(--border-radius);
+			font-weight: 600;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: var(--transition);
+			text-align: center;
+		}
+
+		.btn:hover {
+			background-color: var(--primary-dark);
+			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.btn-outline {
+			background-color: transparent;
+			border: 2px solid var(--primary-color);
+			color: var(--primary-color);
+		}
+
+		.btn-outline:hover {
+			background-color: var(--primary-color);
+			color: white;
+		}
+
+		/* Header Styles */
+		#header {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
+			color: white;
+			padding: 100px 0 80px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#header::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+			background-size: cover;
+			background-position: center bottom;
+		}
+
+		.header-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.logo {
+			font-size: 3.5rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			color: white;
+		}
+
+		.slogan {
+			font-size: 1.5rem;
+			font-weight: 400;
+			margin-bottom: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+		}
+
+		.header-tagline {
+			font-size: 1.2rem;
+			max-width: 700px;
+			margin: 0 auto 2rem;
+			color: rgba(255, 255, 255, 0.85);
+		}
+
+		/* Navigation */
+		#nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(255, 255, 255, 0.95);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+			padding: 15px 0;
+			transition: var(--transition);
+		}
+
+		.nav-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-logo {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 1.5rem;
+			color: var(--secondary-color);
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+		}
+
+		.nav-menu li {
+			margin-left: 2rem;
+		}
+
+		.nav-menu a {
+			color: var(--dark-color);
+			font-weight: 500;
+			padding: 5px 0;
+			position: relative;
+		}
+
+		.nav-menu a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background-color: var(--primary-color);
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover::after,
+		.nav-menu a.active::after {
+			width: 100%;
+		}
+
+		.nav-menu a.active {
+			color: var(--primary-color);
+		}
+
+		.menu_trigger {
+			display: none;
+			font-size: 1.5rem;
+			color: var(--dark-color);
+		}
+
+		/* Main Content */
+		#main {
+			padding: 80px 0;
+		}
+
+		.section-intro {
+			margin-bottom: 3rem;
+		}
+
+		.intro-text {
+			font-size: 1.2rem;
+			line-height: 1.8;
+			color: var(--gray-color);
+		}
+
+		.highlight {
+			color: var(--primary-color);
+			font-weight: 600;
+		}
+
+		/* Skills Section */
+		.skills-container {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-top: 2rem;
+		}
+
+		.skill-category {
+			background-color: var(--light-color);
+			padding: 2rem;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			transition: var(--transition);
+		}
+
+		.skill-category:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.skill-category h3 {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1.5rem;
+			color: var(--secondary-color);
+		}
+
+		.skill-category h3 i {
+			margin-right: 10px;
+			color: var(--primary-color);
+		}
+
+		.skill-category ul {
+			list-style: none;
+		}
+
+		.skill-category li {
+			padding: 8px 0;
+			border-bottom: 1px solid var(--light-gray);
+			position: relative;
+			padding-left: 25px;
+		}
+
+		.skill-category li:last-child {
+			border-bottom: none;
+		}
+
+		.skill-category li::before {
+			content: "•";
+			color: var(--primary-color);
+			font-weight: bold;
+			position: absolute;
+			left: 0;
+		}
+
+		/* Timeline */
+		.timeline {
+			position: relative;
+			max-width: 900px;
+			margin: 3rem auto 0;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background-color: var(--light-gray);
+			transform: translateX(-50%);
+		}
+
+		.timeline-item {
+			display: flex;
+			justify-content: flex-end;
+			padding-right: 50%;
+			position: relative;
+			margin-bottom: 3rem;
+		}
+
+		.timeline-item:nth-child(even) {
+			justify-content: flex-start;
+			padding-right: 0;
+			padding-left: 50%;
+		}
+
+		.timeline-content {
+			background-color: white;
+			padding: 1.5rem;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+			width: 90%;
+			position: relative;
+			transition: var(--transition);
+		}
+
+		.timeline-content:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+		}
+
+		.timeline-item:nth-child(odd) .timeline-content::after {
+			content: '';
+			position: absolute;
+			top: 20px;
+			right: -10px;
+			width: 0;
+			height: 0;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-left: 10px solid white;
+		}
+
+		.timeline-item:nth-child(even) .timeline-content::after {
+			content: '';
+			position: absolute;
+			top: 20px;
+			left: -10px;
+			width: 0;
+			height: 0;
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-right: 10px solid white;
+		}
+
+		.timeline-date {
+			position: absolute;
+			top: 15px;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: var(--primary-color);
+			color: white;
+			padding: 8px 15px;
+			border-radius: 30px;
+			font-weight: 600;
+			font-size: 0.9rem;
+			z-index: 1;
+			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+		}
+
+		.timeline-item:nth-child(even) .timeline-date {
+			left: auto;
+			right: 50%;
+			transform: translateX(50%);
+		}
+
+		.timeline-content h3 {
+			margin-bottom: 0.5rem;
+			color: var(--primary-color);
+		}
+
+		/* Footer */
+		#footer {
+			background-color: var(--secondary-color);
+			color: white;
+			padding: 60px 0 30px;
+		}
+
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.social {
+			display: flex;
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.social li {
+			margin: 0 10px;
+		}
+
+		.social a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			color: white;
+			transition: var(--transition);
+		}
+
+		.social a:hover {
+			background-color: var(--primary-color);
+			transform: translateY(-3px);
+		}
+
+		.copy {
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.9rem;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 992px) {
+			.timeline::before {
+				left: 30px;
+			}
+
+			.timeline-item {
+				justify-content: flex-start;
+				padding-right: 0;
+				padding-left: 80px;
+			}
+
+			.timeline-item:nth-child(even) {
+				padding-left: 80px;
+			}
+
+			.timeline-date {
+				left: 0;
+				transform: none;
+			}
+
+			.timeline-item:nth-child(even) .timeline-date {
+				left: 0;
+				right: auto;
+				transform: none;
+			}
+
+			.timeline-item:nth-child(odd) .timeline-content::after {
+				left: -10px;
+				right: auto;
+				border-left: none;
+				border-right: 10px solid white;
+			}
+
+			.timeline-item:nth-child(even) .timeline-content::after {
+				left: -10px;
+				border-right: 10px solid white;
+			}
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2rem;
+			}
+
+			h2 {
+				font-size: 1.75rem;
+			}
+
+			.logo {
+				font-size: 2.5rem;
+			}
+
+			.slogan {
+				font-size: 1.2rem;
+			}
+
+			.nav-menu {
+				position: fixed;
+				top: 70px;
+				right: -100%;
+				flex-direction: column;
+				background-color: white;
+				width: 80%;
+				height: calc(100vh - 70px);
+				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+				transition: var(--transition);
+				padding: 2rem;
+			}
+
+			.nav-menu.active {
+				right: 0;
+			}
+
+			.nav-menu li {
+				margin: 0 0 1.5rem 0;
+			}
+
+			.menu_trigger {
+				display: block;
+			}
+
+			.skills-container {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.container {
+				padding: 0 15px;
+			}
+
+			#header {
+				padding: 80px 0 60px;
+			}
+
+			#main {
+				padding: 60px 0;
+			}
+
+			.timeline-item {
+				padding-left: 50px;
+			}
+
+			.timeline-item:nth-child(even) {
+				padding-left: 50px;
+			}
+
+			.timeline-date {
+				padding: 5px 10px;
+				font-size: 0.8rem;
+			}
+		}
+	</style>
 </head>
 <body>
-	<div id="wrapper">
-		<div class="wrapper-holder">
-			<header id="header">
-				<a class="menu_trigger" href="#">menu</a>
-					<nav id="nav">
-						<ul>
-							<li><a class="active" href="index.html">Home</a></li>
-							<li><a href="myskills.html">My Skills</a></li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a href="contact.html">Contact</a></li>
-						</ul>
-					</nav>
-				<h1 class="logo">Lalit Pathak</h1>
-				<h2 class="slogan">Environmental Scientist | Disaster Risk Management & GIS Specialist</h2>
-			</header>
+	<nav id="nav">
+		<div class="container nav-container">
+			<a href="index.html" class="nav-logo">Lalit Pathak</a>
+			<ul class="nav-menu">
+				<li><a class="active" href="index.html">Home</a></li>
+				<li><a href="myskills.html">My Skills</a></li>
+				<li><a href="portfolio.html">Portfolio</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+			<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
 		</div>
-		<div class="wrapper-holder grey">
-			<section id="main">
+	</nav>
+
+	<header id="header">
+		<div class="container header-content">
+			<h1 class="logo">Lalit Pathak</h1>
+			<h2 class="slogan">Environmental Scientist | Disaster Risk Management & GIS Specialist</h2>
+			<p class="header-tagline">Passionate about creating resilient communities through environmental research and data-driven solutions</p>
+			<a href="contact.html" class="btn btn-outline">Get In Touch</a>
+		</div>
+	</header>
+
+	<div class="container">
+		<main id="main">
+			<section class="section-intro">
 				<h2>About Me</h2>
-				<p>
-					I hold an <strong>M.Sc. degree in Environmental Science</strong> from the <strong>Central Department of Environmental Science, Tribhuvan University</strong>. 
-					I am passionate about working in the field of environmental science, with a focus on <strong>disaster risk management</strong> and the application of 
-					<strong>Geographic Information Systems (GIS)</strong>. I have the ability to quickly adapt to changing conditions and excel in multi-tasking research 
+				<p class="intro-text">
+					I hold an <span class="highlight">M.Sc. degree in Environmental Science</span> from the <span class="highlight">Central Department of Environmental Science, Tribhuvan University</span>. 
+					I am passionate about working in the field of environmental science, with a focus on <span class="highlight">disaster risk management</span> and the application of 
+					<span class="highlight">Geographic Information Systems (GIS)</span>. I have the ability to quickly adapt to changing conditions and excel in multi-tasking research 
 					field activities, data collection, and presentation.
 				</p>
-				<p>
-					Currently, I am affiliated with the <strong>Centre of Research for Environment, Energy and Water (CREEW)</strong>, a non-governmental, not-for-profit 
+				<p class="intro-text">
+					Currently, I am affiliated with the <span class="highlight">Centre of Research for Environment, Energy and Water (CREEW)</span>, a non-governmental, not-for-profit 
 					scientific research and development organization established in 2008. At CREEW, I have worked as a team member on various projects related to 
-					<strong>disaster risk reduction</strong> and <strong>water quality analysis</strong>. In the past, I have also worked as a consultant for conducting 
-					<strong>environmental assessments</strong>.
+					<span class="highlight">disaster risk reduction</span> and <span class="highlight">water quality analysis</span>. In the past, I have also worked as a consultant for conducting 
+					<span class="highlight">environmental assessments</span>.
 				</p>
+			</section>
 
+			<section class="skills-section">
 				<h2>My Skills</h2>
-				<div class="skills-list">
-					<h3>Technical Skills</h3>
-					<ul>
-						<li>ArcMap</li>
-						<li>QGIS</li>
-						<li>SPSS</li>
-						<li>R-Studio</li>
-						<li>Grapher™</li>
-						<li>Basic Python for Data Analysis</li>
-						<li>Google Earth Engine</li>
-						<li>Co-Lab</li>
-						<li>Jupyter Lab</li>
-					</ul>
-					<h3>Professional Skills</h3>
-					<ul>
-						<li>Disaster Risk Management</li>
-						<li>Geographic Information Systems (GIS)</li>
-						<li>Environmental Data Collection and Analysis</li>
-						<li>Research and Fieldwork</li>
-						<li>Project Management</li>
-						<li>Environmental Impact Assessment</li>
-					</ul>
-				</div>
-
-				<h2>My Biggest Achievements</h2>
-				<div class="box_timeline_holder">
-					<div class="box_timeline">
+				<div class="skills-container">
+					<div class="skill-category">
+						<h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
 						<ul>
-							<li>
-								<div class="date">
-									<span>12/09</span>
-								</div>
-								<h3>Disaster Risk Reduction Project</h3>
-								<p>Contributed to a major disaster risk reduction project at CREEW, focusing on flood risk assessment using GIS.</p>
-							</li>
-							<li>
-								<div class="date">
-									<span>02/10</span>
-								</div>
-								<h3>Water Quality Analysis</h3>
-								<p>Led a team in analyzing water quality data for a CREEW project, ensuring accurate and actionable results.</p>
-							</li>
-							<li>
-								<div class="date">
-									<span>09/11</span>
-								</div>
-								<h3>Environmental Assessment</h3>
-								<p>Conducted environmental impact assessments as a consultant for various development projects.</p>
-							</li>
-							<li>
-								<div class="date">
-									<span>06/12</span>
-								</div>
-								<h3>GIS Mapping</h3>
-								<p>Developed detailed GIS maps for disaster-prone areas, aiding in effective risk management strategies.</p>
-							</li>
-							<li>
-								<div class="date">
-									<span>11/13</span>
-								</div>
-								<h3>Research Publication</h3>
-								<p>Published research findings on disaster risk management in a reputed environmental science journal.</p>
-							</li>
+							<li>ArcMap</li>
+							<li>QGIS</li>
+							<li>SPSS</li>
+							<li>R-Studio</li>
+							<li>Grapher™</li>
+							<li>Basic Python for Data Analysis</li>
+							<li>Google Earth Engine</li>
+							<li>Co-Lab</li>
+							<li>Jupyter Lab</li>
+						</ul>
+					</div>
+					<div class="skill-category">
+						<h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
+						<ul>
+							<li>Disaster Risk Management</li>
+							<li>Geographic Information Systems (GIS)</li>
+							<li>Environmental Data Collection and Analysis</li>
+							<li>Research and Fieldwork</li>
+							<li>Project Management</li>
+							<li>Environmental Impact Assessment</li>
 						</ul>
 					</div>
 				</div>
 			</section>
-		</div>
-		<footer id="footer">
+
+			<section class="achievements-section">
+				<h2>My Biggest Achievements</h2>
+				<div class="timeline">
+					<div class="timeline-item">
+						<div class="timeline-date">Dec 2009</div>
+						<div class="timeline-content">
+							<h3>Disaster Risk Reduction Project</h3>
+							<p>Contributed to a major disaster risk reduction project at CREEW, focusing on flood risk assessment using GIS.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-date">Feb 2010</div>
+						<div class="timeline-content">
+							<h3>Water Quality Analysis</h3>
+							<p>Led a team in analyzing water quality data for a CREEW project, ensuring accurate and actionable results.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-date">Sep 2011</div>
+						<div class="timeline-content">
+							<h3>Environmental Assessment</h3>
+							<p>Conducted environmental impact assessments as a consultant for various development projects.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-date">Jun 2012</div>
+						<div class="timeline-content">
+							<h3>GIS Mapping</h3>
+							<p>Developed detailed GIS maps for disaster-prone areas, aiding in effective risk management strategies.</p>
+						</div>
+					</div>
+					<div class="timeline-item">
+						<div class="timeline-date">Nov 2013</div>
+						<div class="timeline-content">
+							<h3>Research Publication</h3>
+							<p>Published research findings on disaster risk management in a reputed environmental science journal.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<footer id="footer">
+		<div class="container">
 			<div class="footer-content">
 				<ul class="social">
-					<li class="email"><a href="mailto:lalit@creew.org.np.com">Email</a></li>
-					<li class="facebook"><a href="#">Facebook</a></li>
-					<li class="google"><a href="#">Google+</a></li>
-					<li class="twitter"><a href="#">Twitter</a></li>
-					<li class="pinterest"><a href="#">Pinterest</a></li>
+					<li><a href="mailto:lalit@creew.org.np.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+					<li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+					<li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+					<li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
 				<p class="copy">Copyright 2024 Lalit Pathak. All rights reserved.</p>
 			</div>
-		</footer>	
-	</div>
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/cells-by-row.js"></script>
-	<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+		</div>
+	</footer>
+
+	<script>
+		// Mobile menu toggle
+		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
+			e.preventDefault();
+			document.querySelector('.nav-menu').classList.toggle('active');
+		});
+
+		// Close mobile menu when clicking on a link
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.querySelector('.nav-menu').classList.remove('active');
+			});
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', function() {
+			const nav = document.getElementById('nav');
+			if (window.scrollY > 50) {
+				nav.style.padding = '10px 0';
+				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+			} else {
+				nav.style.padding = '15px 0';
+				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+			}
+		});
+	</script>
 </body>
 </html>
