@@ -318,103 +318,6 @@
 			left: 0;
 		}
 
-		/* Timeline */
-		.timeline {
-			position: relative;
-			max-width: 900px;
-			margin: 3rem auto 0;
-		}
-
-		.timeline::before {
-			content: '';
-			position: absolute;
-			left: 50%;
-			top: 0;
-			bottom: 0;
-			width: 2px;
-			background-color: var(--light-gray);
-			transform: translateX(-50%);
-		}
-
-		.timeline-item {
-			display: flex;
-			justify-content: flex-end;
-			padding-right: 50%;
-			position: relative;
-			margin-bottom: 3rem;
-		}
-
-		.timeline-item:nth-child(even) {
-			justify-content: flex-start;
-			padding-right: 0;
-			padding-left: 50%;
-		}
-
-		.timeline-content {
-			background-color: white;
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			width: 90%;
-			position: relative;
-			transition: var(--transition);
-		}
-
-		.timeline-content:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-		}
-
-		.timeline-item:nth-child(odd) .timeline-content::after {
-			content: '';
-			position: absolute;
-			top: 20px;
-			right: -10px;
-			width: 0;
-			height: 0;
-			border-top: 10px solid transparent;
-			border-bottom: 10px solid transparent;
-			border-left: 10px solid white;
-		}
-
-		.timeline-item:nth-child(even) .timeline-content::after {
-			content: '';
-			position: absolute;
-			top: 20px;
-			left: -10px;
-			width: 0;
-			height: 0;
-			border-top: 10px solid transparent;
-			border-bottom: 10px solid transparent;
-			border-right: 10px solid white;
-		}
-
-		.timeline-date {
-			position: absolute;
-			top: 15px;
-			left: 50%;
-			transform: translateX(-50%);
-			background-color: var(--primary-color);
-			color: white;
-			padding: 8px 15px;
-			border-radius: 30px;
-			font-weight: 600;
-			font-size: 0.9rem;
-			z-index: 1;
-			box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-		}
-
-		.timeline-item:nth-child(even) .timeline-date {
-			left: auto;
-			right: 50%;
-			transform: translateX(50%);
-		}
-
-		.timeline-content h3 {
-			margin-bottom: 0.5rem;
-			color: var(--primary-color);
-		}
-
 		/* Footer */
 		#footer {
 			background-color: var(--secondary-color);
@@ -463,45 +366,6 @@
 		}
 
 		/* Responsive Design */
-		@media (max-width: 992px) {
-			.timeline::before {
-				left: 30px;
-			}
-
-			.timeline-item {
-				justify-content: flex-start;
-				padding-right: 0;
-				padding-left: 80px;
-			}
-
-			.timeline-item:nth-child(even) {
-				padding-left: 80px;
-			}
-
-			.timeline-date {
-				left: 0;
-				transform: none;
-			}
-
-			.timeline-item:nth-child(even) .timeline-date {
-				left: 0;
-				right: auto;
-				transform: none;
-			}
-
-			.timeline-item:nth-child(odd) .timeline-content::after {
-				left: -10px;
-				right: auto;
-				border-left: none;
-				border-right: 10px solid white;
-			}
-
-			.timeline-item:nth-child(even) .timeline-content::after {
-				left: -10px;
-				border-right: 10px solid white;
-			}
-		}
-
 		@media (max-width: 768px) {
 			h1 {
 				font-size: 2rem;
@@ -560,19 +424,6 @@
 
 			#main {
 				padding: 60px 0;
-			}
-
-			.timeline-item {
-				padding-left: 50px;
-			}
-
-			.timeline-item:nth-child(even) {
-				padding-left: 50px;
-			}
-
-			.timeline-date {
-				padding: 5px 10px;
-				font-size: 0.8rem;
 			}
 		}
 	</style>
@@ -645,47 +496,6 @@
 							<li>Project Management</li>
 							<li>Environmental Impact Assessment</li>
 						</ul>
-					</div>
-				</div>
-			</section>
-
-			<section class="achievements-section">
-				<h2>My Biggest Achievements</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-date">Dec 2009</div>
-						<div class="timeline-content">
-							<h3>Disaster Risk Reduction Project</h3>
-							<p>Contributed to a major disaster risk reduction project at CREEW, focusing on flood risk assessment using GIS.</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-date">Feb 2010</div>
-						<div class="timeline-content">
-							<h3>Water Quality Analysis</h3>
-							<p>Led a team in analyzing water quality data for a CREEW project, ensuring accurate and actionable results.</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-date">Sep 2011</div>
-						<div class="timeline-content">
-							<h3>Environmental Assessment</h3>
-							<p>Conducted environmental impact assessments as a consultant for various development projects.</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-date">Jun 2012</div>
-						<div class="timeline-content">
-							<h3>GIS Mapping</h3>
-							<p>Developed detailed GIS maps for disaster-prone areas, aiding in effective risk management strategies.</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-date">Nov 2013</div>
-						<div class="timeline-content">
-							<h3>Research Publication</h3>
-							<p>Published research findings on disaster risk management in a reputed environmental science journal.</p>
-						</div>
 					</div>
 				</div>
 			</section>
