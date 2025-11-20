@@ -1,63 +1,724 @@
 <!DOCTYPE html>
-<!--[if lte IE 8]> <html class="oldie" lang="en"> <![endif]-->
-<!--[if IE 9]> <html class="ie9" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
-	<title>Lalit Pathak</title>
-	<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/all.css" />
-	<link rel="stylesheet" href="css/screen.css" />
-	<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	<title>Contact | Lalit Pathak - Environmental Scientist</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--primary-color: #2a6e3f;
+			--primary-dark: #1e4f2d;
+			--primary-light: #3d8c55;
+			--secondary-color: #1a365d;
+			--accent-color: #e9c46a;
+			--light-color: #f8f9fa;
+			--dark-color: #343a40;
+			--gray-color: #6c757d;
+			--light-gray: #e9ecef;
+			--border-radius: 8px;
+			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			--transition: all 0.3s ease;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 16px;
+			line-height: 1.6;
+			color: var(--dark-color);
+			background-color: #fff;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 600;
+			line-height: 1.3;
+			margin-bottom: 1rem;
+			color: var(--secondary-color);
+		}
+
+		h1 {
+			font-size: 2.5rem;
+			font-weight: 700;
+		}
+
+		h2 {
+			font-size: 2rem;
+			margin-top: 2.5rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid var(--light-gray);
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			color: var(--primary-color);
+		}
+
+		p {
+			margin-bottom: 1.5rem;
+		}
+
+		a {
+			color: var(--primary-color);
+			text-decoration: none;
+			transition: var(--transition);
+		}
+
+		a:hover {
+			color: var(--primary-dark);
+		}
+
+		.container {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 12px 28px;
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			border-radius: var(--border-radius);
+			font-weight: 600;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: var(--transition);
+			text-align: center;
+		}
+
+		.btn:hover {
+			background-color: var(--primary-dark);
+			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		.btn-outline {
+			background-color: transparent;
+			border: 2px solid var(--primary-color);
+			color: var(--primary-color);
+		}
+
+		.btn-outline:hover {
+			background-color: var(--primary-color);
+			color: white;
+		}
+
+		/* Header Styles */
+		#header {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
+			color: white;
+			padding: 120px 0 80px;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#header::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+			background-size: cover;
+			background-position: center bottom;
+		}
+
+		.header-content {
+			position: relative;
+			z-index: 1;
+		}
+
+		.page-title {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 1rem;
+			color: white;
+		}
+
+		.page-subtitle {
+			font-size: 1.3rem;
+			font-weight: 400;
+			margin-bottom: 2rem;
+			color: rgba(255, 255, 255, 0.9);
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Navigation */
+		#nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background-color: rgba(255, 255, 255, 0.95);
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+			padding: 15px 0;
+			transition: var(--transition);
+		}
+
+		.nav-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.nav-logo {
+			font-family: 'Montserrat', sans-serif;
+			font-weight: 700;
+			font-size: 1.5rem;
+			color: var(--secondary-color);
+		}
+
+		.nav-menu {
+			display: flex;
+			list-style: none;
+		}
+
+		.nav-menu li {
+			margin-left: 2rem;
+		}
+
+		.nav-menu a {
+			color: var(--dark-color);
+			font-weight: 500;
+			padding: 5px 0;
+			position: relative;
+		}
+
+		.nav-menu a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 2px;
+			background-color: var(--primary-color);
+			transition: var(--transition);
+		}
+
+		.nav-menu a:hover::after,
+		.nav-menu a.active::after {
+			width: 100%;
+		}
+
+		.nav-menu a.active {
+			color: var(--primary-color);
+		}
+
+		.menu_trigger {
+			display: none;
+			font-size: 1.5rem;
+			color: var(--dark-color);
+		}
+
+		/* Main Content */
+		#main {
+			padding: 80px 0;
+		}
+
+		.contact-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 4rem;
+			margin-top: 2rem;
+		}
+
+		.contact-info {
+			background-color: var(--light-color);
+			padding: 2.5rem;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+		}
+
+		.contact-info h2 {
+			margin-top: 0;
+			color: var(--secondary-color);
+		}
+
+		.contact-methods {
+			margin-top: 2rem;
+		}
+
+		.contact-item {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 2rem;
+			padding-bottom: 1.5rem;
+			border-bottom: 1px solid var(--light-gray);
+		}
+
+		.contact-item:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.contact-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 50px;
+			height: 50px;
+			background-color: var(--primary-color);
+			color: white;
+			border-radius: 50%;
+			margin-right: 1.5rem;
+			flex-shrink: 0;
+		}
+
+		.contact-details h3 {
+			margin-bottom: 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.contact-details p {
+			margin-bottom: 0.5rem;
+			color: var(--gray-color);
+		}
+
+		.contact-link {
+			display: inline-block;
+			color: var(--primary-color);
+			font-weight: 500;
+			margin-top: 0.5rem;
+		}
+
+		.contact-form {
+			background-color: white;
+			padding: 2.5rem;
+			border-radius: var(--border-radius);
+			box-shadow: var(--box-shadow);
+		}
+
+		.form-group {
+			margin-bottom: 1.5rem;
+		}
+
+		.form-label {
+			display: block;
+			margin-bottom: 0.5rem;
+			font-weight: 500;
+			color: var(--dark-color);
+		}
+
+		.form-control {
+			width: 100%;
+			padding: 12px 15px;
+			border: 1px solid var(--light-gray);
+			border-radius: var(--border-radius);
+			font-family: 'Open Sans', sans-serif;
+			font-size: 1rem;
+			transition: var(--transition);
+		}
+
+		.form-control:focus {
+			outline: none;
+			border-color: var(--primary-color);
+			box-shadow: 0 0 0 3px rgba(42, 110, 63, 0.1);
+		}
+
+		textarea.form-control {
+			min-height: 150px;
+			resize: vertical;
+		}
+
+		/* Location Section */
+		.location-section {
+			margin-top: 4rem;
+			padding-top: 3rem;
+			border-top: 1px solid var(--light-gray);
+		}
+
+		.location-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			margin-top: 2rem;
+		}
+
+		.location-info {
+			background-color: var(--light-color);
+			padding: 2rem;
+			border-radius: var(--border-radius);
+		}
+
+		.location-info h3 {
+			margin-bottom: 1.5rem;
+			display: flex;
+			align-items: center;
+		}
+
+		.location-info h3 i {
+			margin-right: 10px;
+			color: var(--primary-color);
+		}
+
+		.location-details p {
+			margin-bottom: 1rem;
+			display: flex;
+			align-items: flex-start;
+		}
+
+		.location-details i {
+			margin-right: 10px;
+			color: var(--primary-color);
+			margin-top: 3px;
+			flex-shrink: 0;
+		}
+
+		.map-placeholder {
+			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
+			height: 300px;
+			border-radius: var(--border-radius);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			font-size: 1.2rem;
+			text-align: center;
+			padding: 2rem;
+		}
+
+		/* Footer */
+		#footer {
+			background-color: var(--secondary-color);
+			color: white;
+			padding: 60px 0 30px;
+		}
+
+		.footer-content {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.social {
+			display: flex;
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.social li {
+			margin: 0 10px;
+		}
+
+		.social a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 40px;
+			height: 40px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border-radius: 50%;
+			color: white;
+			transition: var(--transition);
+		}
+
+		.social a:hover {
+			background-color: var(--primary-color);
+			transform: translateY(-3px);
+		}
+
+		.copy {
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 0.9rem;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 992px) {
+			.contact-container {
+				gap: 3rem;
+			}
+			
+			.location-container {
+				gap: 2rem;
+			}
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 2rem;
+			}
+
+			h2 {
+				font-size: 1.75rem;
+			}
+
+			.page-title {
+				font-size: 2.5rem;
+			}
+
+			.page-subtitle {
+				font-size: 1.1rem;
+			}
+
+			.nav-menu {
+				position: fixed;
+				top: 70px;
+				right: -100%;
+				flex-direction: column;
+				background-color: white;
+				width: 80%;
+				height: calc(100vh - 70px);
+				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+				transition: var(--transition);
+				padding: 2rem;
+			}
+
+			.nav-menu.active {
+				right: 0;
+			}
+
+			.nav-menu li {
+				margin: 0 0 1.5rem 0;
+			}
+
+			.menu_trigger {
+				display: block;
+			}
+
+			.contact-container {
+				grid-template-columns: 1fr;
+			}
+			
+			.location-container {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 576px) {
+			.container {
+				padding: 0 15px;
+			}
+
+			#header {
+				padding: 100px 0 60px;
+			}
+
+			#main {
+				padding: 60px 0;
+			}
+
+			.contact-info,
+			.contact-form {
+				padding: 1.5rem;
+			}
+			
+			.contact-item {
+				flex-direction: column;
+			}
+			
+			.contact-icon {
+				margin-right: 0;
+				margin-bottom: 1rem;
+			}
+		}
+	</style>
 </head>
 <body>
-	<div id="wrapper" class="portfolio">
-		<div class="wrapper-holder">
-			<header id="header">
-				<a class="menu_trigger" href="#">menu</a>
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="myskills.html">My skills</a></li>
-							<li><a href="portfolio.html">Portfolio</a></li>
-							<li><a class="active" href="contact.html">Contact</a></li>
-						</ul>
-					</nav>
-			</header>
+	<nav id="nav">
+		<div class="container nav-container">
+			<a href="index.html" class="nav-logo">Lalit Pathak</a>
+			<ul class="nav-menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="myskills.html">My Skills</a></li>
+				<li><a href="portfolio.html">Portfolio</a></li>
+				<li><a class="active" href="contact.html">Contact</a></li>
+			</ul>
+			<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
 		</div>
-		<div class="wrapper-holder grey">
-			<section id="main">
-				<div class="images_holder"><img src="images/pic_08.png" alt=""></div>
-				<div class="box_contact">
-					<span class="email">lalit@creew.org.np</span>
-					<span class="phone">+977-9840166525</span>
-					<span class="skype">J_mwitz</span>
+	</nav>
+
+	<header id="header">
+		<div class="container header-content">
+			<h1 class="page-title">Get In Touch</h1>
+			<p class="page-subtitle">I'm always interested in new opportunities and collaborations in environmental science and disaster risk management.</p>
+		</div>
+	</header>
+
+	<div class="container">
+		<main id="main">
+			<section class="contact-section">
+				<div class="contact-container">
+					<div class="contact-info">
+						<h2>Contact Information</h2>
+						<p>Feel free to reach out to me through any of the following methods. I typically respond within 24 hours.</p>
+						
+						<div class="contact-methods">
+							<div class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-envelope"></i>
+								</div>
+								<div class="contact-details">
+									<h3>Email</h3>
+									<p>For professional inquiries and collaborations</p>
+									<a href="mailto:lalit@creew.org.np" class="contact-link">lalit@creew.org.np</a>
+								</div>
+							</div>
+							
+							<div class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-phone"></i>
+								</div>
+								<div class="contact-details">
+									<h3>Phone</h3>
+									<p>Available during business hours</p>
+									<a href="tel:+9779840166525" class="contact-link">+977-9840166525</a>
+								</div>
+							</div>
+							
+							<div class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-map-marker-alt"></i>
+								</div>
+								<div class="contact-details">
+									<h3>Location</h3>
+									<p>Based in Kathmandu, Nepal</p>
+									<span class="contact-link">Available for remote work</span>
+								</div>
+							</div>
+							
+							<div class="contact-item">
+								<div class="contact-icon">
+									<i class="fas fa-calendar-alt"></i>
+								</div>
+								<div class="contact-details">
+									<h3>Schedule a Meeting</h3>
+									<p>Book a time for a video call or meeting</p>
+									<a href="#" class="btn btn-outline" style="margin-top: 10px;">Book Now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="contact-form">
+						<h2>Send a Message</h2>
+						<p>Have a question or want to work together? Send me a message and I'll get back to you as soon as possible.</p>
+						
+						<form id="contactForm">
+							<div class="form-group">
+								<label for="name" class="form-label">Your Name</label>
+								<input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="email" class="form-label">Email Address</label>
+								<input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="subject" class="form-label">Subject</label>
+								<input type="text" id="subject" class="form-control" placeholder="What is this regarding?" required>
+							</div>
+							
+							<div class="form-group">
+								<label for="message" class="form-label">Message</label>
+								<textarea id="message" class="form-control" placeholder="Enter your message here..." required></textarea>
+							</div>
+							
+							<button type="submit" class="btn">Send Message</button>
+						</form>
+					</div>
 				</div>
-				<div class="clear"></div>
 			</section>
-		</div>
-		<footer id="footer">
+			
+			<section class="location-section">
+				<h2>Location & Availability</h2>
+				<div class="location-container">
+					<div class="location-info">
+						<h3><i class="fas fa-info-circle"></i> Professional Details</h3>
+						<div class="location-details">
+							<p><i class="fas fa-building"></i> <strong>Organization:</strong> Centre of Research for Environment, Energy and Water (CREEW)</p>
+							<p><i class="fas fa-map-pin"></i> <strong>Location:</strong> Kathmandu, Nepal</p>
+							<p><i class="fas fa-clock"></i> <strong>Availability:</strong> Available for consulting projects and research collaborations</p>
+							<p><i class="fas fa-globe"></i> <strong>Remote Work:</strong> Open to remote opportunities worldwide</p>
+							<p><i class="fas fa-language"></i> <strong>Languages:</strong> English, Nepali, Hindi</p>
+						</div>
+					</div>
+					
+					<div class="map-placeholder">
+						<div>
+							<i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+							<p>Kathmandu, Nepal</p>
+							<p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.8;">Environmental Science Hub</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<footer id="footer">
+		<div class="container">
 			<div class="footer-content">
 				<ul class="social">
-					<li class="email"><a href="#">Email</a></li>
-					<li class="facebook"><a href="#">Facebook</a></li>
-					<li class="google"><a href="#">Google+</a></li>
-					<li class="twitter"><a href="#">Twitter</a></li>
-					<li class="pinterest"><a href="#">Pinterest</a></li>
+					<li><a href="mailto:lalit@creew.org.np" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+					<li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+					<li><a href="#" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a></li>
+					<li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+					<li><a href="#" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
-				<p class="copy">Copyright 2014 Lalit Pathak. All rights reserved.</p>
+				<p class="copy">Copyright 2024 Lalit Pathak. All rights reserved.</p>
 			</div>
-		</footer>	
-	</div>
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/cells-by-row.js"></script>
-	<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+		</div>
+	</footer>
+
+	<script>
+		// Mobile menu toggle
+		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
+			e.preventDefault();
+			document.querySelector('.nav-menu').classList.toggle('active');
+		});
+
+		// Close mobile menu when clicking on a link
+		document.querySelectorAll('.nav-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.querySelector('.nav-menu').classList.remove('active');
+			});
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', function() {
+			const nav = document.getElementById('nav');
+			if (window.scrollY > 50) {
+				nav.style.padding = '10px 0';
+				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+			} else {
+				nav.style.padding = '15px 0';
+				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+			}
+		});
+
+		// Contact form submission
+		document.getElementById('contactForm').addEventListener('submit', function(e) {
+			e.preventDefault();
+			// In a real implementation, you would send the form data to a server here
+			alert('Thank you for your message! I will get back to you soon.');
+			this.reset();
+		});
+	</script>
 </body>
 </html>
