@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Himalaya: From Ancient Formation to an Uncertain Future</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f9fc;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster-container {
+            width: min(1400px, 95vw);
+            aspect-ratio: 1.2;
+            background: linear-gradient(to bottom, #0c2d48 0%, #1a5276 15%, #7fb3d5 30%, #f0f7ff 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            border-radius: 8px;
+        }
+        
+        .header {
+            padding: 20px 30px;
+            background-color: rgba(12, 45, 72, 0.95);
+            color: white;
+            text-align: center;
+            border-bottom: 3px solid #f1c40f;
+            z-index: 100;
+        }
+        
+        .main-title {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: minmax(280px, 1fr) minmax(350px, 1.5fr) minmax(280px, 1fr);
+            padding: 20px;
+            gap: 20px;
+            overflow-y: auto;
+        }
+        
+        .timeline-column,
+        .status-column {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .column-title {
+            font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+            font-weight: 700;
+            color: #0c2d48;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a5276;
+            text-align: center;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #1a5276;
+            border: 3px solid #f1c40f;
+        }
+        
+        .timeline-title {
+            font-weight: 700;
+            color: #0c2d48;
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-content {
+            font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .mountain-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            gap: 15px;
+        }
+        
+        .himalaya-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a5276 0%, #7fb3d5 50%, #0c2d48 100%);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .himalaya-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .image-placeholder {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .image-path {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: monospace;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 10px;
+        }
+        
+        .climate-indicator {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 3s infinite;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #e74c3c;
+        }
+        
+        .temperature-rise {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #e74c3c;
+            transition: color 0.5s;
+        }
+        
+        .climate-label {
+            font-size: 0.85rem;
+            color: #0c2d48;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .process-indicators-row {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .process-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 12px 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            min-width: 100px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .process-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .process-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .process-label {
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            font-weight: 600;
+            color: #0c2d48;
+            text-align: center;
+        }
+        
+        .mountain-range-container {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        
+        .mountain-range {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #2c3e50 0%, #4a6572 30%, #7f8c8d 70%, #aab7b8 100%);
+            clip-path: polygon(0% 100%, 5% 80%, 12% 88%, 18% 70%, 25% 78%, 32% 60%, 40% 68%, 48% 50%, 55% 60%, 62% 45%, 70% 55%, 77% 40%, 85% 50%, 92% 35%, 100% 100%);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5), 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s ease-in-out;
+            transform-origin: bottom center;
+        }
+        
+        .mountain-range.growing {
+            transform: scaleY(1.15);
+        }
+        
+        .mountain-peak {
+            position: absolute;
+            top: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to bottom, white 0%, #e0e0e0 100%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .mountain-peak.growing {
+            transform: translateX(-50%) scale(1.2);
+            filter: brightness(1.1);
+        }
+        
+        .tectonic-plates {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .plate-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+        }
+        
+        .plate {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .plate.indian {
+            background-color: rgba(231, 76, 60, 0.9);
+        }
+        
+        .plate.eurasian {
+            background-color: rgba(52, 152, 219, 0.9);
+        }
+        
+        .collision-zone {
+            width: 40px;
+            height: 100%;
+            background-color: rgba(241, 196, 15, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0c2d48;
+            font-weight: bold;
+            font-size: clamp(0.75rem, 1.1vw, 0.9rem);
+            border-radius: 3px;
+            transition: background-color 0.5s;
+            flex-shrink: 0;
+        }
+        
+        .status-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .status-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .threats { border-left-color: #e74c3c; }
+        .threats .section-icon { background-color: #e74c3c; }
+        
+        .biodiversity { border-left-color: #27ae60; }
+        .biodiversity .section-icon { background-color: #27ae60; }
+        
+        .human-impact { border-left-color: #f39c12; }
+        .human-impact .section-icon { background-color: #f39c12; }
+        
+        .status-content {
+            font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .graphical-elements {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .element {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .element:hover {
+            transform: scale(1.2) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .glacier { background-color: #aed6f1; }
+        .earthquake { background-color: #f5b7b1; }
+        .pollution { background-color: #a3e4d7; }
+        .species { background-color: #abebc6; }
+        .water { background-color: #85c1e9; }
+        .community { background-color: #f9e79f; }
+        
+        .legend-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #0c2d48;
+            font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        
+        .legend-label {
+            font-size: clamp(0.8rem, 1.1vw, 0.9rem);
+            color: #2c3e50;
+        }
+        
+        .footer {
+            padding: 15px 30px;
+            background-color: rgba(12, 45, 72, 0.95);
+            color: white;
+            text-align: center;
+            border-top: 3px solid #f1c40f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            z-index: 100;
+        }
+        
+        .call-to-action {
+            font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            font-weight: 600;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .reference {
+            font-size: clamp(0.7rem, 1vw, 0.85rem);
+            opacity: 0.85;
+            flex: 1;
+            min-width: 250px;
+            text-align: right;
+        }
+        
+        @media (max-width: 1024px) {
+            .content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .timeline-column,
+            .mountain-column,
+            .status-column {
+                max-height: none;
+            }
+            
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .reference {
+                text-align: center;
+            }
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .poster-container {
+                box-shadow: none;
+                border-radius: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <div class="header">
+            <h1 class="main-title">Himalaya from Ancient Formation to an Uncertain Future</h1>
+            <div class="subtitle">Mountain Building to Future Scenarios for People, Ecosystems, and Biodiversity</div>
+        </div>
+        
+        <div class="content">
+            <div class="timeline-column">
+                <div class="column-title">Geological Timeline</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">65-59 Million Years Ago</div>
+                        <div class="timeline-content">Initial India-Eurasia collision begins in central Himalayas, initiating continental convergence.</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">55-50 Million Years Ago</div>
+                        <div class="timeline-content">Collision progresses to western and eastern Himalayas. Ancient Tethys Ocean floor compressed.</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">40-30 Million Years Ago</div>
+                        <div class="timeline-content">Crustal shortening and thickening along Main Central Thrust. Early Himalayan peaks form.</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">20-10 Million Years Ago</div>
+                        <div class="timeline-content">Main Boundary Thrust becomes active. Deformation front migrates southward.</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">Present Day</div>
+                        <div class="timeline-content">Ongoing convergence at ~2cm/year. Elastic strain accumulates along Main Himalayan Thrust.</div>
+                    </div>
+                </div>
+                
+                <div class="legend-container">
+                    <div class="legend-title">Key Processes & Systems</div>
+                    <div class="legend-grid">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #e74c3c;"></div>
+                            <div class="legend-label">Tectonic Activity</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #27ae60;"></div>
+                            <div class="legend-label">Biodiversity</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #3498db;"></div>
+                            <div class="legend-label">Water Systems</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #f39c12;"></div>
+                            <div class="legend-label">Human Impact</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #8e44ad;"></div>
+                            <div class="legend-label">Glacial System</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #1a5276;"></div>
+                            <div class="legend-label">Climate Change</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mountain-column">
+                <div class="himalaya-image">
+                    <img src="https://raw.githubusercontent.com/altronin/lalit/main/blogs/images/himalaya.jpg" alt="Himalaya Mountains" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="image-placeholder" style="display:none;">Himalaya Image</div>
+                    <div class="image-path">himalaya.jpg</div>
+                </div>
+                
+                <div class="climate-indicator">
+                    <div class="temperature-rise">+2.5°C</div>
+                    <div class="climate-label">Warming</div>
+                </div>
+                
+                <div class="process-indicators-row">
+                    <div class="process-item">
+                        <div class="process-icon">⛰️</div>
+                        <div class="process-label">Tectonic Uplift</div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon">💧</div>
+                        <div class="process-label">Glacial Melt</div>
+                    </div>
+                    <div class="process-item">
+                        <div class="process-icon">🌿</div>
+                        <div class="process-label">Ecosystems</div>
+                    </div>
+                </div>
+                
+                <div class="mountain-range-container">
+                    <div class="mountain-range">
+                        <div class="mountain-peak"></div>
+                    </div>
+                </div>
+                
+                <div class="tectonic-plates">
+                    <div class="plate-container">
+                        <div class="plate indian">Indian Plate</div>
+                        <div class="collision-zone">Collision</div>
+                        <div class="plate eurasian">Eurasian Plate</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-column">
+                <div class="column-title">Current Status & Future Threats</div>
+                <div class="status-sections">
+                    <div class="status-section threats">
+                        <div class="section-title">
+                            <div class="section-icon">!</div>
+                            Immediate Threats
+                        </div>
+                        <div class="graphical-elements">
+                            <div class="element glacier" title="Glacial Melt">❄️</div>
+                            <div class="element earthquake" title="Seismic Hazard">🌋</div>
+                            <div class="element pollution" title="Air Pollution">🏭</div>
+                        </div>
+                        <div class="status-content">
+                            Climate change accelerates glacier retreat, permafrost thaw, and extreme weather events. Pollution threatens water sources for 1.5+ billion people downstream.
+                        </div>
+                    </div>
+                    
+                    <div class="status-section biodiversity">
+                        <div class="section-title">
+                            <div class="section-icon">🌿</div>
+                            Biodiversity at Risk
+                        </div>
+                        <div class="graphical-elements">
+                            <div class="element species" title="Species Loss">🐾</div>
+                            <div class="element" style="background-color: #c8e6c9;" title="Ecosystem Services">🌳</div>
+                        </div>
+                        <div class="status-content">
+                            Endemic species face "escalator to extinction" as warming reduces habitat. 74% reduction in greenhouse gas sequestration projected in some areas.
+                        </div>
+                    </div>
+                    
+                    <div class="status-section human-impact">
+                        <div class="section-title">
+                            <div class="section-icon">👥</div>
+                            Human Communities
+                        </div>
+                        <div class="graphical-elements">
+                            <div class="element water" title="Water Security">💧</div>
+                            <div class="element community" title="Vulnerable Communities">🏘️</div>
+                        </div>
+                        <div class="status-content">
+                            50+ million people at direct seismic risk. Water security threatened for billions downstream. Mountain communities face disproportionate climate impacts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="call-to-action">
+                The Himalaya's future depends on integrated action across geological, ecological, and human systems.
+            </div>
+            <div class="reference">
+                <a href="blog_moutday2025.html" class="blog-read-more">Based on article Himalaya from Ancient Formation to an Uncertain Future <i class="fas fa-arrow-right"></i></a>
+			            
+			</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('visible');
+                }, index * 200);
+            });
+            
+            // Temperature cycling animation
+            const tempIndicator = document.querySelector('.temperature-rise');
+            const temperatures = ['+1.5°C', '+2.0°C', '+2.5°C', '+3.0°C', '+3.5°C', '+4.0°C'];
+            let tempIndex = 2;
+            
+            setInterval(() => {
+                tempIndicator.textContent = temperatures[tempIndex];
+                
+                if (tempIndex >= 4) {
+                    tempIndicator.style.color = '#c0392b';
+                } else if (tempIndex >= 2) {
+                    tempIndicator.style.color = '#e74c3c';
+                } else {
+                    tempIndicator.style.color = '#f39c12';
+                }
+                
+                tempIndex = (tempIndex + 1) % temperatures.length;
+            }, 4000);
+            
+            // Tectonic plate collision animation with mountain growth
+            const indianPlate = document.querySelector('.plate.indian');
+            const eurasianPlate = document.querySelector('.plate.eurasian');
+            const collisionZone = document.querySelector('.collision-zone');
+            const mountainRange = document.querySelector('.mountain-range');
+            const mountainPeak = document.querySelector('.mountain-peak');
+            
+            let collisionActive = false;
+            setInterval(() => {
+                if (collisionActive) {
+                    // Plates separate
+                    indianPlate.style.transform = 'translateX(0)';
+                    eurasianPlate.style.transform = 'translateX(0)';
+                    collisionZone.style.backgroundColor = 'rgba(241, 196, 15, 0.9)';
+                    collisionZone.textContent = 'Collision';
+                    
+                    // Mountain returns to normal height
+                    mountainRange.classList.remove('growing');
+                    mountainPeak.classList.remove('growing');
+                } else {
+                    // Plates collide
+                    indianPlate.style.transform = 'translateX(8px)';
+                    eurasianPlate.style.transform = 'translateX(-8px)';
+                    collisionZone.style.backgroundColor = 'rgba(231, 76, 60, 0.9)';
+                    collisionZone.textContent = 'IMPACT';
+                    
+                    // Mountain grows during collision
+                    mountainRange.classList.add('growing');
+                    mountainPeak.classList.add('growing');
+                }
+                collisionActive = !collisionActive;
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
