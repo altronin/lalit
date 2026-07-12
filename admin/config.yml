@@ -103,6 +103,6 @@ collections:
               - { label: "Category", name: "category", widget: "string" }
               - { label: "Thumbnail / Cover Image", name: "image", widget: "image" }
               - { label: "Excerpt (shown on the blog listing card)", name: "excerpt", widget: "text" }
-              - { label: "URL slug (required)", name: "slug", widget: "string", hint: "Short, no spaces, e.g. my-new-post — this becomes part of the post's web address. REQUIRED — the post won't be findable without it.", required: true }
+              - { label: "URL slug (required)", name: "slug", widget: "string", hint: "Short, no spaces, e.g. my-new-post — this becomes part of the post's web address. REQUIRED — the post won't be findable without it.", required: false }
               - { label: "Write your post here", name: "body", widget: "markdown", required: false, hint: "Use this OR the file link below — not both. This lets you write text, add photos, and format directly." }
               - { label: "Link to a custom HTML post file (advanced, optional)", name: "link", widget: "string", required: false, hint: "Only fill this in if you built a full custom HTML page yourself (like the older posts). Leave blank if you wrote the post above." }
