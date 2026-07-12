@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "date_range": "2022-Current",
+      "role": "Research Associate",
+      "organization": "Center of Research for Environment, Energy and Water (CREEW)",
+      "description": "Leading research initiatives in environmental science and disaster risk management. Conducted research on climate resilience, disaster risk management, and environmental assessments."
+    },
+    {
+      "date_range": "2021-2022",
+      "role": "Environmentalist",
+      "organization": "BIOME Environmental Consulting and Research Pvt. Ltd.",
+      "description": "Conducted environmental impact assessments and provided consulting services."
+    },
+    {
+      "date_range": "2020",
+      "role": "Research Intern",
+      "organization": "Department of Environment, Ministry of Forest and Environment",
+      "description": "Gained practical experience in environmental policy and research methodologies."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+local_backend: true
+backend:
+  name: proxy
+  proxy_url: "http://localhost:8081/api/v1"
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "experience"
+    label: "Professional Experience"
+    label_singular: "Experience Entry"
+    files:
+      - name: "experience"
+        label: "Experience Timeline"
+        file: "data/experience.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Entry"
+            summary: "{{fields.role}} — {{fields.organization}}"
+            fields:
+              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. 2022-Current" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    files:
+      - name: "projects"
+        label: "Projects List"
+        file: "data/projects.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Project"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. June 2025 - Ongoing" }
+              - { label: "Status", name: "status", widget: "select", options: ["Ongoing", "Completed"] }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+
+  - name: "publications"
+    label: "Publications"
+    label_singular: "Publication"
+    files:
+      - name: "publications"
+        label: "Publications List"
+        file: "data/publications.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Publication"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Journal / Citation", name: "journal", widget: "string" }
+              - { label: "Link (DOI or URL)", name: "link", widget: "string" }
+
+  - name: "training"
+    label: "Training & Professional Development"
+    label_singular: "Training"
+    files:
+      - name: "training"
+        label: "Training List"
+        file: "data/training.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Training"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date Range", name: "date_range", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+
+  - name: "blogs"
+    label: "Blog Posts (Listing Cards)"
+    label_singular: "Blog Card"
+    files:
+      - name: "blogs"
+        label: "Blog Listing"
+        file: "data/blogs.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Post"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string", hint: "e.g. December 12, 2025" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Thumbnail / Cover Image", name: "image", widget: "image" }
+              - { label: "Excerpt (shown on the blog listing card)", name: "excerpt", widget: "text" }
+              - { label: "URL slug", name: "slug", widget: "string", hint: "Short, no spaces, e.g. my-new-post — this becomes part of the post's web address", required: false }
+              - { label: "Write your post here", name: "body", widget: "markdown", required: false, hint: "Use this OR the file link below — not both. This lets you write text, add photos, and format directly." }
+              - { label: "Link to a custom HTML post file (advanced, optional)", name: "link", widget: "string", required: false, hint: "Only fill this in if you built a full custom HTML page yourself (like the older posts). Leave blank if you wrote the post above." }

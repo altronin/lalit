@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "title": "Himalaya from Ancient Formation to an Uncertain Future",
+      "date": "December 12, 2025",
+      "category": "Review",
+      "image": "blogs/himalaya.jpg",
+      "excerpt": "Mountain Building to Future Scenarios for People, Ecosystems, and Biodiversity.....",
+      "link": "blog_moutday2025.html"
+    },
+    {
+      "title": "Landslide susceptibility",
+      "date": "November 30, 2025",
+      "category": "Research",
+      "image": "blogs/blog_lsmvdo.png",
+      "excerpt": "Determining susceptibility based on established methods with acceptable accuracy is not research but can be considered an application of research that might be helpful for policymakers and development planners.....",
+      "link": "blog_lsmvdo.html"
+    },
+    {
+      "title": "Bridging Minds and Mountains",
+      "date": "July 18, 2025",
+      "category": "Research",
+      "image": "images/cli.png",
+      "excerpt": "Formal education and media remain critical for framing the issue, reflects the lead authors, but it is the invisible architecture....",
+      "link": "blog_bmm1.html"
+    },
+    {
+      "title": "Landslide Susceptibility Mapping in Nepal's Mid-Hills",
+      "date": "June 15, 2024",
+      "category": "Research",
+      "image": "images/lsm.png",
+      "excerpt": "Exploring the application of GIS and machine learning techniques for landslide risk assessment in vulnerable Himalayan regions...",
+      "link": "#"
+    },
+    {
+      "title": "Water Quality Monitoring in Himalayan Rivers",
+      "date": "May 28, 2024",
+      "category": "Water Resources",
+      "image": "images/pic_05.jpg",
+      "excerpt": "Analysis of seasonal variations in water quality parameters and their implications for ecosystem health...",
+      "link": "#"
+    },
+    {
+      "title": "Advanced GIS Applications in Environmental Research",
+      "date": "April 12, 2024",
+      "category": "GIS & Remote Sensing",
+      "image": "images/adv_gis.gif",
+      "excerpt": "Leveraging spatial analysis and remote sensing for comprehensive environmental monitoring and assessment...",
+      "link": "#"
+    }
+  ]
+}

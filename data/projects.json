@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "title": "Integrated Multi-Hazard Assessment",
+      "date_range": "June 2025 - Ongoing",
+      "status": "Ongoing",
+      "role": "Project Lead",
+      "description": "Climate-resilient watershed management framework development for Nepal's Mid-Hills.",
+      "responsibilities": [
+        "Overall project management and coordination",
+        "Multi-hazard assessment framework development",
+        "Stakeholder engagement and coordination"
+      ]
+    },
+    {
+      "title": "Climate and Disaster Risk Resilience",
+      "date_range": "June 2025 - Oct 2025",
+      "status": "Ongoing",
+      "role": "Research Associate",
+      "description": "Sustaining climate and disaster risk resilient development in South Asia.",
+      "responsibilities": [
+        "Coordination and enumerator training",
+        "KII/GD and policy mapping in Dhanusha district",
+        "Data analysis and reporting"
+      ]
+    },
+    {
+      "title": "GHG Mitigation from Open Waste Burning",
+      "date_range": "July 2023 - Oct 2025",
+      "status": "Ongoing",
+      "role": "Research Associate",
+      "description": "Research on greenhouse gas emissions from open waste burning.",
+      "responsibilities": [
+        "Proposal development",
+        "Field methodology development",
+        "Data analysis and report writing"
+      ]
+    },
+    {
+      "title": "Wastewater Management Master Plan",
+      "date_range": "Nov 2022 - July 2023",
+      "status": "Completed",
+      "role": "Research Associate",
+      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
+      "responsibilities": [
+        "Water sample collection from various sources",
+        "Laboratory analysis for physiochemical parameters",
+        "Reporting and documentation"
+      ]
+    }
+  ]
+}

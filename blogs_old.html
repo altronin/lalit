@@ -726,8 +726,84 @@
 			<!-- Latest Blog Posts -->
 			<section class="blog-section">
 				<h2>Latest Articles</h2>
-				<div class="blog-grid" id="blog-grid">
-					<!-- Rendered automatically from data/blogs.json -->
+				<div class="blog-grid">
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/blogs/himalaya.jpg" alt="Nepal Himalaya" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>December 12, 2025</span>
+								<span class="blog-category">Review</span>
+							</div>
+							<h3 class="blog-title">Himalaya from Ancient Formation to an Uncertain Future</h3>
+							<p class="blog-excerpt">Mountain Building to Future Scenarios for People, Ecosystems, and Biodiversity.....</p>
+							<a href="blog_moutday2025.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
+										
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/blogs/blog_lsmvdo.png" alt="Landslide Research" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>November 30, 2025</span>
+								<span class="blog-category">Research</span>
+							</div>
+							<h3 class="blog-title">Landslide susceptibility</h3>
+							<p class="blog-excerpt">Determining susceptibility based on established methods with acceptable accuracy is not research but can be considered an application of research that might be helpful for policymakers and development planners.....</p>
+							<a href="blog_lsmvdo.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
+					
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/cli.png" alt="Landslide Research" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>July 18, 2025</span>
+								<span class="blog-category">Research</span>
+							</div>
+							<h3 class="blog-title">Bridging Minds and Mountains</h3>
+							<p class="blog-excerpt">Formal education and media remain critical for framing the issue,” reflects lead the authors, “but it is the invisible architecture....</p>
+							<a href="blog_bmm1.html" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
+										
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/lsm.png" alt="Landslide Research" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>June 15, 2024</span>
+								<span class="blog-category">Research</span>
+							</div>
+							<h3 class="blog-title">Landslide Susceptibility Mapping in Nepal's Mid-Hills</h3>
+							<p class="blog-excerpt">Exploring the application of GIS and machine learning techniques for landslide risk assessment in vulnerable Himalayan regions...</p>
+							<a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
+
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/pic_05.jpg" alt="Climate Adaptation" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>May 28, 2024</span>
+								<span class="blog-category">Water Resources</span>
+							</div>
+							<h3 class="blog-title">Water Quality Monitoring in Himalayan Rivers</h3>
+							<p class="blog-excerpt">Analysis of seasonal variations in water quality parameters and their implications for ecosystem health...</p>
+							<a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
+
+					<article class="blog-card">
+						<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/adv_gis.gif" alt="GIS Applications" class="blog-image">
+						<div class="blog-content">
+							<div class="blog-meta">
+								<span>April 12, 2024</span>
+								<span class="blog-category">GIS & Remote Sensing</span>
+							</div>
+							<h3 class="blog-title">Advanced GIS Applications in Environmental Research</h3>
+							<p class="blog-excerpt">Leveraging spatial analysis and remote sensing for comprehensive environmental monitoring and assessment...</p>
+							<a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+						</div>
+					</article>
 				</div>
 			</section>
 
@@ -899,40 +975,6 @@
 
 		// Initialize slider
 		updateSlider();
-
-		// ---------- Blog cards rendered from data/blogs.json ----------
-		function escapeHTML(str) {
-			const div = document.createElement('div');
-			div.textContent = str == null ? '' : str;
-			return div.innerHTML;
-		}
-
-		fetch('data/blogs.json')
-			.then(res => res.json())
-			.then(data => {
-				const items = data.items;
-				const container = document.getElementById('blog-grid');
-				container.innerHTML = items.map(item => {
-					const href = (item.link && item.link.trim())
-						? item.link
-						: `blog-post.html?post=${encodeURIComponent(item.slug || '')}`;
-					return `
-					<article class="blog-card">
-						<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" class="blog-image">
-						<div class="blog-content">
-							<div class="blog-meta">
-								<span>${escapeHTML(item.date)}</span>
-								<span class="blog-category">${escapeHTML(item.category)}</span>
-							</div>
-							<h3 class="blog-title">${escapeHTML(item.title)}</h3>
-							<p class="blog-excerpt">${escapeHTML(item.excerpt)}</p>
-							<a href="${escapeHTML(href)}" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-						</div>
-					</article>
-				`;
-				}).join('');
-			})
-			.catch(err => console.error('Could not load blogs.json', err));
 	</script>
 </body>
 </html>
