@@ -1,0 +1,45 @@
+{
+  "categories": [
+    {
+      "title": "Technical Skills",
+      "icon": "fa-laptop-code",
+      "items": ["ArcGIS Pro & ArcMap", "QGIS", "Google Earth Engine", "Python for Data Analysis", "R-Studio", "SPSS", "Grapher\u2122", "Jupyter Lab / Google Colab"]
+    },
+    {
+      "title": "Professional Skills",
+      "icon": "fa-user-tie",
+      "items": ["Disaster Risk Management", "Big Data, AI & Machine Learning", "Geographic Information Systems (GIS)", "Environmental Impact Assessment", "Climate Change Adaptation", "Project & Grant Management", "Statistical Analysis", "Scientific Writing & Peer Review"]
+    },
+    {
+      "title": "Research Methodologies",
+      "icon": "fa-chart-line",
+      "items": ["Multi-Hazard Risk Assessment", "Landslide Susceptibility Mapping", "Water Quality Analysis", "Climate Data Analysis & Downscaling", "Remote Sensing Applications", "Statistical & ML Modeling", "Survey Design & Fieldwork", "Stakeholder Engagement & Policy Mapping"]
+    }
+  ],
+  "proficiency": [
+    { "label": "GIS & Spatial Analysis", "value": 95 },
+    { "label": "Environmental Data Analysis", "value": 90 },
+    { "label": "Disaster Risk Assessment", "value": 88 },
+    { "label": "Research Design & Methodology", "value": 92 },
+    { "label": "Project Management", "value": 85 },
+    { "label": "Scientific Writing & Publication", "value": 90 }
+  ],
+  "tools": [
+    { "name": "ArcGIS", "icon": "fa-globe-americas" },
+    { "name": "QGIS", "icon": "fa-map" },
+    { "name": "SPSS", "icon": "fa-chart-bar" },
+    { "name": "R Studio", "icon": "fa-r-project", "brand": true },
+    { "name": "Python", "icon": "fa-python", "brand": true },
+    { "name": "Google Earth Engine", "icon": "fa-satellite" },
+    { "name": "Jupyter Lab", "icon": "fa-flask" },
+    { "name": "Google Colab", "icon": "fa-cloud" },
+    { "name": "Grapher", "icon": "fa-chart-line" },
+    { "name": "Data Analysis", "icon": "fa-database" }
+  ],
+  "languages": [
+    { "name": "Nepali", "level": "Native Proficiency" },
+    { "name": "English", "level": "Professional Proficiency" },
+    { "name": "Hindi", "level": "Professional Proficiency" },
+    { "name": "German", "level": "Basic Literacy" }
+  ]
+}

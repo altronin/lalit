@@ -2,658 +2,109 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
 	<title>Portfolio | Lalit Pathak - Environmental Scientist</title>
+	<meta name="description" content="Professional experience, research projects, peer-reviewed publications, and training of Lalit Pathak in environmental science, GIS, and disaster risk management.">
+	<link rel="canonical" href="https://lalitpathak.com.np/portfolio.html">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Portfolio | Lalit Pathak">
+	<meta property="og:description" content="Research projects, peer-reviewed publications, professional experience, and training in environmental science and GIS.">
+	<meta property="og:url" content="https://lalitpathak.com.np/portfolio.html">
+	<meta property="og:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="alternate" type="application/rss+xml" title="Lalit Pathak - Environmental Insights" href="https://lalitpathak.com.np/feed.xml">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/site.css">
+	<script>(function(){try{if(localStorage.getItem('lp-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 	<style>
-		:root {
-			--primary-color: #2a6e3f;
-			--primary-dark: #1e4f2d;
-			--primary-light: #3d8c55;
-			--secondary-color: #1a365d;
-			--accent-color: #e9c46a;
-			--light-color: #f8f9fa;
-			--dark-color: #343a40;
-			--gray-color: #6c757d;
-			--light-gray: #e9ecef;
-			--border-radius: 8px;
-			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-			--transition: all 0.3s ease;
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		html {
-			scroll-behavior: smooth;
-		}
-
-		body {
-			font-family: 'Open Sans', sans-serif;
-			font-size: 16px;
-			line-height: 1.6;
-			color: var(--dark-color);
-			background-color: #fff;
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
-		}
-
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
-			line-height: 1.3;
-			margin-bottom: 1rem;
-			color: var(--secondary-color);
-		}
-
-		h1 {
-			font-size: 2.5rem;
-			font-weight: 700;
-		}
-
-		h2 {
-			font-size: 2rem;
-			margin-top: 2.5rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--light-gray);
-		}
-
-		h3 {
-			font-size: 1.5rem;
-			color: var(--primary-color);
-		}
-
-		p {
-			margin-bottom: 1.5rem;
-		}
-
-		a {
-			color: var(--primary-color);
-			text-decoration: none;
-			transition: var(--transition);
-		}
-
-		a:hover {
-			color: var(--primary-dark);
-		}
-
-		.container {
-			width: 100%;
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 20px;
-		}
-
-		.btn {
-			display: inline-block;
-			padding: 10px 24px;
-			background-color: var(--primary-color);
-			color: white;
-			border: none;
-			border-radius: var(--border-radius);
-			font-weight: 600;
-			font-size: 1rem;
-			cursor: pointer;
-			transition: var(--transition);
-			text-align: center;
-		}
-
-		.btn:hover {
-			background-color: var(--primary-dark);
-			color: white;
-			transform: translateY(-2px);
-			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.btn-outline {
-			background-color: transparent;
-			border: 2px solid var(--primary-color);
-			color: var(--primary-color);
-		}
-
-		.btn-outline:hover {
-			background-color: var(--primary-color);
-			color: white;
-		}
-
-		/* Header Styles */
-		#header {
-			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
-			color: white;
-			padding: 100px 0 80px;
-			text-align: center;
-			position: relative;
-			overflow: hidden;
-		}
-
-		#header::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-			background-size: cover;
-			background-position: center bottom;
-		}
-
-		.header-content {
-			position: relative;
-			z-index: 1;
-		}
-
-		.page-title {
-			font-size: 3rem;
-			font-weight: 700;
-			margin-bottom: 1rem;
-			color: white;
-		}
-
-		.page-subtitle {
-			font-size: 1.3rem;
-			font-weight: 400;
-			margin-bottom: 2rem;
-			color: rgba(255, 255, 255, 0.9);
-			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		/* Navigation */
-		#nav {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: rgba(255, 255, 255, 0.95);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-			z-index: 1000;
-			padding: 15px 0;
-			transition: var(--transition);
-		}
-
-		.nav-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.nav-logo {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			font-size: 1.5rem;
-			color: var(--secondary-color);
-		}
-
-		.nav-menu {
-			display: flex;
-			list-style: none;
-		}
-
-		.nav-menu li {
-			margin-left: 2rem;
-		}
-
-		.nav-menu a {
-			color: var(--dark-color);
-			font-weight: 500;
-			padding: 5px 0;
-			position: relative;
-		}
-
-		.nav-menu a::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 0;
-			height: 2px;
-			background-color: var(--primary-color);
-			transition: var(--transition);
-		}
-
-		.nav-menu a:hover::after,
-		.nav-menu a.active::after {
-			width: 100%;
-		}
-
-		.nav-menu a.active {
-			color: var(--primary-color);
-		}
-
-		.menu_trigger {
-			display: none;
-			font-size: 1.5rem;
-			color: var(--dark-color);
-		}
-
-		/* Main Content */
-		#main {
-			padding: 80px 0;
-			flex: 1;
-		}
-
-		.section-intro {
-			margin-bottom: 3rem;
-		}
-
-		.intro-text {
-			font-size: 1.2rem;
-			line-height: 1.8;
-			color: var(--gray-color);
-		}
-
-		.highlight {
-			color: var(--primary-color);
-			font-weight: 600;
-		}
-
-		/* Portfolio Sections */
-		.portfolio-section {
-			margin-bottom: 4rem;
-		}
-
-		.project-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-			gap: 2rem;
-			margin-top: 2rem;
-		}
-
-		.project-card {
-			background-color: white;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			overflow: hidden;
-			transition: var(--transition);
-		}
-
-		.project-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-		}
-
-		.project-header {
-			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
-			color: white;
-			padding: 1.5rem;
-		}
-
-		.project-title {
-			font-size: 1.3rem;
-			margin-bottom: 0.5rem;
-			color: white;
-		}
-
-		.project-meta {
-			display: flex;
-			justify-content: space-between;
-			font-size: 0.9rem;
-			opacity: 0.9;
-			margin-bottom: 0.5rem;
-		}
-
-		.project-status {
-			display: inline-block;
-			padding: 3px 10px;
-			border-radius: 20px;
-			font-size: 0.8rem;
-			font-weight: 600;
-		}
-
-		.status-ongoing {
-			background-color: var(--accent-color);
-			color: var(--dark-color);
-		}
-
-		.status-completed {
-			background-color: var(--primary-color);
-			color: white;
-		}
-
-		.project-body {
-			padding: 1.5rem;
-		}
-
-		.project-role {
-			font-weight: 600;
-			color: var(--primary-color);
-			margin-bottom: 0.5rem;
-		}
-
-		.project-description {
-			margin-bottom: 1rem;
-			color: var(--gray-color);
-		}
-
-		.project-responsibilities {
-			margin-top: 1rem;
-		}
-
-		.project-responsibilities h4 {
-			font-size: 1rem;
-			margin-bottom: 0.5rem;
-			color: var(--secondary-color);
-		}
-
-		.project-responsibilities ul {
-			padding-left: 1.2rem;
-			color: var(--gray-color);
-		}
-
-		.project-responsibilities li {
-			margin-bottom: 0.3rem;
-		}
-
-		/* Publications */
-		.publication-list {
-			margin-top: 2rem;
-		}
-
-		.publication-item {
-			background-color: var(--light-color);
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			margin-bottom: 1.5rem;
-			transition: var(--transition);
-		}
-
-		.publication-item:hover {
-			transform: translateY(-3px);
-			box-shadow: var(--box-shadow);
-		}
-
-		.publication-title {
-			font-weight: 600;
-			margin-bottom: 0.5rem;
-			color: var(--secondary-color);
-		}
-
-		.publication-authors {
-			font-style: italic;
-			margin-bottom: 0.5rem;
-			color: var(--gray-color);
-		}
-
-		.publication-journal {
-			margin-bottom: 0.5rem;
-			color: var(--primary-color);
-		}
-
-		.publication-link {
-			display: inline-block;
-			font-size: 0.9rem;
-			color: var(--primary-color);
-			font-weight: 500;
-		}
+		.section-head-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
+		.section-head-row h2 { margin-top: 2.5rem; }
+		.count-badge { color: var(--gray-color); font-size: 0.95rem; font-weight: 500; }
 
 		/* Experience Timeline */
-		.experience-timeline {
-			position: relative;
-			max-width: 800px;
-			margin: 2rem auto 0;
-		}
+		.experience-timeline { position: relative; max-width: 800px; margin: 2rem auto 0; }
+		.experience-timeline::before { content: ''; position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background-color: var(--light-gray); }
+		.experience-item { display: flex; margin-bottom: 2.5rem; position: relative; }
+		.experience-date { width: 60px; flex-shrink: 0; text-align: center; padding-top: 5px; }
+		.experience-year { display: inline-block; background-color: var(--primary-color); color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+		.experience-content { background-color: var(--card-bg); padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); margin-left: 1.5rem; flex: 1; transition: var(--transition); }
+		.experience-content:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); }
+		.experience-role { font-weight: 600; color: var(--primary-color); margin-bottom: 0.3rem; }
+		.experience-organization { font-weight: 500; margin-bottom: 0.5rem; color: var(--secondary-color); }
 
-		.experience-timeline::before {
-			content: '';
-			position: absolute;
-			left: 30px;
-			top: 0;
-			bottom: 0;
-			width: 2px;
-			background-color: var(--light-gray);
-		}
+		/* Projects */
+		.project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 1.5rem; }
+		.project-card { background-color: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; transition: var(--transition); }
+		.project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+		.project-header { background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%); color: white; padding: 1.5rem; }
+		.project-title { font-size: 1.3rem; margin-bottom: 0.5rem; color: white; }
+		.project-meta { display: flex; justify-content: space-between; font-size: 0.9rem; opacity: 0.9; margin-bottom: 0.5rem; }
+		.project-status { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+		.status-ongoing { background-color: var(--accent-color); color: var(--dark-color); }
+		.status-completed { background-color: var(--primary-color); color: white; }
+		.project-body { padding: 1.5rem; }
+		.project-role { font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem; }
+		.project-description { margin-bottom: 1rem; color: var(--gray-color); }
+		.project-responsibilities { margin-top: 1rem; }
+		.project-responsibilities h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
+		.project-responsibilities ul { padding-left: 1.2rem; color: var(--gray-color); }
+		.project-responsibilities li { margin-bottom: 0.3rem; }
 
-		.experience-item {
-			display: flex;
-			margin-bottom: 2.5rem;
-			position: relative;
-		}
+		/* Publications */
+		.publication-list { margin-top: 1.5rem; }
+		.publication-item { background-color: var(--light-color); padding: 1.5rem; border-radius: var(--border-radius); margin-bottom: 1.5rem; transition: var(--transition); }
+		.publication-item:hover { transform: translateY(-3px); box-shadow: var(--box-shadow); }
+		.publication-title { font-weight: 600; margin-bottom: 0.5rem; color: var(--secondary-color); }
+		.publication-authors { font-style: italic; margin-bottom: 0.5rem; color: var(--gray-color); }
+		.publication-journal { margin-bottom: 0.5rem; color: var(--primary-color); }
+		.publication-link { display: inline-block; font-size: 0.9rem; color: var(--primary-color); font-weight: 500; margin-right: 1rem; }
+		.publication-citations { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--gray-color); }
+		.scholar-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--light-color); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: var(--primary-color); }
+		.scholar-stats-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0 0.5rem; }
 
-		.experience-date {
-			width: 60px;
-			flex-shrink: 0;
-			text-align: center;
-			padding-top: 5px;
-		}
+		/* Training */
+		.training-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+		.training-card { background-color: var(--light-color); padding: 1.5rem; border-radius: var(--border-radius); transition: var(--transition); }
+		.training-card:hover { transform: translateY(-3px); box-shadow: var(--box-shadow); }
+		.training-title { font-weight: 600; margin-bottom: 0.5rem; color: var(--secondary-color); }
+		.training-meta { font-size: 0.9rem; color: var(--gray-color); margin-bottom: 0.5rem; }
+		.training-organization { font-weight: 500; color: var(--primary-color); }
 
-		.experience-year {
-			display: inline-block;
-			background-color: var(--primary-color);
-			color: white;
-			padding: 5px 10px;
-			border-radius: 20px;
-			font-size: 0.8rem;
-			font-weight: 600;
-		}
-
-		.experience-dot {
-			width: 16px;
-			height: 16px;
-			border-radius: 50%;
-			background-color: var(--primary-color);
-			position: absolute;
-			left: 22px;
-			top: 10px;
-			z-index: 1;
-		}
-
-		.experience-content {
-			background-color: white;
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			margin-left: 1.5rem;
-			flex: 1;
-			transition: var(--transition);
-		}
-
-		.experience-content:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-		}
-
-		.experience-role {
-			font-weight: 600;
-			color: var(--primary-color);
-			margin-bottom: 0.3rem;
-		}
-
-		.experience-organization {
-			font-weight: 500;
-			margin-bottom: 0.5rem;
-			color: var(--secondary-color);
-		}
-
-		/* Training Section */
-		.training-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-			gap: 1.5rem;
-			margin-top: 2rem;
-		}
-
-		.training-card {
-			background-color: var(--light-color);
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			transition: var(--transition);
-		}
-
-		.training-card:hover {
-			transform: translateY(-3px);
-			box-shadow: var(--box-shadow);
-		}
-
-		.training-title {
-			font-weight: 600;
-			margin-bottom: 0.5rem;
-			color: var(--secondary-color);
-		}
-
-		.training-meta {
-			font-size: 0.9rem;
-			color: var(--gray-color);
-			margin-bottom: 0.5rem;
-		}
-
-		.training-organization {
-			font-weight: 500;
-			color: var(--primary-color);
-		}
-
-		/* Footer */
-		#footer {
-			background-color: var(--secondary-color);
-			color: white;
-			padding: 60px 0 30px;
-			width: 100%;
-			margin-top: auto;
-		}
-
-		.footer-content {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-
-		.social {
-			display: flex;
-			list-style: none;
-			margin-bottom: 2rem;
-		}
-
-		.social li {
-			margin: 0 10px;
-		}
-
-		.social a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			background-color: rgba(255, 255, 255, 0.1);
-			border-radius: 50%;
-			color: white;
-			transition: var(--transition);
-		}
-
-		.social a:hover {
-			background-color: var(--primary-color);
-			transform: translateY(-3px);
-		}
-
-		.copy {
-			color: rgba(255, 255, 255, 0.7);
-			font-size: 0.9rem;
-		}
-
-		/* Responsive Design */
 		@media (max-width: 768px) {
-			h1 {
-				font-size: 2rem;
-			}
-
-			h2 {
-				font-size: 1.75rem;
-			}
-
-			.page-title {
-				font-size: 2.5rem;
-			}
-
-			.page-subtitle {
-				font-size: 1.1rem;
-			}
-
-			.nav-menu {
-				position: fixed;
-				top: 70px;
-				right: -100%;
-				flex-direction: column;
-				background-color: white;
-				width: 80%;
-				height: calc(100vh - 70px);
-				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-				transition: var(--transition);
-				padding: 2rem;
-			}
-
-			.nav-menu.active {
-				right: 0;
-			}
-
-			.nav-menu li {
-				margin: 0 0 1.5rem 0;
-			}
-
-			.menu_trigger {
-				display: block;
-			}
-
-			.project-grid {
-				grid-template-columns: 1fr;
-			}
-
-			.training-grid {
-				grid-template-columns: 1fr;
-			}
+			.project-grid, .training-grid { grid-template-columns: 1fr; }
 		}
-
 		@media (max-width: 576px) {
-			.container {
-				padding: 0 15px;
-			}
-
-			#header {
-				padding: 80px 0 60px;
-			}
-
-			#main {
-				padding: 60px 0;
-			}
-
-			.experience-timeline::before {
-				left: 20px;
-			}
-
-			.experience-dot {
-				left: 12px;
-			}
-
-			.experience-date {
-				width: 40px;
-			}
-
-			.experience-content {
-				margin-left: 1rem;
-			}
+			.experience-timeline::before { left: 20px; }
+			.experience-content { margin-left: 1rem; }
 		}
 	</style>
 </head>
 <body>
+	<a href="#main" class="skip-link">Skip to content</a>
 	<nav id="nav">
 		<div class="container nav-container">
 			<a href="index.html" class="nav-logo">Lalit Pathak</a>
-			<ul class="nav-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="myskills.html">My Skills</a></li>
-				<li><a class="active" href="portfolio.html">Portfolio</a></li>
-				<li><a href="blogs.html">Blog</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-			<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
+			<div class="nav-right">
+				<ul class="nav-menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="myskills.html">My Skills</a></li>
+					<li><a class="active" href="portfolio.html">Portfolio</a></li>
+					<li><a href="blogs.html">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+				<button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+					<i class="fas fa-moon" aria-hidden="true"></i>
+					<i class="fas fa-sun" aria-hidden="true"></i>
+				</button>
+				<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
+			</div>
 		</div>
 	</nav>
 
@@ -666,31 +117,51 @@
 
 	<div class="container">
 		<main id="main">
-			<section class="portfolio-section">
-	<h2>Professional Experience</h2>
-	<div class="experience-timeline" id="experience-timeline">
-		<!-- Rendered automatically from data/experience.json -->
-	</div>
-</section>
-
-			<section class="portfolio-section">
-				<h2>Projects</h2>
-				<div class="project-grid" id="project-grid">
-					<!-- Rendered automatically from data/projects.json -->
+			<section class="portfolio-section reveal">
+				<h2>Professional Experience</h2>
+				<div class="experience-timeline" id="experience-timeline">
+					<div class="skeleton" style="min-height:100px; margin-bottom:1.5rem;"></div>
+					<div class="skeleton" style="min-height:100px; margin-bottom:1.5rem;"></div>
 				</div>
 			</section>
 
-			<section class="portfolio-section">
-				<h2>Publications</h2>
-					<div class="publication-list" id="publication-list">
-					<!-- Rendered automatically from data/publications.json -->
-					</div>
+			<section class="portfolio-section reveal">
+				<div class="section-head-row">
+					<h2>Projects</h2>
+					<span class="count-badge" id="project-count"></span>
+				</div>
+				<div class="filter-bar" id="project-filters">
+					<button class="filter-btn active" data-filter="all">All</button>
+					<button class="filter-btn" data-filter="Ongoing">Ongoing</button>
+					<button class="filter-btn" data-filter="Completed">Completed</button>
+				</div>
+				<div class="project-grid" id="project-grid">
+					<div class="project-card skeleton" style="min-height:280px;"></div>
+					<div class="project-card skeleton" style="min-height:280px;"></div>
+					<div class="project-card skeleton" style="min-height:280px;"></div>
+				</div>
 			</section>
 
-			<section class="portfolio-section">
+			<section class="portfolio-section reveal">
+				<div class="section-head-row">
+					<h2>Publications</h2>
+					<span class="count-badge" id="publication-count"></span>
+				</div>
+				<div class="scholar-stats-row" id="scholar-stats-row"></div>
+				<div class="filter-bar">
+					<input type="search" class="search-input" id="publication-search" placeholder="Search publications by title, author, or journal&hellip;" aria-label="Search publications">
+				</div>
+				<div class="publication-list" id="publication-list">
+					<div class="skeleton" style="min-height:90px; margin-bottom:1.5rem;"></div>
+					<div class="skeleton" style="min-height:90px; margin-bottom:1.5rem;"></div>
+				</div>
+			</section>
+
+			<section class="portfolio-section reveal">
 				<h2>Training & Professional Development</h2>
 				<div class="training-grid" id="training-grid">
-					<!-- Rendered automatically from data/training.json -->
+					<div class="training-card skeleton" style="min-height:110px;"></div>
+					<div class="training-card skeleton" style="min-height:110px;"></div>
 				</div>
 			</section>
 		</main>
@@ -706,49 +177,27 @@
 					<li><a href="https://x.com/Alt_Ronin" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
 					<li><a href="https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
-				<p class="copy">Copyright 2025 Lalit Pathak. All rights reserved.</p>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<a href="myskills.html">My Skills</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="blogs.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</div>
+				<p class="copy">&copy; <span id="current-year">2026</span> Lalit Pathak. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>
 
+	<script src="js/site.js"></script>
 	<script>
-		// Mobile menu toggle
-		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
-			e.preventDefault();
-			document.querySelector('.nav-menu').classList.toggle('active');
-		});
-
-		// Close mobile menu when clicking on a link
-		document.querySelectorAll('.nav-menu a').forEach(link => {
-			link.addEventListener('click', () => {
-				document.querySelector('.nav-menu').classList.remove('active');
-			});
-		});
-
-		// Navbar scroll effect
-		window.addEventListener('scroll', function() {
-			const nav = document.getElementById('nav');
-			if (window.scrollY > 50) {
-				nav.style.padding = '10px 0';
-				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-			} else {
-				nav.style.padding = '15px 0';
-				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-			}
-		});
-
 		// ---------- Content rendered from /data JSON files ----------
-
-		function escapeHTML(str) {
-			const div = document.createElement('div');
-			div.textContent = str == null ? '' : str;
-			return div.innerHTML;
-		}
 
 		// Professional Experience
 		fetch('data/experience.json')
 			.then(res => res.json())
-			.then(data => { const items = data.items;
+			.then(data => {
+				const items = data.items;
 				const container = document.getElementById('experience-timeline');
 				container.innerHTML = items.map(item => `
 					<div class="experience-item">
@@ -765,57 +214,115 @@
 			})
 			.catch(err => console.error('Could not load experience.json', err));
 
-		// Projects
-		fetch('data/projects.json')
-			.then(res => res.json())
-			.then(data => { const items = data.items;
-				const container = document.getElementById('project-grid');
-				container.innerHTML = items.map(item => {
-					const statusClass = item.status === 'Completed' ? 'status-completed' : 'status-ongoing';
-					const responsibilities = (item.responsibilities || []).map(r => `<li>${escapeHTML(r)}</li>`).join('');
-					return `
-						<div class="project-card">
-							<div class="project-header">
-								<h3 class="project-title">${escapeHTML(item.title)}</h3>
-								<div class="project-meta">
-									<span>${escapeHTML(item.date_range)}</span>
-									<span class="project-status ${statusClass}">${escapeHTML(item.status)}</span>
-								</div>
-							</div>
-							<div class="project-body">
-								<div class="project-role">${escapeHTML(item.role)}</div>
-								<p class="project-description">${escapeHTML(item.description)}</p>
-								<div class="project-responsibilities">
-									<h4>Responsibilities:</h4>
-									<ul>${responsibilities}</ul>
-								</div>
+		// Projects (with status filter)
+		let allProjects = [];
+		function renderProjects(filter) {
+			const container = document.getElementById('project-grid');
+			const items = filter === 'all' ? allProjects : allProjects.filter(p => p.status === filter);
+			if (!items.length) {
+				container.innerHTML = '<p class="empty-state">No projects match this filter.</p>';
+				return;
+			}
+			container.innerHTML = items.map(item => {
+				const statusClass = item.status === 'Completed' ? 'status-completed' : 'status-ongoing';
+				const responsibilities = (item.responsibilities || []).map(r => `<li>${escapeHTML(r)}</li>`).join('');
+				return `
+					<div class="project-card">
+						<div class="project-header">
+							<h3 class="project-title">${escapeHTML(item.title)}</h3>
+							<div class="project-meta">
+								<span>${escapeHTML(item.date_range)}</span>
+								<span class="project-status ${statusClass}">${escapeHTML(item.status)}</span>
 							</div>
 						</div>
-					`;
-				}).join('');
+						<div class="project-body">
+							<div class="project-role">${escapeHTML(item.role)}</div>
+							<p class="project-description">${escapeHTML(item.description)}</p>
+							<div class="project-responsibilities">
+								<h4>Responsibilities:</h4>
+								<ul>${responsibilities}</ul>
+							</div>
+						</div>
+					</div>
+				`;
+			}).join('');
+		}
+		fetch('data/projects.json')
+			.then(res => res.json())
+			.then(data => {
+				allProjects = data.items || [];
+				document.getElementById('project-count').textContent = `${allProjects.length} total`;
+				renderProjects('all');
 			})
 			.catch(err => console.error('Could not load projects.json', err));
 
-		// Publications
+		document.getElementById('project-filters').addEventListener('click', function (e) {
+			const btn = e.target.closest('.filter-btn');
+			if (!btn) return;
+			document.querySelectorAll('#project-filters .filter-btn').forEach(b => b.classList.remove('active'));
+			btn.classList.add('active');
+			renderProjects(btn.dataset.filter);
+		});
+
+		// Publications (with live search)
+		let allPublications = [];
+		function renderPublications(query) {
+			const container = document.getElementById('publication-list');
+			const q = (query || '').trim().toLowerCase();
+			const items = !q ? allPublications : allPublications.filter(p =>
+				(p.title + ' ' + p.authors + ' ' + p.journal).toLowerCase().includes(q)
+			);
+			if (!items.length) {
+				container.innerHTML = '<p class="empty-state">No publications match your search.</p>';
+				return;
+			}
+			container.innerHTML = items.map(item => {
+				const citations = (item.citations === null || item.citations === undefined) ? ''
+					: `<span class="publication-citations"><i class="fas fa-quote-right" aria-hidden="true"></i> Cited by ${escapeHTML(item.citations)}</span>`;
+				return `
+				<div class="publication-item">
+					<div class="publication-title">${escapeHTML(item.title)}</div>
+					<div class="publication-authors">${escapeHTML(item.authors)}</div>
+					<div class="publication-journal">${escapeHTML(item.journal)}</div>
+					<a href="${escapeHTML(item.link)}" class="publication-link" target="_blank" rel="noopener">View Publication &rarr;</a>
+					${citations}
+				</div>
+			`;
+			}).join('');
+		}
 		fetch('data/publications.json')
 			.then(res => res.json())
-			.then(data => { const items = data.items;
-				const container = document.getElementById('publication-list');
-				container.innerHTML = items.map(item => `
-					<div class="publication-item">
-						<div class="publication-title">${escapeHTML(item.title)}</div>
-						<div class="publication-authors">${escapeHTML(item.authors)}</div>
-						<div class="publication-journal">${escapeHTML(item.journal)}</div>
-						<a href="${escapeHTML(item.link)}" class="publication-link" target="_blank">View Publication →</a>
-					</div>
-				`).join('');
+			.then(data => {
+				allPublications = data.items || [];
+				document.getElementById('publication-count').textContent = `${allPublications.length} total`;
+				renderPublications('');
 			})
 			.catch(err => console.error('Could not load publications.json', err));
+
+		document.getElementById('publication-search').addEventListener('input', function (e) {
+			renderPublications(e.target.value);
+		});
+
+		// Google Scholar summary (there's no free public Scholar API — these numbers
+		// are entered by hand in data/scholar-stats.json whenever they're checked).
+		fetch('data/scholar-stats.json')
+			.then(res => res.json())
+			.then(stats => {
+				const row = document.getElementById('scholar-stats-row');
+				const badges = [];
+				if (stats.total_citations) badges.push(`<span class="scholar-badge"><i class="fas fa-quote-right" aria-hidden="true"></i> ${escapeHTML(stats.total_citations)} Citations</span>`);
+				if (stats.h_index) badges.push(`<span class="scholar-badge"><i class="fas fa-chart-line" aria-hidden="true"></i> h-index ${escapeHTML(stats.h_index)}</span>`);
+				if (stats.i10_index) badges.push(`<span class="scholar-badge"><i class="fas fa-layer-group" aria-hidden="true"></i> i10-index ${escapeHTML(stats.i10_index)}</span>`);
+				badges.push(`<a class="scholar-badge" href="${escapeHTML(stats.profile_url)}" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Full Google Scholar Profile</a>`);
+				row.innerHTML = badges.join('');
+			})
+			.catch(err => console.error('Could not load scholar-stats.json', err));
 
 		// Training & Professional Development
 		fetch('data/training.json')
 			.then(res => res.json())
-			.then(data => { const items = data.items;
+			.then(data => {
+				const items = data.items;
 				const container = document.getElementById('training-grid');
 				container.innerHTML = items.map(item => `
 					<div class="training-card">

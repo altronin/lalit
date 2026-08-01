@@ -2,522 +2,173 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
 	<title>Lalit Pathak - Environmental Scientist | Disaster Risk Management & GIS Specialist</title>
+	<meta name="description" content="Lalit Pathak is an Environmental Researcher and Research Associate at CREEW, Nepal, specializing in GIS, remote sensing, disaster risk management, and machine learning for climate resilience.">
+	<link rel="canonical" href="https://lalitpathak.com.np/">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Lalit Pathak - Environmental Scientist | GIS & Disaster Risk Specialist">
+	<meta property="og:description" content="Research Associate at CREEW, Nepal. GIS, remote sensing, disaster risk management, and applied environmental research in the Himalaya.">
+	<meta property="og:url" content="https://lalitpathak.com.np/">
+	<meta property="og:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<meta name="twitter:title" content="Lalit Pathak - Environmental Scientist">
+	<meta name="twitter:description" content="GIS, remote sensing, and disaster risk research in the Himalaya.">
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="alternate" type="application/rss+xml" title="Lalit Pathak - Environmental Insights" href="https://lalitpathak.com.np/feed.xml">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/site.css">
+	<script>(function(){try{if(localStorage.getItem('lp-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Lalit Pathak",
+		"jobTitle": "Research Associate",
+		"worksFor": { "@type": "Organization", "name": "Center of Research for Environment, Energy and Water (CREEW)" },
+		"url": "https://lalitpathak.com.np/",
+		"image": "https://lalitpathak.com.np/images/pic_08.png",
+		"sameAs": [
+			"https://www.linkedin.com/in/altronin/",
+			"https://www.researchgate.net/profile/Lalit-Pathak-3",
+			"https://x.com/Alt_Ronin",
+			"https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en"
+		]
+	}
+	</script>
 	<style>
-		:root {
-			--primary-color: #2a6e3f;
-			--primary-dark: #1e4f2d;
-			--primary-light: #3d8c55;
-			--secondary-color: #1a365d;
-			--accent-color: #e9c46a;
-			--light-color: #f8f9fa;
-			--dark-color: #343a40;
-			--gray-color: #6c757d;
-			--light-gray: #e9ecef;
-			--border-radius: 8px;
-			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-			--transition: all 0.3s ease;
-		}
+		.logo { font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+		.slogan { font-size: 1.5rem; font-weight: 400; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9); }
+		.header-tagline { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; color: rgba(255, 255, 255, 0.85); }
 
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+		.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+		.skill-category { background-color: var(--light-color); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); transition: var(--transition); }
+		.skill-category:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+		.skill-category h3 { display: flex; align-items: center; margin-bottom: 1.5rem; color: var(--secondary-color); }
+		.skill-category h3 i { margin-right: 10px; color: var(--primary-color); }
+		.skill-category ul { list-style: none; }
+		.skill-category li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); position: relative; padding-left: 25px; }
+		.skill-category li:last-child { border-bottom: none; }
+		.skill-category li::before { content: "•"; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
+		.see-all-link { display: inline-block; margin-top: 1.5rem; font-weight: 600; }
 
-		html {
-			scroll-behavior: smooth;
-		}
+		.section-head-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; }
+		.section-head-row h2 { margin-top: 0; }
 
-		body {
-			font-family: 'Open Sans', sans-serif;
-			font-size: 16px;
-			line-height: 1.6;
-			color: var(--dark-color);
-			background-color: #fff;
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
-		}
-
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
-			line-height: 1.3;
-			margin-bottom: 1rem;
-			color: var(--secondary-color);
-		}
-
-		h1 {
-			font-size: 2.5rem;
-			font-weight: 700;
-		}
-
-		h2 {
-			font-size: 2rem;
-			margin-top: 2.5rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--light-gray);
-		}
-
-		h3 {
-			font-size: 1.5rem;
-			color: var(--primary-color);
-		}
-
-		p {
-			margin-bottom: 1.5rem;
-		}
-
-		a {
-			color: var(--primary-color);
-			text-decoration: none;
-			transition: var(--transition);
-		}
-
-		a:hover {
-			color: var(--primary-dark);
-		}
-
-		.container {
-			width: 100%;
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 20px;
-		}
-
-		.btn {
-			display: inline-block;
-			padding: 10px 24px;
-			background-color: var(--primary-color);
-			color: white;
-			border: none;
-			border-radius: var(--border-radius);
-			font-weight: 600;
-			font-size: 1rem;
-			cursor: pointer;
-			transition: var(--transition);
-			text-align: center;
-		}
-
-		.btn:hover {
-			background-color: var(--primary-dark);
-			color: white;
-			transform: translateY(-2px);
-			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.btn-outline {
-			background-color: transparent;
-			border: 2px solid var(--primary-color);
-			color: var(--primary-color);
-		}
-
-		.btn-outline:hover {
-			background-color: var(--primary-color);
-			color: white;
-		}
-
-		/* Header Styles */
-		#header {
-			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
-			color: white;
-			padding: 100px 0 80px;
-			text-align: center;
-			position: relative;
-			overflow: hidden;
-		}
-
-		#header::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-			background-size: cover;
-			background-position: center bottom;
-		}
-
-		.header-content {
-			position: relative;
-			z-index: 1;
-		}
-
-		.logo {
-			font-size: 3.5rem;
-			font-weight: 700;
-			margin-bottom: 0.5rem;
-			color: white;
-		}
-
-		.slogan {
-			font-size: 1.5rem;
-			font-weight: 400;
-			margin-bottom: 2rem;
-			color: rgba(255, 255, 255, 0.9);
-		}
-
-		.header-tagline {
-			font-size: 1.2rem;
-			max-width: 700px;
-			margin: 0 auto 2rem;
-			color: rgba(255, 255, 255, 0.85);
-		}
-
-		/* Navigation */
-		#nav {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: rgba(255, 255, 255, 0.95);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-			z-index: 1000;
-			padding: 15px 0;
-			transition: var(--transition);
-		}
-
-		.nav-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.nav-logo {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			font-size: 1.5rem;
-			color: var(--secondary-color);
-		}
-
-		.nav-menu {
-			display: flex;
-			list-style: none;
-		}
-
-		.nav-menu li {
-			margin-left: 2rem;
-		}
-
-		.nav-menu a {
-			color: var(--dark-color);
-			font-weight: 500;
-			padding: 5px 0;
-			position: relative;
-		}
-
-		.nav-menu a::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 0;
-			height: 2px;
-			background-color: var(--primary-color);
-			transition: var(--transition);
-		}
-
-		.nav-menu a:hover::after,
-		.nav-menu a.active::after {
-			width: 100%;
-		}
-
-		.nav-menu a.active {
-			color: var(--primary-color);
-		}
-
-		.menu_trigger {
-			display: none;
-			font-size: 1.5rem;
-			color: var(--dark-color);
-		}
-
-		/* Main Content */
-		#main {
-			padding: 80px 0;
-			flex: 1;
-		}
-
-		.section-intro {
-			margin-bottom: 3rem;
-		}
-
-		.intro-text {
-			font-size: 1.2rem;
-			line-height: 1.8;
-			color: var(--gray-color);
-		}
-
-		.highlight {
-			color: var(--primary-color);
-			font-weight: 600;
-		}
-
-		/* Skills Section */
-		.skills-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 2rem;
-			margin-top: 2rem;
-		}
-
-		.skill-category {
-			background-color: var(--light-color);
-			padding: 2rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			transition: var(--transition);
-		}
-
-		.skill-category:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		}
-
-		.skill-category h3 {
-			display: flex;
-			align-items: center;
-			margin-bottom: 1.5rem;
-			color: var(--secondary-color);
-		}
-
-		.skill-category h3 i {
-			margin-right: 10px;
-			color: var(--primary-color);
-		}
-
-		.skill-category ul {
-			list-style: none;
-		}
-
-		.skill-category li {
-			padding: 8px 0;
-			border-bottom: 1px solid var(--light-gray);
-			position: relative;
-			padding-left: 25px;
-		}
-
-		.skill-category li:last-child {
-			border-bottom: none;
-		}
-
-		.skill-category li::before {
-			content: "•";
-			color: var(--primary-color);
-			font-weight: bold;
-			position: absolute;
-			left: 0;
-		}
-
-		/* Footer */
-		#footer {
-			background-color: var(--secondary-color);
-			color: white;
-			padding: 60px 0 30px;
-			width: 100%;
-			margin-top: auto;
-		}
-
-		.footer-content {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-
-		.social {
-			display: flex;
-			list-style: none;
-			margin-bottom: 2rem;
-		}
-
-		.social li {
-			margin: 0 10px;
-		}
-
-		.social a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			background-color: rgba(255, 255, 255, 0.1);
-			border-radius: 50%;
-			color: white;
-			transition: var(--transition);
-		}
-
-		.social a:hover {
-			background-color: var(--primary-color);
-			transform: translateY(-3px);
-		}
-
-		.copy {
-			color: rgba(255, 255, 255, 0.7);
-			font-size: 0.9rem;
-		}
-
-		/* Responsive Design */
-		@media (max-width: 768px) {
-			h1 {
-				font-size: 2rem;
-			}
-
-			h2 {
-				font-size: 1.75rem;
-			}
-
-			.logo {
-				font-size: 2.5rem;
-			}
-
-			.slogan {
-				font-size: 1.2rem;
-			}
-
-			.nav-menu {
-				position: fixed;
-				top: 70px;
-				right: -100%;
-				flex-direction: column;
-				background-color: white;
-				width: 80%;
-				height: calc(100vh - 70px);
-				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-				transition: var(--transition);
-				padding: 2rem;
-			}
-
-			.nav-menu.active {
-				right: 0;
-			}
-
-			.nav-menu li {
-				margin: 0 0 1.5rem 0;
-			}
-
-			.menu_trigger {
-				display: block;
-			}
-
-			.skills-container {
-				grid-template-columns: 1fr;
-			}
-		}
-
-		@media (max-width: 576px) {
-			.container {
-				padding: 0 15px;
-			}
-
-			#header {
-				padding: 80px 0 60px;
-			}
-
-			#main {
-				padding: 60px 0;
-			}
-		}
+		.blog-teaser-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+		.blog-teaser-card { background-color: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
+		.blog-teaser-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+		.blog-teaser-card img { width: 100%; height: 150px; object-fit: cover; }
+		.blog-teaser-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; }
+		.blog-teaser-date { font-size: 0.8rem; color: var(--gray-color); margin-bottom: 0.4rem; }
+		.blog-teaser-title { font-size: 1.05rem; margin-bottom: 0.6rem; color: var(--secondary-color); }
+		.blog-teaser-excerpt { font-size: 0.9rem; color: var(--gray-color); flex: 1; margin-bottom: 0.8rem; }
+		.blog-teaser-link { font-size: 0.85rem; font-weight: 600; }
 	</style>
 </head>
 <body>
+	<a href="#main" class="skip-link">Skip to content</a>
 	<nav id="nav">
-	<div class="container nav-container">
-		<a href="index.html" class="nav-logo">Lalit Pathak</a>
-		<ul class="nav-menu">
-			<li><a class="active" href="index.html">Home</a></li>
-			<li><a href="myskills.html">My Skills</a></li>
-			<li><a href="portfolio.html">Portfolio</a></li>
-			<li><a href="blogs.html">Blog</a></li>
-			<li><a href="contact.html">Contact</a></li>
-		</ul>
-		<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
-	</div>
-</nav>
-
-<header id="header">
-	<div class="container header-content" style="display:flex; flex-direction:column; align-items:center; text-align:center; min-height:80vh; justify-content:center;">
-		<!-- Profile Photo -->
-		<div style="margin-bottom: 2rem;">
-			<img src="https://raw.githubusercontent.com/altronin/lalit/main/images/pic_08.png" alt="Lalit Pathak" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+		<div class="container nav-container">
+			<a href="index.html" class="nav-logo">Lalit Pathak</a>
+			<div class="nav-right">
+				<ul class="nav-menu">
+					<li><a class="active" href="index.html">Home</a></li>
+					<li><a href="myskills.html">My Skills</a></li>
+					<li><a href="portfolio.html">Portfolio</a></li>
+					<li><a href="blogs.html">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+				<button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+					<i class="fas fa-moon" aria-hidden="true"></i>
+					<i class="fas fa-sun" aria-hidden="true"></i>
+				</button>
+				<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
+			</div>
 		</div>
-		
-		<h1 class="logo">Lalit Pathak</h1>
-		<h2 class="slogan">Environmental Scientist | Disaster Risk Management & GIS Specialist</h2>
-		<p class="header-tagline">Passionate about creating resilient communities through environmental research and data-driven solutions</p>
-		<a href="contact.html" class="btn btn-outline">Get In Touch</a>
-	</div>
-</header>
+	</nav>
+
+	<header id="header">
+		<div class="container header-content" style="display:flex; flex-direction:column; align-items:center; text-align:center; min-height:80vh; justify-content:center;">
+			<div style="margin-bottom: 2rem;">
+				<img src="images/pic_08.png" alt="Portrait of Lalit Pathak" width="200" height="200" style="width:200px; height:200px; border-radius:50%; object-fit:cover; border:4px solid #fff; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+			</div>
+
+			<h1 class="logo">Lalit Pathak</h1>
+			<h2 class="slogan">Environmental Scientist | Disaster Risk Management & GIS Specialist</h2>
+			<p class="header-tagline">Passionate about creating resilient communities through environmental research and data-driven solutions</p>
+			<div class="hero-actions">
+				<a href="contact.html" class="btn btn-outline on-dark">Get In Touch</a>
+			</div>
+		</div>
+	</header>
 
 	<div class="container">
 		<main id="main">
-			<section class="section-intro">
+			<section class="section-intro reveal">
 				<h2>About Me</h2>
-				<p class="intro-text"> I am an Environmental Researcher with <span class="highlight">M.Sc. 
-				in Environmental Science</span> from Tribhuvan University and a robust background in <span class="highlight">disaster risk management, 
-				climate change adaptation, and geospatial analysis</span>. My career is dedicated to applied research, leveraging tools like GIS, 
-				remote sensing, and statistical modeling to address pressing environmental challenges in the Himalayan 
-				region. </p> <p class="intro-text"> Currently, as a <span class="highlight">Research Associate at the Centre of 
-				Research for Environment, Energy and Water (CREEW)</span>, I lead and coordinate multidisciplinary projects. 
-				My work focuses on developing resilient frameworks for watershed management, conducting multi-hazard risk assessments, 
-				and analyzing the impacts of climate change on communities and businesses. I have a proven track record in the entire project 
-				lifecycle—from proposal development and field methodology design to data analysis, report writing, and publishing findings in 
-				peer-reviewed journals. </p> <p class="intro-text"> My key areas of expertise 
-				include: </p> 
-				<ul class="intro-text"> 
-					<li><span class="highlight">Project Leadership:</span> Leading projects such as 
-					the "Integrated Multi-Hazard Assessment for Climate-Resilient Watershed Management" and coordinating international collaborations 
-					with partners like APN, IGES Japan, and IWMI.</li> 
-					<li><span class="highlight">Research & Analysis:</span> Specializing in landslide susceptibility, water quality assessment, 
-					climate vulnerability, Big data AI and ML, and GHG emission inventories.</li> 
-					<li><span class="highlight">Capacity Building:</span> Developing curricula and serving as a lead instructor for training programs 
-					on climate change adaptation for businesses and technical workshops on GIS and landslide mapping for professionals and students.</li> 
-					<li><span class="highlight">Scientific Communication:</span> Authoring multiple research papers in international journals and 
-					handbooks for undergraduate students, demonstrating a commitment to advancing knowledge in the field.</li> 
-				</ul> 
-				<p class="intro-text"> I am a proactive and adaptable professional, 
-				skilled at managing complex research activities, from field data collection and enumerator training to stakeholder engagement and policy mapping. 
-				I am passionate about creating science-based solutions for sustainable development and disaster risk reduction. 				
+				<p class="intro-text"> I am an Environmental Researcher with <span class="highlight">M.Sc.
+				in Environmental Science</span> from Tribhuvan University and a robust background in <span class="highlight">disaster risk management,
+				climate change adaptation, and geospatial analysis</span>. My career is dedicated to applied research, leveraging tools like GIS,
+				remote sensing, and statistical modeling to address pressing environmental challenges in the Himalayan
+				region. </p> <p class="intro-text"> Currently, as a <span class="highlight">Research Associate at the Centre of
+				Research for Environment, Energy and Water (CREEW)</span>, I lead and coordinate multidisciplinary projects.
+				My work focuses on developing resilient frameworks for watershed management, conducting multi-hazard risk assessments,
+				and analyzing the impacts of climate change on communities and businesses. I have a proven track record in the entire project
+				lifecycle—from proposal development and field methodology design to data analysis, report writing, and publishing findings in
+				peer-reviewed journals. </p> <p class="intro-text"> My key areas of expertise
+				include: </p>
+				<ul class="intro-text">
+					<li><span class="highlight">Project Leadership:</span> Leading projects such as
+					the "Integrated Multi-Hazard Assessment for Climate-Resilient Watershed Management" and coordinating international collaborations
+					with partners like APN, IGES Japan, and IWMI.</li>
+					<li><span class="highlight">Research & Analysis:</span> Specializing in landslide susceptibility, water quality assessment,
+					climate vulnerability, Big data AI and ML, and GHG emission inventories.</li>
+					<li><span class="highlight">Capacity Building:</span> Developing curricula and serving as a lead instructor for training programs
+					on climate change adaptation for businesses and technical workshops on GIS and landslide mapping for professionals and students.</li>
+					<li><span class="highlight">Scientific Communication:</span> Authoring multiple research papers in international journals and
+					handbooks for undergraduate students, demonstrating a commitment to advancing knowledge in the field.</li>
+				</ul>
+				<p class="intro-text"> I am a proactive and adaptable professional,
+				skilled at managing complex research activities, from field data collection and enumerator training to stakeholder engagement and policy mapping.
+				I am passionate about creating science-based solutions for sustainable development and disaster risk reduction.
 				</p>
+
+				<!-- Live counts, computed from the same JSON files that power the Portfolio page -->
+				<div class="stats-strip" id="stats-strip">
+					<div class="stat-card skeleton" style="min-height:90px;"></div>
+					<div class="stat-card skeleton" style="min-height:90px;"></div>
+					<div class="stat-card skeleton" style="min-height:90px;"></div>
+					<div class="stat-card skeleton" style="min-height:90px;"></div>
+				</div>
 			</section>
 
-			<section class="skills-section">
-				<h2>My Skills</h2>
-				<div class="skills-container">
-					<div class="skill-category">
-						<h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-						<ul>
-							<li>ArcMap</li>
-							<li>QGIS</li>
-							<li>SPSS</li>
-							<li>R-Studio</li>
-							<li>Grapher™</li>
-							<li>Basic Python for Data Analysis</li>
-							<li>Google Earth Engine</li>
-							<li>Co-Lab</li>
-							<li>Jupyter Lab</li>
-						</ul>
-					</div>
-					<div class="skill-category">
-						<h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
-						<ul>
-							<li>Disaster Risk Management</li>
-							<li>Big Data AI and ML</li>
-							<li>Geographic Information Systems (GIS)</li>
-							<li>Environmental Data Collection and Analysis</li>
-							<li>Research and Fieldwork</li>
-							<li>Project Management</li>
-							<li>Environmental Impact Assessment</li>
-						</ul>
-					</div>
+			<section class="skills-section reveal">
+				<div class="section-head-row">
+					<h2>My Skills</h2>
+				</div>
+				<div class="skills-container" id="home-skills-container">
+					<div class="skill-category skeleton" style="min-height:220px;"></div>
+					<div class="skill-category skeleton" style="min-height:220px;"></div>
+				</div>
+				<a href="myskills.html" class="see-all-link">See full skills & proficiency breakdown &rarr;</a>
+			</section>
+
+			<section class="blog-teaser-section reveal">
+				<div class="section-head-row">
+					<h2>Latest from the Blog</h2>
+					<a href="blogs.html">View all posts &rarr;</a>
+				</div>
+				<div class="blog-teaser-grid" id="home-blog-teaser">
+					<div class="blog-teaser-card skeleton" style="min-height:260px;"></div>
+					<div class="blog-teaser-card skeleton" style="min-height:260px;"></div>
+					<div class="blog-teaser-card skeleton" style="min-height:260px;"></div>
 				</div>
 			</section>
 		</main>
@@ -533,36 +184,91 @@
 					<li><a href="https://x.com/Alt_Ronin" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
 					<li><a href="https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
-				<p class="copy">Copyright 2025 Lalit Pathak. All rights reserved.</p>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<a href="myskills.html">My Skills</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="blogs.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</div>
+				<p class="copy">&copy; <span id="current-year">2026</span> Lalit Pathak. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>
 
+	<script src="js/site.js"></script>
 	<script>
-		// Mobile menu toggle
-		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
-			e.preventDefault();
-			document.querySelector('.nav-menu').classList.toggle('active');
-		});
+		// ---------- Homepage dynamic content ----------
 
-		// Close mobile menu when clicking on a link
-		document.querySelectorAll('.nav-menu a').forEach(link => {
-			link.addEventListener('click', () => {
-				document.querySelector('.nav-menu').classList.remove('active');
-			});
-		});
-
-		// Navbar scroll effect
-		window.addEventListener('scroll', function() {
-			const nav = document.getElementById('nav');
-			if (window.scrollY > 50) {
-				nav.style.padding = '10px 0';
-				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-			} else {
-				nav.style.padding = '15px 0';
-				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+		// Live stats strip, computed from the same data files as the Portfolio page.
+		Promise.all([
+			fetch('data/projects.json').then(r => r.json()).catch(() => ({ items: [] })),
+			fetch('data/publications.json').then(r => r.json()).catch(() => ({ items: [] })),
+			fetch('data/experience.json').then(r => r.json()).catch(() => ({ items: [] })),
+			fetch('data/training.json').then(r => r.json()).catch(() => ({ items: [] })),
+			fetch('data/scholar-stats.json').then(r => r.json()).catch(() => ({}))
+		]).then(([projects, publications, experience, training, scholar]) => {
+			const ongoing = (projects.items || []).filter(p => p.status === 'Ongoing').length;
+			const stats = [
+				{ number: (publications.items || []).length, label: 'Peer-Reviewed Publications' },
+				{ number: (projects.items || []).length, label: 'Research Projects' },
+				{ number: ongoing, label: 'Ongoing Projects' },
+				{ number: (training.items || []).length, label: 'Trainings Delivered / Attended' }
+			];
+			// Citations come from data/scholar-stats.json, updated by hand from Google Scholar —
+			// there's no free public API, so this card only appears once a real number is set.
+			if (scholar.total_citations) {
+				stats.push({ number: scholar.total_citations, label: 'Citations (Google Scholar)' });
 			}
-		});
+			document.getElementById('stats-strip').innerHTML = stats.map(s => `
+				<div class="stat-card">
+					<div class="stat-number">${s.number}+</div>
+					<div class="stat-label">${escapeHTML(s.label)}</div>
+				</div>
+			`).join('');
+		}).catch(err => console.error('Could not load stats', err));
+
+		// First two skill categories, shared with My Skills page via data/skills.json
+		fetch('data/skills.json')
+			.then(res => res.json())
+			.then(data => {
+				const container = document.getElementById('home-skills-container');
+				const categories = (data.categories || []).slice(0, 2);
+				container.innerHTML = categories.map(cat => `
+					<div class="skill-category">
+						<h3><i class="fas ${escapeHTML(cat.icon || 'fa-check')}"></i> ${escapeHTML(cat.title)}</h3>
+						<ul>${(cat.items || []).map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+					</div>
+				`).join('');
+			})
+			.catch(err => console.error('Could not load skills.json', err));
+
+		// Latest 3 blog posts, shared with the Blog page via data/blogs.json
+		fetch('data/blogs.json')
+			.then(res => res.json())
+			.then(data => {
+				const container = document.getElementById('home-blog-teaser');
+				const items = sortPostsByDateDesc(data.items || []).slice(0, 3);
+				if (!items.length) {
+					container.innerHTML = '<p class="empty-state">No posts yet — check back soon.</p>';
+					return;
+				}
+				container.innerHTML = items.map(post => {
+					const href = post.link ? post.link : `blog-post.html?post=${encodeURIComponent(post.slug || '')}`;
+					return `
+						<div class="blog-teaser-card">
+							<img src="${escapeHTML(post.image || 'images/pic_05.jpg')}" alt="${escapeHTML(post.title)}" loading="lazy">
+							<div class="blog-teaser-body">
+								<div class="blog-teaser-date">${escapeHTML(post.date)} &middot; ${escapeHTML(post.category || '')}</div>
+								<h3 class="blog-teaser-title">${escapeHTML(post.title)}</h3>
+								<p class="blog-teaser-excerpt">${escapeHTML(post.excerpt || '')}</p>
+								<a class="blog-teaser-link" href="${href}">Read more &rarr;</a>
+							</div>
+						</div>
+					`;
+				}).join('');
+			})
+			.catch(err => console.error('Could not load blogs.json', err));
 	</script>
 </body>
 </html>

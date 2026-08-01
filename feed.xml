@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lalit Pathak - Environmental Insights</title>
+    <link>https://lalitpathak.com.np/blogs.html</link>
+    <description>Research findings, field experiences, and perspectives on environmental science, GIS, and disaster risk management from Lalit Pathak.</description>
+    <language>en-us</language>
+    <atom:link href="https://lalitpathak.com.np/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Sat, 01 Aug 2026 14:41:39 +0000</lastBuildDate>
+    <item>
+      <title>Nepal&#x27;s Hills Are Turning Greener - But at What Cost</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=nepal-hills-greener</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=nepal-hills-greener</guid>
+      <pubDate>Sun, 12 Jul 2026 00:00:00 +0000</pubDate>
+      <category>GIS &amp; Remote Sensing</category>
+      <description>How Forest Expansion, Farmland Abandonment, and Wild Boars Are Reshaping Rural Landscapes</description>
+    </item>
+    <item>
+      <title>Himalaya from Ancient Formation to an Uncertain Future</title>
+      <link>https://lalitpathak.com.np/blog_moutday2025.html</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog_moutday2025.html</guid>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
+      <category>Review</category>
+      <description>Mountain Building to Future Scenarios for People, Ecosystems, and Biodiversity.....</description>
+    </item>
+    <item>
+      <title>Landslide susceptibility</title>
+      <link>https://lalitpathak.com.np/blog_lsmvdo.html</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog_lsmvdo.html</guid>
+      <pubDate>Sun, 30 Nov 2025 00:00:00 +0000</pubDate>
+      <category>Research</category>
+      <description>Determining susceptibility based on established methods with acceptable accuracy is not research but can be considered an application of research that might be helpful for policymakers and development planners.....</description>
+    </item>
+    <item>
+      <title>Bridging Minds and Mountains</title>
+      <link>https://lalitpathak.com.np/blog_bmm1.html</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog_bmm1.html</guid>
+      <pubDate>Fri, 18 Jul 2025 00:00:00 +0000</pubDate>
+      <category>Research</category>
+      <description>Formal education and media remain critical for framing the issue, reflects the lead authors, but it is the invisible architecture....</description>
+    </item>
+    <item>
+      <title>Landslide Susceptibility Mapping in Nepal&#x27;s Mid-Hills</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=lsm-mid-mills</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=lsm-mid-mills</guid>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <category>Research</category>
+      <description>Exploring the application of GIS and machine learning techniques for landslide risk assessment in vulnerable Himalayan regions...</description>
+    </item>
+    <item>
+      <title>Water Quality Monitoring in Himalayan Rivers</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=water-sampling</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=water-sampling</guid>
+      <pubDate>Tue, 28 May 2024 00:00:00 +0000</pubDate>
+      <category>Water Resources</category>
+      <description>Analysis of seasonal variations in water quality parameters and their implications for ecosystem health...</description>
+    </item>
+    <item>
+      <title>Advanced GIS Applications in Environmental Research</title>
+      <link>https://lalitpathak.com.np/#</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/#</guid>
+      <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
+      <category>GIS &amp; Remote Sensing</category>
+      <description>Leveraging spatial analysis and remote sensing for comprehensive environmental monitoring and assessment...</description>
+    </item>
+  </channel>
+</rss>

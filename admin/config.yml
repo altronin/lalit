@@ -65,6 +65,7 @@ collections:
               - { label: "Authors", name: "authors", widget: "string" }
               - { label: "Journal / Citation", name: "journal", widget: "string" }
               - { label: "Link (DOI or URL)", name: "link", widget: "string" }
+              - { label: "Citations (check scholar.google.com and update by hand)", name: "citations", widget: "number", value_type: "int", required: false }
 
   - name: "training"
     label: "Training & Professional Development"
@@ -83,6 +84,63 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Date Range", name: "date_range", widget: "string" }
               - { label: "Organization", name: "organization", widget: "string" }
+
+  - name: "scholar_stats"
+    label: "Google Scholar Stats"
+    label_singular: "Scholar Stats"
+    files:
+      - name: "scholar-stats"
+        label: "Scholar Stats"
+        file: "data/scholar-stats.json"
+        fields:
+          - { label: "Google Scholar profile URL", name: "profile_url", widget: "string" }
+          - { label: "Total Citations", name: "total_citations", widget: "number", value_type: "int" }
+          - { label: "h-index", name: "h_index", widget: "number", value_type: "int" }
+          - { label: "i10-index", name: "i10_index", widget: "number", value_type: "int" }
+          - { label: "Last checked (YYYY-MM-DD)", name: "last_updated", widget: "string" }
+
+  - name: "skills"
+    label: "Skills (My Skills + Homepage)"
+    label_singular: "Skills Data"
+    files:
+      - name: "skills"
+        label: "Skills Data"
+        file: "data/skills.json"
+        fields:
+          - name: "categories"
+            label: "Skill Categories"
+            widget: "list"
+            label_singular: "Category"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string", hint: "e.g. Technical Skills" }
+              - { label: "Font Awesome icon class", name: "icon", widget: "string", hint: "e.g. fa-laptop-code (see fontawesome.com/icons)" }
+              - { label: "Items", name: "items", widget: "list", field: { label: "Skill", name: "item", widget: "string" } }
+          - name: "proficiency"
+            label: "Skill Proficiency Bars"
+            widget: "list"
+            label_singular: "Proficiency"
+            summary: "{{fields.label}} — {{fields.value}}%"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Value (0-100)", name: "value", widget: "number", value_type: "int", min: 0, max: 100 }
+          - name: "tools"
+            label: "Tools & Technologies"
+            widget: "list"
+            label_singular: "Tool"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Font Awesome icon name (without fa-)", name: "icon", widget: "string", hint: "e.g. fa-map, fa-python" }
+              - { label: "Is this a brand icon? (Python, R, etc.)", name: "brand", widget: "boolean", default: false, required: false }
+          - name: "languages"
+            label: "Languages"
+            widget: "list"
+            label_singular: "Language"
+            summary: "{{fields.name}} — {{fields.level}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Proficiency level", name: "level", widget: "string", hint: "e.g. Native Proficiency" }
 
   - name: "blogs"
     label: "Blog Posts (Listing Cards)"

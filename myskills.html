@@ -2,594 +2,93 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="format-detection" content="telephone=no">
 	<title>My Skills | Lalit Pathak - Environmental Scientist</title>
+	<meta name="description" content="Technical and professional skills of Lalit Pathak: GIS, remote sensing, machine learning, disaster risk research methodologies, tools, and languages.">
+	<link rel="canonical" href="https://lalitpathak.com.np/myskills.html">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="My Skills | Lalit Pathak">
+	<meta property="og:description" content="Technical expertise and professional competencies in environmental science, GIS, and disaster risk management.">
+	<meta property="og:url" content="https://lalitpathak.com.np/myskills.html">
+	<meta property="og:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="alternate" type="application/rss+xml" title="Lalit Pathak - Environmental Insights" href="https://lalitpathak.com.np/feed.xml">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/site.css">
+	<script>(function(){try{if(localStorage.getItem('lp-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 	<style>
-		:root {
-			--primary-color: #2a6e3f;
-			--primary-dark: #1e4f2d;
-			--primary-light: #3d8c55;
-			--secondary-color: #1a365d;
-			--accent-color: #e9c46a;
-			--light-color: #f8f9fa;
-			--dark-color: #343a40;
-			--gray-color: #6c757d;
-			--light-gray: #e9ecef;
-			--border-radius: 8px;
-			--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-			--transition: all 0.3s ease;
-		}
+		.skills-intro .intro-text { text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+		.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+		.skill-category { background-color: var(--light-color); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); transition: var(--transition); }
+		.skill-category:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+		.skill-category h3 { display: flex; align-items: center; margin-bottom: 1.5rem; color: var(--secondary-color); }
+		.skill-category h3 i { margin-right: 10px; color: var(--primary-color); }
+		.skill-category ul { list-style: none; }
+		.skill-category li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); position: relative; padding-left: 25px; }
+		.skill-category li:last-child { border-bottom: none; }
+		.skill-category li::before { content: "•"; color: var(--primary-color); font-weight: bold; position: absolute; left: 0; }
 
-		html {
-			scroll-behavior: smooth;
-		}
+		/* Progress bars */
+		.progress-container { background-color: var(--card-bg); padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); margin-top: 2rem; }
+		.progress-item { margin-bottom: 1.5rem; }
+		.progress-item:last-child { margin-bottom: 0; }
+		.progress-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+		.progress-label { font-weight: 600; color: var(--secondary-color); }
+		.progress-value { font-weight: 600; color: var(--primary-color); }
+		.progress-bar { height: 10px; background-color: var(--light-gray); border-radius: 5px; overflow: hidden; }
+		.progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%); border-radius: 5px; transition: width 1s ease-in-out; }
 
-		body {
-			font-family: 'Open Sans', sans-serif;
-			font-size: 16px;
-			line-height: 1.6;
-			color: var(--dark-color);
-			background-color: #fff;
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
-		}
-
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 600;
-			line-height: 1.3;
-			margin-bottom: 1rem;
-			color: var(--secondary-color);
-		}
-
-		h1 {
-			font-size: 2.5rem;
-			font-weight: 700;
-		}
-
-		h2 {
-			font-size: 2rem;
-			margin-top: 2.5rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--light-gray);
-		}
-
-		h3 {
-			font-size: 1.5rem;
-			color: var(--primary-color);
-		}
-
-		p {
-			margin-bottom: 1.5rem;
-		}
-
-		a {
-			color: var(--primary-color);
-			text-decoration: none;
-			transition: var(--transition);
-		}
-
-		a:hover {
-			color: var(--primary-dark);
-		}
-
-		.container {
-			width: 100%;
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 20px;
-		}
-
-		.btn {
-			display: inline-block;
-			padding: 10px 24px;
-			background-color: var(--primary-color);
-			color: white;
-			border: none;
-			border-radius: var(--border-radius);
-			font-weight: 600;
-			font-size: 1rem;
-			cursor: pointer;
-			transition: var(--transition);
-			text-align: center;
-		}
-
-		.btn:hover {
-			background-color: var(--primary-dark);
-			color: white;
-			transform: translateY(-2px);
-			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.btn-outline {
-			background-color: transparent;
-			border: 2px solid var(--primary-color);
-			color: var(--primary-color);
-		}
-
-		.btn-outline:hover {
-			background-color: var(--primary-color);
-			color: white;
-		}
-
-		/* Header Styles */
-		#header {
-			background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-dark) 100%);
-			color: white;
-			padding: 100px 0 80px;
-			text-align: center;
-			position: relative;
-			overflow: hidden;
-		}
-
-		#header::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,192C672,181,768,139,864,138.7C960,139,1056,181,1152,181.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-			background-size: cover;
-			background-position: center bottom;
-		}
-
-		.header-content {
-			position: relative;
-			z-index: 1;
-		}
-
-		.page-title {
-			font-size: 3rem;
-			font-weight: 700;
-			margin-bottom: 1rem;
-			color: white;
-		}
-
-		.page-subtitle {
-			font-size: 1.3rem;
-			font-weight: 400;
-			margin-bottom: 2rem;
-			color: rgba(255, 255, 255, 0.9);
-			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		/* Navigation */
-		#nav {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: rgba(255, 255, 255, 0.95);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-			z-index: 1000;
-			padding: 15px 0;
-			transition: var(--transition);
-		}
-
-		.nav-container {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.nav-logo {
-			font-family: 'Montserrat', sans-serif;
-			font-weight: 700;
-			font-size: 1.5rem;
-			color: var(--secondary-color);
-		}
-
-		.nav-menu {
-			display: flex;
-			list-style: none;
-		}
-
-		.nav-menu li {
-			margin-left: 2rem;
-		}
-
-		.nav-menu a {
-			color: var(--dark-color);
-			font-weight: 500;
-			padding: 5px 0;
-			position: relative;
-		}
-
-		.nav-menu a::after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 0;
-			height: 2px;
-			background-color: var(--primary-color);
-			transition: var(--transition);
-		}
-
-		.nav-menu a:hover::after,
-		.nav-menu a.active::after {
-			width: 100%;
-		}
-
-		.nav-menu a.active {
-			color: var(--primary-color);
-		}
-
-		.menu_trigger {
-			display: none;
-			font-size: 1.5rem;
-			color: var(--dark-color);
-		}
-
-		/* Main Content */
-		#main {
-			padding: 80px 0;
-			flex: 1;
-		}
-
-		.skills-intro {
-			margin-bottom: 3rem;
-			text-align: center;
-			max-width: 800px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.intro-text {
-			font-size: 1.2rem;
-			line-height: 1.8;
-			color: var(--gray-color);
-		}
-
-		.highlight {
-			color: var(--primary-color);
-			font-weight: 600;
-		}
-
-		/* Skills Sections */
-		.skills-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 2rem;
-			margin-top: 2rem;
-		}
-
-		.skill-category {
-			background-color: var(--light-color);
-			padding: 2rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			transition: var(--transition);
-		}
-
-		.skill-category:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-		}
-
-		.skill-category h3 {
-			display: flex;
-			align-items: center;
-			margin-bottom: 1.5rem;
-			color: var(--secondary-color);
-		}
-
-		.skill-category h3 i {
-			margin-right: 10px;
-			color: var(--primary-color);
-		}
-
-		.skill-category ul {
-			list-style: none;
-		}
-
-		.skill-category li {
-			padding: 8px 0;
-			border-bottom: 1px solid var(--light-gray);
-			position: relative;
-			padding-left: 25px;
-		}
-
-		.skill-category li:last-child {
-			border-bottom: none;
-		}
-
-		.skill-category li::before {
-			content: "•";
-			color: var(--primary-color);
-			font-weight: bold;
-			position: absolute;
-			left: 0;
-		}
-
-		/* Progress Bars */
-		.skills-progress {
-			margin-top: 3rem;
-		}
-
-		.progress-container {
-			background-color: white;
-			padding: 2rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-		}
-
-		.progress-item {
-			margin-bottom: 1.5rem;
-		}
-
-		.progress-header {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 0.5rem;
-		}
-
-		.progress-label {
-			font-weight: 600;
-			color: var(--secondary-color);
-		}
-
-		.progress-value {
-			font-weight: 600;
-			color: var(--primary-color);
-		}
-
-		.progress-bar {
-			height: 10px;
-			background-color: var(--light-gray);
-			border-radius: 5px;
-			overflow: hidden;
-		}
-
-		.progress-fill {
-			height: 100%;
-			background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
-			border-radius: 5px;
-			transition: width 1s ease-in-out;
-		}
-
-		/* Tools & Technologies */
-		.tools-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-			gap: 1.5rem;
-			margin-top: 2rem;
-		}
-
-		.tool-item {
-			background-color: white;
-			padding: 1.5rem 1rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			text-align: center;
-			transition: var(--transition);
-		}
-
-		.tool-item:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.tool-icon {
-			font-size: 2.5rem;
-			color: var(--primary-color);
-			margin-bottom: 0.8rem;
-		}
-
-		.tool-name {
-			font-weight: 600;
-			color: var(--secondary-color);
-		}
+		/* Tools */
+		.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+		.tool-item { background-color: var(--light-color); padding: 1.5rem 1rem; border-radius: var(--border-radius); text-align: center; transition: var(--transition); }
+		.tool-item:hover { transform: translateY(-4px); box-shadow: var(--box-shadow); }
+		.tool-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.7rem; }
+		.tool-name { font-weight: 500; font-size: 0.9rem; color: var(--secondary-color); }
 
 		/* Languages */
-		.languages-container {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-			gap: 1.5rem;
-			margin-top: 2rem;
-		}
-
-		.language-item {
-			background-color: white;
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			box-shadow: var(--box-shadow);
-			text-align: center;
-			transition: var(--transition);
-		}
-
-		.language-item:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.language-name {
-			font-weight: 600;
-			margin-bottom: 0.5rem;
-			color: var(--secondary-color);
-		}
-
-		.language-level {
-			color: var(--primary-color);
-			font-weight: 500;
-		}
+		.languages-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+		.language-item { background-color: var(--light-color); padding: 1.2rem; border-radius: var(--border-radius); text-align: center; }
+		.language-name { font-weight: 600; color: var(--secondary-color); margin-bottom: 0.3rem; }
+		.language-level { font-size: 0.85rem; color: var(--gray-color); }
 
 		/* Certifications */
-		.certifications-list {
-			margin-top: 2rem;
-		}
+		.certifications-list { margin-top: 2rem; }
+		.certification-item { background-color: var(--light-color); padding: 1.2rem 1.5rem; border-radius: var(--border-radius); margin-bottom: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; }
+		.certification-title { font-weight: 600; color: var(--secondary-color); }
+		.certification-org { color: var(--primary-color); font-size: 0.9rem; }
+		.certification-date { color: var(--gray-color); font-size: 0.85rem; }
+		.see-all-link { display: inline-block; margin-top: 1.2rem; font-weight: 600; }
 
-		.certification-item {
-			background-color: var(--light-color);
-			padding: 1.5rem;
-			border-radius: var(--border-radius);
-			margin-bottom: 1rem;
-			transition: var(--transition);
-		}
-
-		.certification-item:hover {
-			transform: translateY(-3px);
-			box-shadow: var(--box-shadow);
-		}
-
-		.certification-title {
-			font-weight: 600;
-			margin-bottom: 0.3rem;
-			color: var(--secondary-color);
-		}
-
-		.certification-org {
-			color: var(--primary-color);
-			margin-bottom: 0.3rem;
-		}
-
-		.certification-date {
-			color: var(--gray-color);
-			font-size: 0.9rem;
-		}
-
-		/* Footer */
-		#footer {
-			background-color: var(--secondary-color);
-			color: white;
-			padding: 60px 0 30px;
-			width: 100%;
-			margin-top: auto;
-		}
-
-		.footer-content {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-
-		.social {
-			display: flex;
-			list-style: none;
-			margin-bottom: 2rem;
-		}
-
-		.social li {
-			margin: 0 10px;
-		}
-
-		.social a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 40px;
-			height: 40px;
-			background-color: rgba(255, 255, 255, 0.1);
-			border-radius: 50%;
-			color: white;
-			transition: var(--transition);
-		}
-
-		.social a:hover {
-			background-color: var(--primary-color);
-			transform: translateY(-3px);
-		}
-
-		.copy {
-			color: rgba(255, 255, 255, 0.7);
-			font-size: 0.9rem;
-		}
-
-		/* Responsive Design */
-		@media (max-width: 768px) {
-			h1 {
-				font-size: 2rem;
-			}
-
-			h2 {
-				font-size: 1.75rem;
-			}
-
-			.page-title {
-				font-size: 2.5rem;
-			}
-
-			.page-subtitle {
-				font-size: 1.1rem;
-			}
-
-			.nav-menu {
-				position: fixed;
-				top: 70px;
-				right: -100%;
-				flex-direction: column;
-				background-color: white;
-				width: 80%;
-				height: calc(100vh - 70px);
-				box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-				transition: var(--transition);
-				padding: 2rem;
-			}
-
-			.nav-menu.active {
-				right: 0;
-			}
-
-			.nav-menu li {
-				margin: 0 0 1.5rem 0;
-			}
-
-			.menu_trigger {
-				display: block;
-			}
-
-			.skills-container {
-				grid-template-columns: 1fr;
-			}
-
-			.tools-grid {
-				grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-			}
-		}
-
-		@media (max-width: 576px) {
-			.container {
-				padding: 0 15px;
-			}
-
-			#header {
-				padding: 80px 0 60px;
-			}
-
-			#main {
-				padding: 60px 0;
-			}
-		}
+		@media (max-width: 768px) { .skills-container { grid-template-columns: 1fr; } }
 	</style>
 </head>
 <body>
+	<a href="#main" class="skip-link">Skip to content</a>
 	<nav id="nav">
 		<div class="container nav-container">
 			<a href="index.html" class="nav-logo">Lalit Pathak</a>
-			<ul class="nav-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a class="active" href="myskills.html">My Skills</a></li>
-				<li><a href="portfolio.html">Portfolio</a></li>
-				<li><a href="blogs.html">Blog</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-			<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
+			<div class="nav-right">
+				<ul class="nav-menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a class="active" href="myskills.html">My Skills</a></li>
+					<li><a href="portfolio.html">Portfolio</a></li>
+					<li><a href="blogs.html">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+				<button class="theme-toggle" type="button" aria-label="Switch to dark mode">
+					<i class="fas fa-moon" aria-hidden="true"></i>
+					<i class="fas fa-sun" aria-hidden="true"></i>
+				</button>
+				<a class="menu_trigger" href="#"><i class="fas fa-bars"></i></a>
+			</div>
 		</div>
 	</nav>
 
@@ -602,209 +101,55 @@
 
 	<div class="container">
 		<main id="main">
-			<section class="skills-intro">
+			<section class="skills-intro reveal">
 				<p class="intro-text">
-					With a multidisciplinary background in <span class="highlight">environmental science</span>, <span class="highlight">disaster risk management</span>, and <span class="highlight">geographic information systems (GIS)</span>, 
-					I bring a comprehensive skill set to address complex environmental challenges. My expertise spans research methodologies, 
+					With a multidisciplinary background in <span class="highlight">environmental science</span>, <span class="highlight">disaster risk management</span>, and <span class="highlight">geographic information systems (GIS)</span>,
+					I bring a comprehensive skill set to address complex environmental challenges. My expertise spans research methodologies,
 					data analysis, project management, and technical applications in environmental assessment and climate resilience.
 				</p>
 			</section>
 
-			<section class="skills-section">
+			<section class="skills-section reveal">
 				<h2>Core Competencies</h2>
-				<div class="skills-container">
-					<div class="skill-category">
-						<h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-						<ul>
-							<li>ArcMap & ArcGIS Pro</li>
-							<li>QGIS</li>
-							<li>SPSS</li>
-							<li>R-Studio</li>
-							<li>Grapher™</li>
-							<li>Python for Data Analysis</li>
-							<li>Google Earth Engine</li>
-							<li>Co-Lab</li>
-							<li>Jupyter Lab</li>
-						</ul>
-					</div>
-					<div class="skill-category">
-						<h3><i class="fas fa-user-tie"></i> Professional Skills</h3>
-						<ul>
-							<li>Disaster Risk Management</li>
-							<li>Geographic Information Systems (GIS)</li>
-							<li>Environmental Data Collection & Analysis</li>
-							<li>Research Design & Fieldwork</li>
-							<li>Project Management</li>
-							<li>Environmental Impact Assessment</li>
-							<li>Climate Change Adaptation</li>
-							<li>Statistical Analysis</li>
-							<li>Scientific Writing</li>
-						</ul>
-					</div>
-					<div class="skill-category">
-						<h3><i class="fas fa-chart-line"></i> Research Methodologies</h3>
-						<ul>
-							<li>Multi-Hazard Risk Assessment</li>
-							<li>Landslide Susceptibility Mapping</li>
-							<li>Water Quality Analysis</li>
-							<li>Climate Data Analysis</li>
-							<li>Remote Sensing Applications</li>
-							<li>Statistical Modeling</li>
-							<li>Survey Design & Implementation</li>
-							<li>Stakeholder Engagement</li>
-							<li>Policy Analysis</li>
-						</ul>
-					</div>
+				<div class="skills-container" id="skills-container">
+					<div class="skill-category skeleton" style="min-height:260px;"></div>
+					<div class="skill-category skeleton" style="min-height:260px;"></div>
+					<div class="skill-category skeleton" style="min-height:260px;"></div>
 				</div>
 			</section>
 
-			<section class="skills-progress">
+			<section class="skills-progress reveal">
 				<h2>Skill Proficiency</h2>
-				<div class="progress-container">
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">GIS & Spatial Analysis</span>
-							<span class="progress-value">95%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 95%"></div>
-						</div>
-					</div>
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">Environmental Data Analysis</span>
-							<span class="progress-value">90%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 90%"></div>
-						</div>
-					</div>
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">Disaster Risk Assessment</span>
-							<span class="progress-value">88%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 88%"></div>
-						</div>
-					</div>
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">Research Design & Methodology</span>
-							<span class="progress-value">92%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 92%"></div>
-						</div>
-					</div>
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">Project Management</span>
-							<span class="progress-value">85%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 85%"></div>
-						</div>
-					</div>
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">Scientific Writing & Publication</span>
-							<span class="progress-value">90%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" style="width: 90%"></div>
-						</div>
-					</div>
+				<div class="progress-container" id="progress-container">
+					<div class="skeleton" style="min-height:200px;"></div>
 				</div>
 			</section>
 
-			<section class="tools-section">
+			<section class="tools-section reveal">
 				<h2>Tools & Technologies</h2>
-				<div class="tools-grid">
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-globe-americas"></i></div>
-						<div class="tool-name">ArcGIS</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-map"></i></div>
-						<div class="tool-name">QGIS</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-chart-bar"></i></div>
-						<div class="tool-name">SPSS</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fab fa-r-project"></i></div>
-						<div class="tool-name">R Studio</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fab fa-python"></i></div>
-						<div class="tool-name">Python</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-satellite"></i></div>
-						<div class="tool-name">Google Earth Engine</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-flask"></i></div>
-						<div class="tool-name">Jupyter Lab</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-cloud"></i></div>
-						<div class="tool-name">Co-Lab</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-chart-line"></i></div>
-						<div class="tool-name">Grapher</div>
-					</div>
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fas fa-database"></i></div>
-						<div class="tool-name">Data Analysis</div>
-					</div>
+				<div class="tools-grid" id="tools-grid">
+					<div class="tool-item skeleton" style="min-height:90px;"></div>
+					<div class="tool-item skeleton" style="min-height:90px;"></div>
+					<div class="tool-item skeleton" style="min-height:90px;"></div>
+					<div class="tool-item skeleton" style="min-height:90px;"></div>
 				</div>
 			</section>
 
-			<section class="languages-section">
+			<section class="languages-section reveal">
 				<h2>Languages</h2>
-				<div class="languages-container">
-					<div class="language-item">
-						<div class="language-name">Nepali</div>
-						<div class="language-level">Native Proficiency</div>
-					</div>
-					<div class="language-item">
-						<div class="language-name">English</div>
-						<div class="language-level">Professional Proficiency</div>
-					</div>
-					<div class="language-item">
-						<div class="language-name">Hindi</div>
-						<div class="language-level">Professional Proficiency</div>
-					</div>
-					<div class="language-item">
-						<div class="language-name">German</div>
-						<div class="language-level">Basic Literacy</div>
-					</div>
+				<div class="languages-container" id="languages-container">
+					<div class="language-item skeleton" style="min-height:60px;"></div>
+					<div class="language-item skeleton" style="min-height:60px;"></div>
 				</div>
 			</section>
 
-			<section class="certifications-section">
-				<h2>Certifications & Training</h2>
-				<div class="certifications-list">
-					<div class="certification-item">
-						<div class="certification-title">Climate Data Analysis and Downscaling</div>
-						<div class="certification-org">SEN under APN CAPaBLE</div>
-						<div class="certification-date">November 2022</div>
-					</div>
-					<div class="certification-item">
-						<div class="certification-title">Ecohydrology Training Program</div>
-						<div class="certification-org">Indian Institute of Technology, Roorkee</div>
-						<div class="certification-date">March 2023</div>
-					</div>
-					<div class="certification-item">
-						<div class="certification-title">Water–Energy–Food Nexus</div>
-						<div class="certification-org">ICIMOD-Himalayan University Consortium</div>
-						<div class="certification-date">May-June 2020</div>
-					</div>
+			<section class="certifications-section reveal">
+				<h2>Selected Training & Certifications</h2>
+				<div class="certifications-list" id="certifications-list">
+					<div class="skeleton" style="min-height:60px; margin-bottom:1rem;"></div>
+					<div class="skeleton" style="min-height:60px; margin-bottom:1rem;"></div>
 				</div>
+				<a href="portfolio.html#training" class="see-all-link">See full training history on the Portfolio page &rarr;</a>
 			</section>
 		</main>
 	</div>
@@ -819,51 +164,86 @@
 					<li><a href="https://x.com/Alt_Ronin" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
 					<li><a href="https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
-				<p class="copy">Copyright 2025 Lalit Pathak. All rights reserved.</p>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<a href="myskills.html">My Skills</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="blogs.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</div>
+				<p class="copy">&copy; <span id="current-year">2026</span> Lalit Pathak. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>
 
+	<script src="js/site.js"></script>
 	<script>
-		// Mobile menu toggle
-		document.querySelector('.menu_trigger').addEventListener('click', function(e) {
-			e.preventDefault();
-			document.querySelector('.nav-menu').classList.toggle('active');
-		});
+		fetch('data/skills.json')
+			.then(res => res.json())
+			.then(data => {
+				// Core competencies
+				document.getElementById('skills-container').innerHTML = (data.categories || []).map(cat => `
+					<div class="skill-category">
+						<h3><i class="fas ${escapeHTML(cat.icon || 'fa-check')}"></i> ${escapeHTML(cat.title)}</h3>
+						<ul>${(cat.items || []).map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+					</div>
+				`).join('');
 
-		// Close mobile menu when clicking on a link
-		document.querySelectorAll('.nav-menu a').forEach(link => {
-			link.addEventListener('click', () => {
-				document.querySelector('.nav-menu').classList.remove('active');
-			});
-		});
+				// Skill proficiency bars
+				const progressHTML = (data.proficiency || []).map(p => `
+					<div class="progress-item">
+						<div class="progress-header">
+							<span class="progress-label">${escapeHTML(p.label)}</span>
+							<span class="progress-value">${escapeHTML(p.value)}%</span>
+						</div>
+						<div class="progress-bar">
+							<div class="progress-fill" data-width="${escapeHTML(p.value)}%"></div>
+						</div>
+					</div>
+				`).join('');
+				document.getElementById('progress-container').innerHTML = progressHTML;
 
-		// Navbar scroll effect
-		window.addEventListener('scroll', function() {
-			const nav = document.getElementById('nav');
-			if (window.scrollY > 50) {
-				nav.style.padding = '10px 0';
-				nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-			} else {
-				nav.style.padding = '15px 0';
-				nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-			}
-		});
+				// Animate the bars in once they're in the DOM
+				requestAnimationFrame(() => {
+					document.querySelectorAll('.progress-fill').forEach(bar => {
+						bar.style.width = bar.dataset.width;
+					});
+				});
 
-		// Animate progress bars on scroll
-		function animateProgressBars() {
-			const progressBars = document.querySelectorAll('.progress-fill');
-			progressBars.forEach(bar => {
-				const width = bar.style.width;
-				bar.style.width = '0';
-				setTimeout(() => {
-					bar.style.width = width;
-				}, 300);
-			});
-		}
+				// Tools & technologies
+				document.getElementById('tools-grid').innerHTML = (data.tools || []).map(tool => `
+					<div class="tool-item">
+						<div class="tool-icon"><i class="fa${tool.brand ? 'b' : 's'} ${escapeHTML(tool.icon || 'fa-check')}"></i></div>
+						<div class="tool-name">${escapeHTML(tool.name)}</div>
+					</div>
+				`).join('');
 
-		// Initialize progress bars when page loads
-		window.addEventListener('load', animateProgressBars);
+				// Languages
+				document.getElementById('languages-container').innerHTML = (data.languages || []).map(lang => `
+					<div class="language-item">
+						<div class="language-name">${escapeHTML(lang.name)}</div>
+						<div class="language-level">${escapeHTML(lang.level)}</div>
+					</div>
+				`).join('');
+			})
+			.catch(err => console.error('Could not load skills.json', err));
+
+		// Selected certifications, pulled from the same Training data used on the Portfolio page
+		fetch('data/training.json')
+			.then(res => res.json())
+			.then(data => {
+				const items = (data.items || []).slice(0, 3);
+				document.getElementById('certifications-list').innerHTML = items.map(item => `
+					<div class="certification-item">
+						<div>
+							<div class="certification-title">${escapeHTML(item.title)}</div>
+							<div class="certification-org">${escapeHTML(item.organization)}</div>
+						</div>
+						<div class="certification-date">${escapeHTML(item.date_range)}</div>
+					</div>
+				`).join('');
+			})
+			.catch(err => console.error('Could not load training.json', err));
 	</script>
 </body>
 </html>
