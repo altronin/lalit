@@ -1,6 +1,29 @@
 {
   "items": [
     {
+      "title": "Churia–Terai River Corridor Dynamics",
+      "date_range": "January 2026 – Ongoing",
+      "role": "Project Lead; GIS & Remote Sensing Researcher",
+      "description": "A Geospatial Assessment of Soil Erosion Potential, Sediment Transportation and Channel Migration ",
+      "responsibilities": [
+        "Geospatial Workflow & Pipeline Development",
+        "Automated Vector & Morphometric Extraction",
+        "Transect-Based Migration Modeling"
+      ],
+      "status": "Ongoing"
+    },
+    {
+      "title": "Fire-to-Soil (F2S)",
+      "status": "Ongoing",
+      "date_range": "June 2025 - Ongoing",
+      "role": "Project Lead",
+      "description": "An Integrated Machine Learning and Circular Bioeconomy Framework for Forest Fire Hazard and Emission Reduction",
+      "responsibilities": [
+        "Overall project management and coordination",
+        "Assessment framework development"
+      ]
+    },
+    {
       "title": "Integrated Multi-Hazard Assessment",
       "date_range": "June 2025 - Ongoing",
       "status": "Ongoing",
@@ -47,29 +70,6 @@
         "Laboratory analysis for physiochemical parameters",
         "Reporting and documentation"
       ]
-    },
-    {
-      "title": "Fire-to-Soil (F2S)",
-      "status": "Ongoing",
-      "date_range": "June 2025 - Ongoing",
-      "role": "Project Lead",
-      "description": "An Integrated Machine Learning and Circular Bioeconomy Framework for Forest Fire Hazard and Emission Reduction",
-      "responsibilities": [
-        "Overall project management and coordination",
-        "Assessment framework development"
-      ]
-    },
-    {
-      "title": "Churia–Terai River Corridor Dynamics",
-      "date_range": "January 2026 – Ongoing",
-      "role": "Project Lead; GIS & Remote Sensing Researcher",
-      "description": "A Geospatial Assessment of Soil Erosion Potential, Sediment Transportation and Channel Migration ",
-      "responsibilities": [
-        "Geospatial Workflow & Pipeline Development",
-        "Automated Vector & Morphometric Extraction",
-        "Transect-Based Migration Modeling"
-      ],
-      "status": "Ongoing"
     }
   ]
 }
