@@ -6,7 +6,7 @@
     <description>Research findings, field experiences, and perspectives on environmental science, GIS, and disaster risk management from Lalit Pathak.</description>
     <language>en-us</language>
     <atom:link href="https://lalitpathak.com.np/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 05 Aug 2026 03:59:13 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Aug 2026 15:29:39 +0000</lastBuildDate>
     <item>
       <title>नेपालको नयाँ मस्यौदा विधेयक: विशेषज्ञताको विकल्प कि प्राविधिक सम्झौता?</title>
       <link>https://lalitpathak.com.np/blog-post.html?post=environmentalinspector</link>
@@ -14,6 +14,14 @@
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
       <category>Review</category>
       <description>वातावरणको बहुविधात्मक प्रकृति नै वातावरण विज्ञानको बल हो, किनभने वातावरणविद्ले नै ती सबै विधालाई कसरी जोड्ने, नाप्ने र आपसमा अन्तरसम्बन्धित समस्या समाधान गर्ने भनी तालिम पाएका हुन्छन्। </description>
+    </item>
+    <item>
+      <title>हात्तीको वर्णन: वातावरण निरीक्षकको बहसमा दर्शन, तर्कशास्त्र र विश्वव्यापी अभ्यास</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=envinspector_editorial</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=envinspector_editorial</guid>
+      <pubDate>Wed, 15 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Review</category>
+      <description>अरस्तूको प्रसिद्ध सूत्र छ: &quot;समग्र यसका अंशहरूको जोडफलभन्दा ठूलो हुन्छ।</description>
     </item>
     <item>
       <title>Nepal&#x27;s Hills Are Turning Greener - But at What Cost</title>
@@ -24,12 +32,28 @@
       <description>How Forest Expansion, Farmland Abandonment, and Wild Boars Are Reshaping Rural Landscapes</description>
     </item>
     <item>
+      <title>अनेकान्तवाद वातावरण विज्ञान </title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=nirikshak_anekantavada</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=nirikshak_anekantavada</guid>
+      <pubDate>Thu, 25 Dec 2025 00:00:00 +0000</pubDate>
+      <category>Review</category>
+      <description>हरेक दृष्टिकोण आफ्नो सीमाभित्र मात्र सही हुन्छ, र पूर्ण सत्यसम्म पुग्न ती सीमाहरूलाई चिन्ने र जोड्ने छुट्टै सीप चाहिन्छ। त्यो जोड्ने सीप नै विशेषज्ञता हो, बहुलताको अस्वीकार होइन, बरु त्यसको जिम्मेवार व्यवस्थापन हो।</description>
+    </item>
+    <item>
       <title>Himalaya from Ancient Formation to an Uncertain Future</title>
       <link>https://lalitpathak.com.np/blog_moutday2025.html</link>
       <guid isPermaLink="true">https://lalitpathak.com.np/blog_moutday2025.html</guid>
       <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
       <category>Review</category>
       <description>Mountain Building to Future Scenarios for People, Ecosystems, and Biodiversity.....</description>
+    </item>
+    <item>
+      <title>Who Gets to Describe the Whole Elephant?</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=environmental_bureaucracy</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=environmental_bureaucracy</guid>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
+      <category>Review</category>
+      <description>When the cost of getting a technical judgment wrong is measured in contaminated rivers and shuttered livelihoods, the case for competence stops being philosophical and becomes actuarial.</description>
     </item>
     <item>
       <title>Landslide susceptibility</title>
