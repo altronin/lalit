@@ -76,6 +76,12 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 	transition: background-color 0.3s ease, color 0.3s ease;
+	animation: page-fade-in 0.5s ease both;
+}
+
+@keyframes page-fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -212,7 +218,8 @@ img { max-width: 100%; }
 
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
 
-.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--secondary-color); }
+.nav-logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.5rem; color: var(--secondary-color); display: inline-block; transition: color 0.25s ease, transform 0.25s ease; }
+.nav-logo:hover { color: var(--primary-color); transform: translateY(-1px); }
 
 .nav-right { display: flex; align-items: center; gap: 1.5rem; }
 
@@ -251,7 +258,10 @@ img { max-width: 100%; }
 	transition: var(--transition);
 	flex-shrink: 0;
 }
-.theme-toggle:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.theme-toggle:hover { border-color: var(--primary-color); color: var(--primary-color); transform: rotate(15deg); }
+.theme-toggle:active { transform: scale(0.9); }
+.theme-toggle i { transition: transform 0.5s ease, opacity 0.3s ease; }
+.theme-toggle.is-switching i { transform: rotate(180deg) scale(0.6); opacity: 0; }
 .theme-toggle .fa-sun { display: none; }
 html[data-theme="dark"] .theme-toggle .fa-moon { display: none; }
 html[data-theme="dark"] .theme-toggle .fa-sun { display: inline-block; }
@@ -270,6 +280,82 @@ html[data-theme="dark"] .theme-toggle .fa-sun { display: inline-block; }
 /* Reveal-on-scroll animation, applied by js/site.js */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Reveal-on-scroll for individual cards inside a grid — js/site.js sets --i per
+   child so they cascade in one after another instead of popping in together. */
+.reveal-item {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	transition-delay: calc(var(--i, 0) * 0.07s);
+}
+.reveal-item.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Hero entrance sequence — plays once on load, no scroll needed */
+.hero-in { opacity: 0; animation: hero-fade-up 0.7s ease forwards; animation-delay: calc(var(--i, 0) * 0.12s + 0.1s); }
+@keyframes hero-fade-up {
+	from { opacity: 0; transform: translateY(22px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gentle zoom on card/thumbnail images when their card is hovered */
+.img-zoom { overflow: hidden; }
+.img-zoom img { transition: transform 0.5s ease; }
+.img-zoom:hover img { transform: scale(1.06); }
+
+/* Reading progress bar — auto-injected by js/site.js on article pages */
+#reading-progress {
+	position: fixed;
+	top: 0; left: 0;
+	height: 3px;
+	width: 0%;
+	background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+	z-index: 1100;
+	transition: width 0.12s ease;
+}
+
+/* Accessible keyboard focus ring, only shown for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.filter-btn:focus-visible,
+.category-card:focus-visible {
+	outline: 3px solid var(--primary-color);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Loading state for buttons (e.g. the contact form's submit button) */
+@keyframes lp-spin { to { transform: rotate(360deg); } }
+.btn.is-loading { position: relative; color: transparent !important; pointer-events: none; }
+.btn.is-loading::after {
+	content: '';
+	position: absolute;
+	top: 50%; left: 50%;
+	width: 16px; height: 16px;
+	margin: -8px 0 0 -8px;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	border-top-color: #fff;
+	border-radius: 50%;
+	animation: lp-spin 0.7s linear infinite;
+}
+
+/* Contact form status message (success/error), injected by form-handler.js */
+#form-status { animation: hero-fade-up 0.35s ease both; }
+
+/* Respect the user's OS-level request for less motion: shorten/disable
+   everything above (and any per-page inline transitions) to near-instant. */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+	.reveal, .reveal-item, .hero-in { opacity: 1 !important; transform: none !important; }
+}
 
 /* ---------------- Stats strip (used on homepage) ---------------- */
 .stats-strip {
@@ -327,7 +413,8 @@ html[data-theme="dark"] .theme-toggle .fa-sun { display: inline-block; }
 	cursor: pointer;
 	transition: var(--transition);
 }
-.filter-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.filter-btn:hover { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-1px); }
+.filter-btn:active { transform: scale(0.95); }
 .filter-btn.active { background-color: var(--primary-color); border-color: var(--primary-color); color: #fff; }
 
 .search-input {
@@ -378,7 +465,8 @@ html[data-theme="dark"] .theme-toggle .fa-sun { display: inline-block; }
 	z-index: 900;
 }
 #back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-#back-to-top:hover { background-color: var(--primary-dark); }
+#back-to-top:hover { background-color: var(--primary-dark); transform: translateY(-3px); }
+#back-to-top:active { transform: translateY(-1px) scale(0.94); }
 
 /* ---------------- Footer ---------------- */
 #footer {
@@ -440,6 +528,17 @@ html[data-theme="dark"] .theme-toggle .fa-sun { display: inline-block; }
 	.nav-menu.active { right: 0; }
 	.nav-menu li { margin: 0 0 1.5rem 0; }
 	.menu_trigger { display: block; }
+	.menu_trigger.is-open i { transform: rotate(90deg); }
+	.menu_trigger i { display: inline-block; transition: transform 0.3s ease; }
+
+	/* Links cascade in one-by-one as the mobile menu opens */
+	.nav-menu a { opacity: 0; transform: translateX(16px); transition: opacity 0.3s ease, transform 0.3s ease; }
+	.nav-menu.active a { opacity: 1; transform: none; }
+	.nav-menu.active li:nth-child(1) a { transition-delay: 0.05s; }
+	.nav-menu.active li:nth-child(2) a { transition-delay: 0.1s; }
+	.nav-menu.active li:nth-child(3) a { transition-delay: 0.15s; }
+	.nav-menu.active li:nth-child(4) a { transition-delay: 0.2s; }
+	.nav-menu.active li:nth-child(5) a { transition-delay: 0.25s; }
 }
 
 @media (max-width: 576px) {

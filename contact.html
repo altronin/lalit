@@ -24,6 +24,13 @@
 	<link rel="stylesheet" href="css/site.css">
 	<script>(function(){try{if(localStorage.getItem('lp-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
 	<style>
+		.location-info h3 i { transition: transform 0.3s ease; }
+		.location-info:hover h3 i { transform: rotate(-8deg) scale(1.1); }
+		.location-details p { transition: transform 0.2s ease; }
+		.location-details p:hover { transform: translateX(3px); }
+		.map-placeholder { overflow: hidden; }
+		.map-placeholder iframe { transition: filter 0.4s ease; filter: grayscale(0.15); }
+		.map-placeholder:hover iframe { filter: grayscale(0); }
 		.header-content { display: flex; align-items: center; justify-content: space-between; gap: 2rem; text-align: left; flex-wrap: wrap; }
 		.header-text { flex: 1; min-width: 260px; }
 		.header-photo { flex-shrink: 0; }
@@ -32,9 +39,11 @@
 		.contact-container { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; margin-top: 2rem; }
 		.contact-info h2, .contact-form h2 { margin-top: 0; }
 		.contact-methods { margin-top: 1.5rem; }
-		.contact-item { display: flex; gap: 1rem; margin-bottom: 1.8rem; }
+		.contact-item { display: flex; gap: 1rem; margin-bottom: 1.8rem; transition: transform 0.3s ease; }
+		.contact-item:hover { transform: translateX(4px); }
 		.contact-item:last-child { margin-bottom: 0; }
-		.contact-icon { width: 46px; height: 46px; flex-shrink: 0; background-color: var(--light-color); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+		.contact-icon { width: 46px; height: 46px; flex-shrink: 0; background-color: var(--light-color); color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease; }
+		.contact-item:hover .contact-icon { background-color: var(--primary-color); color: #fff; transform: scale(1.08) rotate(-6deg); }
 		.contact-details h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
 		.contact-details p { margin-bottom: 0.3rem; color: var(--gray-color); font-size: 0.92rem; }
 		.contact-link { font-weight: 600; }
@@ -42,9 +51,9 @@
 		.contact-form { background-color: var(--light-color); padding: 2rem; border-radius: var(--border-radius); }
 		.form-group { margin-bottom: 1.3rem; }
 		.form-label { display: block; font-weight: 600; margin-bottom: 0.4rem; color: var(--secondary-color); font-size: 0.92rem; }
-		.form-control { width: 100%; padding: 12px 14px; border-radius: var(--border-radius); border: 1px solid var(--light-gray); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--dark-color); }
+		.form-control { width: 100%; padding: 12px 14px; border-radius: var(--border-radius); border: 1px solid var(--light-gray); font-family: inherit; font-size: 1rem; background-color: var(--card-bg); color: var(--dark-color); transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease; }
 		textarea.form-control { min-height: 130px; resize: vertical; }
-		.form-control:focus { outline: none; border-color: var(--primary-color); }
+		.form-control:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(42, 110, 63, 0.12); transform: translateY(-1px); }
 
 		.location-section { margin-top: 1rem; }
 		.location-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
@@ -109,7 +118,7 @@
 						<p>Feel free to reach out to me through any of the following methods. I typically respond within 24 hours.</p>
 
 						<div class="contact-methods">
-							<div class="contact-item">
+							<div class="contact-item reveal-item" style="--i:0;">
 								<div class="contact-icon"><i class="fas fa-envelope"></i></div>
 								<div class="contact-details">
 									<h3>Email</h3>
@@ -118,7 +127,7 @@
 								</div>
 							</div>
 
-							<div class="contact-item">
+							<div class="contact-item reveal-item" style="--i:1;">
 								<div class="contact-icon"><i class="fas fa-phone"></i></div>
 								<div class="contact-details">
 									<h3>Phone</h3>
@@ -127,7 +136,7 @@
 								</div>
 							</div>
 
-							<div class="contact-item">
+							<div class="contact-item reveal-item" style="--i:2;">
 								<div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
 								<div class="contact-details">
 									<h3>Location</h3>
@@ -136,7 +145,7 @@
 								</div>
 							</div>
 
-							<div class="contact-item">
+							<div class="contact-item reveal-item" style="--i:3;">
 								<div class="contact-icon"><i class="fas fa-file-arrow-down"></i></div>
 								<div class="contact-details">
 									<h3>Curriculum Vitae</h3>

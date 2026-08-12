@@ -19,7 +19,7 @@
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
-		submitBtn.textContent = 'Sending...';
+		submitBtn.classList.add('is-loading');
 		submitBtn.disabled = true;
 		statusEl.textContent = '';
 		statusEl.style.color = '';
@@ -50,6 +50,7 @@
 			})
 			.finally(function () {
 				submitBtn.textContent = originalText;
+				submitBtn.classList.remove('is-loading');
 				submitBtn.disabled = false;
 			});
 	});

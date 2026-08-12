@@ -50,18 +50,21 @@
 		.tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
 		.tool-item { background-color: var(--light-color); padding: 1.5rem 1rem; border-radius: var(--border-radius); text-align: center; transition: var(--transition); }
 		.tool-item:hover { transform: translateY(-4px); box-shadow: var(--box-shadow); }
-		.tool-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.7rem; }
+		.tool-item:hover .tool-icon { transform: scale(1.15) rotate(-4deg); }
+		.tool-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.7rem; transition: transform 0.3s ease; }
 		.tool-name { font-weight: 500; font-size: 0.9rem; color: var(--secondary-color); }
 
 		/* Languages */
 		.languages-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
-		.language-item { background-color: var(--light-color); padding: 1.2rem; border-radius: var(--border-radius); text-align: center; }
+		.language-item { background-color: var(--light-color); padding: 1.2rem; border-radius: var(--border-radius); text-align: center; transition: var(--transition); }
+		.language-item:hover { transform: translateY(-3px); box-shadow: var(--box-shadow); }
 		.language-name { font-weight: 600; color: var(--secondary-color); margin-bottom: 0.3rem; }
 		.language-level { font-size: 0.85rem; color: var(--gray-color); }
 
 		/* Certifications */
 		.certifications-list { margin-top: 2rem; }
-		.certification-item { background-color: var(--light-color); padding: 1.2rem 1.5rem; border-radius: var(--border-radius); margin-bottom: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; }
+		.certification-item { background-color: var(--light-color); padding: 1.2rem 1.5rem; border-radius: var(--border-radius); margin-bottom: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; transition: var(--transition); }
+		.certification-item:hover { transform: translateX(4px); box-shadow: var(--box-shadow); }
 		.certification-title { font-weight: 600; color: var(--secondary-color); }
 		.certification-org { color: var(--primary-color); font-size: 0.9rem; }
 		.certification-date { color: var(--gray-color); font-size: 0.85rem; }
@@ -182,14 +185,17 @@
 			.then(res => res.json())
 			.then(data => {
 				// Core competencies
-				document.getElementById('skills-container').innerHTML = (data.categories || []).map(cat => `
+				const skillsContainer = document.getElementById('skills-container');
+				skillsContainer.innerHTML = (data.categories || []).map(cat => `
 					<div class="skill-category">
 						<h3><i class="fas ${escapeHTML(cat.icon || 'fa-check')}"></i> ${escapeHTML(cat.title)}</h3>
 						<ul>${(cat.items || []).map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
 					</div>
 				`).join('');
+				lpRevealItems(skillsContainer, '.skill-category');
 
 				// Skill proficiency bars
+				const progressContainer = document.getElementById('progress-container');
 				const progressHTML = (data.proficiency || []).map(p => `
 					<div class="progress-item">
 						<div class="progress-header">
@@ -201,30 +207,43 @@
 						</div>
 					</div>
 				`).join('');
-				document.getElementById('progress-container').innerHTML = progressHTML;
+				progressContainer.innerHTML = progressHTML;
 
-				// Animate the bars in once they're in the DOM
-				requestAnimationFrame(() => {
-					document.querySelectorAll('.progress-fill').forEach(bar => {
-						bar.style.width = bar.dataset.width;
-					});
-				});
+				// Fill each bar only once it scrolls into view, so the viewer
+				// actually sees the 0 -> value animation instead of it firing
+				// off-screen while the page first loads.
+				if ('IntersectionObserver' in window) {
+					const barIO = new IntersectionObserver((entries) => {
+						entries.forEach(entry => {
+							if (!entry.isIntersecting) return;
+							entry.target.style.width = entry.target.dataset.width;
+							barIO.unobserve(entry.target);
+						});
+					}, { threshold: 0.4 });
+					document.querySelectorAll('.progress-fill').forEach(bar => barIO.observe(bar));
+				} else {
+					document.querySelectorAll('.progress-fill').forEach(bar => { bar.style.width = bar.dataset.width; });
+				}
 
 				// Tools & technologies
-				document.getElementById('tools-grid').innerHTML = (data.tools || []).map(tool => `
+				const toolsGrid = document.getElementById('tools-grid');
+				toolsGrid.innerHTML = (data.tools || []).map(tool => `
 					<div class="tool-item">
 						<div class="tool-icon"><i class="fa${tool.brand ? 'b' : 's'} ${escapeHTML(tool.icon || 'fa-check')}"></i></div>
 						<div class="tool-name">${escapeHTML(tool.name)}</div>
 					</div>
 				`).join('');
+				lpRevealItems(toolsGrid, '.tool-item');
 
 				// Languages
-				document.getElementById('languages-container').innerHTML = (data.languages || []).map(lang => `
+				const languagesContainer = document.getElementById('languages-container');
+				languagesContainer.innerHTML = (data.languages || []).map(lang => `
 					<div class="language-item">
 						<div class="language-name">${escapeHTML(lang.name)}</div>
 						<div class="language-level">${escapeHTML(lang.level)}</div>
 					</div>
 				`).join('');
+				lpRevealItems(languagesContainer, '.language-item');
 			})
 			.catch(err => console.error('Could not load skills.json', err));
 
@@ -233,7 +252,8 @@
 			.then(res => res.json())
 			.then(data => {
 				const items = (data.items || []).slice(0, 3);
-				document.getElementById('certifications-list').innerHTML = items.map(item => `
+				const certList = document.getElementById('certifications-list');
+				certList.innerHTML = items.map(item => `
 					<div class="certification-item">
 						<div>
 							<div class="certification-title">${escapeHTML(item.title)}</div>
@@ -242,6 +262,7 @@
 						<div class="certification-date">${escapeHTML(item.date_range)}</div>
 					</div>
 				`).join('');
+				lpRevealItems(certList, '.certification-item');
 			})
 			.catch(err => console.error('Could not load training.json', err));
 	</script>
