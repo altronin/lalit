@@ -6,7 +6,7 @@
     <description>Research findings, field experiences, and perspectives on environmental science, GIS, and disaster risk management from Lalit Pathak.</description>
     <language>en-us</language>
     <atom:link href="https://lalitpathak.com.np/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Sun, 06 Sep 2026 15:47:39 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Sep 2026 02:33:26 +0000</lastBuildDate>
     <item>
       <title>सङ्कटमा प्राविधिक विज्ञताको अर्थ कार्यमूलक कि औपचारिक?</title>
       <link>https://lalitpathak.com.np/blog-post.html?post=rasuwadisaster2</link>
@@ -80,6 +80,32 @@
       <description>Formal education and media remain critical for framing the issue, reflects the lead authors, but it is the invisible architecture....</description>
     </item>
     <item>
+      <title>Air Pollution Crisis in Kathmandu: A Multifaceted Emergency Demanding Urgent Action</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=ktm-air-pollution</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=ktm-air-pollution</guid>
+      <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
+      <category>Research</category>
+      <description>By weaving together insights from recent measurements, scientific studies, and expert analyses, it becomes clear that Kathmandu’s air pollution crisis is both a symptom of longstanding challenges and a catalyst for urgent reform. </description>
+    </item>
+    <item>
+      <title>हिमाल र हाम्रो अस्तित्व: &quot;हिमजल हिउँ छैया जीजागी रयै&quot; यो आशीर्वाद होइन, अस्तित्वको प्रतिज्ञा हो</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=mountain-blessing</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=mountain-blessing</guid>
+      <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
+      <category>Opinion</category>
+      <description>आधुनिक संवादले कहिलेकाहीं हाम्रो चेतनालाई मात्र प्रोत्साहित गर्छ, तर वास्तविक परिवर्तन स्थानीय स्तरबाट आरम्भ हुनुपर्छ।</description>
+    </item>
+    <item>
+      <title>!! सृष्टिको मौनता र चक्रीय इतिहास</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=evolution-vedas</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=evolution-vedas</guid>
+      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <category>Stories &amp; Essays</category>
+      <description>किनकि सृष्टि भन्नु प्रश्न हो , उत्तर होइन।
+रहस्य हो, समाधान होइन।
+अस्तित्व भन्नु एक सम्भावना हो, निष्कर्ष होइन।</description>
+    </item>
+    <item>
       <title>Landslide Susceptibility Mapping in Nepal&#x27;s Mid-Hills</title>
       <link>https://lalitpathak.com.np/blog-post.html?post=lsm-mid-mills</link>
       <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=lsm-mid-mills</guid>
@@ -102,6 +128,14 @@
       <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
       <category>GIS &amp; Remote Sensing</category>
       <description>Leveraging spatial analysis and remote sensing for comprehensive environmental monitoring and assessment...</description>
+    </item>
+    <item>
+      <title>Project Harvest and Humanization</title>
+      <link>https://lalitpathak.com.np/blog-post.html?post=project-harvest-humanization</link>
+      <guid isPermaLink="true">https://lalitpathak.com.np/blog-post.html?post=project-harvest-humanization</guid>
+      <pubDate>Fri, 09 Jun 2023 00:00:00 +0000</pubDate>
+      <category>Opinion</category>
+      <description>This dynamic is particularly evident in developing societies, where educated individuals, including donors and government representatives, often assume that they alone possess the expertise to create better-quality mindsets in the local population.</description>
     </item>
   </channel>
 </rss>
