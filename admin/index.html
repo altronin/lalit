@@ -6,6 +6,11 @@
     <title>Lalit Pathak - Website Admin</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+    <!-- Pinned to an exact version (not ^3.1.2) so this admin panel never
+         silently picks up a new major/minor release from unpkg without you
+         choosing to bump it. Decap's bundle changes per release, so it isn't
+         practical to pin with Subresource Integrity here — treat any future
+         version bump as a small trust decision, same as any dependency. -->
+    <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
   </body>
 </html>

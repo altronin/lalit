@@ -19,6 +19,18 @@
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
+		// Honeypot check: a real visitor never sees or fills the off-screen
+		// `_gotcha` field, so a non-empty value means a bot filled every input
+		// it could find. Pretend to succeed rather than telling the bot why it
+		// failed, so it doesn't just adapt.
+		const honeypot = form.querySelector('input[name="_gotcha"]');
+		if (honeypot && honeypot.value) {
+			statusEl.style.color = 'var(--primary-color, #3a6b52)';
+			statusEl.textContent = "Thanks — your message has been sent. I'll get back to you soon.";
+			form.reset();
+			return;
+		}
+
 		submitBtn.classList.add('is-loading');
 		submitBtn.disabled = true;
 		statusEl.textContent = '';
@@ -33,7 +45,7 @@
 		})
 			.then(function (response) {
 				if (response.ok) {
-					statusEl.style.color = 'var(--primary-color, #2a6e3f)';
+					statusEl.style.color = 'var(--primary-color, #3a6b52)';
 					statusEl.textContent = "Thanks — your message has been sent. I'll get back to you soon.";
 					form.reset();
 				} else {

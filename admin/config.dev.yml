@@ -1,16 +1,15 @@
+# LOCAL-DEV-ONLY CMS config. Never ship this as admin/config.yml — it points
+# at the decap-server local proxy (`npx decap-server`) with no auth, which
+# only works on localhost. To use it while developing:
+#   1. npx decap-server
+#   2. Temporarily copy this file's content over admin/config.yml (or load
+#      it via Decap's CMS.init({ config }) override) — then revert before
+#      committing so production never ships a localhost backend.
+local_backend: true
 backend:
-  name: github
-  repo: altronin/lalit
-  branch: main
-  # Decap CMS needs an OAuth handshake to write to GitHub on your behalf.
-  # GitHub Pages can't run that handshake itself, so point this at a small
-  # OAuth proxy (e.g. https://github.com/sterlingwes/netlify-cms-github-oauth-provider
-  # deployed as a free Cloudflare Worker / Vercel function, or Netlify's own
-  # proxy if any part of the deploy pipeline touches Netlify). Uncomment and
-  # fill in once that's deployed — until then, editors can still write files
-  # directly on GitHub or via `admin/config.dev.yml` locally.
-  # base_url: https://your-oauth-proxy.example.com
-  # auth_endpoint: auth
+  name: proxy
+  proxy_url: "http://localhost:8081/api/v1"
+
 
 media_folder: "images"
 public_folder: "images"

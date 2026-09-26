@@ -3,25 +3,113 @@
 ## Overview
 
 This is a static HTML/CSS/JS website hosted on **GitHub Pages**, with content
-management handled by **Decap CMS** running locally through GitHub Desktop.
-No database, no build step — everything is plain files in the repo.
+management handled by **Decap CMS**. No database, no build step — everything
+is plain files in the repo.
 
-As of this update, the site has been consolidated onto a **single shared
-stylesheet and script**, so most day-to-day design or behavior changes only
-need to happen in one file, not five.
+The site has been consolidated onto a **single shared stylesheet and script**
+(plus a small set of per-page scripts — see "2026 security & architecture
+revision" below), so most day-to-day design or behavior changes only need to
+happen in one file, not five.
+
+## 2026 security & architecture revision
+
+This pass focused on four things: closing a real XSS gap, hardening every
+page with a Content-Security-Policy, cutting page weight, and giving the
+site a more considered, publication-style look. If you're picking this repo
+back up after a while, read this section first — a few workflows changed.
+
+**Security**
+- `marked` (Markdown → HTML) and `DOMPurify` (sanitizer) are now vendored
+  locally in `js/vendor/` instead of loaded from a CDN, and `blog-post.html`
+  runs every rendered post body through `DOMPurify.sanitize()` before it
+  touches the page. Previously a post's Markdown body went straight from
+  `marked.parse()` into `innerHTML` with nothing in between — fine as long
+  as only you ever edit `data/blogs.json`, but one compromised CMS session
+  or careless PR away from stored XSS on every visitor's browser.
+- Every page now ships a `Content-Security-Policy` meta tag. To make a
+  strict `script-src 'self'` possible (no `'unsafe-inline'`), each page's
+  bottom-of-body `<script>` block was moved into its own file under
+  `js/pages/` (`home.js`, `blogs.js`, `myskills.js`, `portfolio.js`,
+  `blog-post.js`), and the duplicated dark-mode anti-flash snippet that used
+  to be pasted into every page's `<head>` is now the single `js/theme-init.js`.
+  **If you add a new inline `<script>` block to a page, either move its code
+  into `js/pages/<page>.js` or that page's CSP will need `'unsafe-inline'`
+  added back to `script-src` — do the former.** The four hand-built
+  `blog_*.html` pages still use inline scripts and so keep `'unsafe-inline'`
+  in their own CSP; migrating them onto the shared template is the next
+  worthwhile chunk of work, not done here.
+- `admin/config.yml` no longer ships the local-dev proxy backend
+  (`local_backend: true` / `backend: proxy` pointing at `localhost:8081`) —
+  that was a dev-only config that had leaked into production. It's now in
+  `admin/config.dev.yml` (never commit *that* over `config.yml`). Production
+  `config.yml` is set to `backend: { name: github, repo: altronin/lalit }`
+  but **needs an OAuth proxy URL filled in** (see the comment in that file)
+  before the live `/admin` panel can actually save changes to GitHub.
+- Font Awesome is now loaded with a Subresource Integrity hash, so a
+  compromised cdnjs build can't inject arbitrary code via that `<link>`.
+  Decap CMS's `<script>` in `admin/index.html` is pinned to an exact
+  version (`3.1.2`, not `^3.1.2`) so it can't silently pick up a new
+  release.
+- Every `target="_blank"` link now carries `rel="noopener noreferrer"`.
+- The contact form has a honeypot field (`_gotcha`) — `form-handler.js`
+  silently drops any submission where it's filled, before it ever reaches
+  Formspree.
+
+**Performance**
+- The three GIFs that used to sit in `data/blogs.json` post images (2.1MB,
+  1.6MB) are now MP4/WebM with a poster frame — same visual loop, 92–96%
+  smaller. `js/site.js`'s new `lpRenderMedia()` helper renders a `<video>`
+  for any `image` field ending in `.mp4`/`.webm` and an `<img>` otherwise,
+  so the CMS's `image` field can point at either. A third GIF
+  (`kathmandu-air-pollution-crisis.gif`) turned out to be referenced
+  nowhere at all and was deleted outright.
+
+**Aesthetics**
+- Design tokens (color, type, spacing) now live in their own file,
+  `css/tokens.css`, imported by `css/site.css` — the palette is a more
+  restrained, desaturated forest/ink-navy/brass set on a warm off-white
+  background, replacing the brighter green/gold from before.
+- Headings and long-form body text (blog articles, the intro section) now
+  use **Source Serif 4**, paired with **Inter** for nav/buttons/labels —
+  aiming for something closer to a journal or university-press feel than a
+  generic template.
+- The Publications section in `portfolio.html` is now a real hanging-indent
+  reference list (author — title — journal — link) instead of a card grid.
+
+**One known pre-existing content bug, left as-is**: the "Kathmandu's Air
+Pollution Crisis" post in `data/blogs.json` has one `![]()` image reference
+partway through its body pointing at a file that was never actually
+uploaded (a very long auto-generated filename ending `...poll.gif`). It was
+already broken before this revision — worth deleting that one line or
+uploading the real image next time you're in the CMS.
 
 ## Folder structure
+
 
 ```
 lalit/
 ├── admin/
-│   ├── config.yml         ← defines what the CMS form looks like
-│   └── index.html          ← loads the Decap CMS app (don't edit)
+│   ├── config.yml         ← production CMS config (GitHub backend — needs an
+│   │                          OAuth proxy URL filled in, see comment inside)
+│   ├── config.dev.yml      ← LOCAL-DEV-ONLY config (local proxy backend) —
+│   │                          never rename this over config.yml
+│   └── index.html           ← loads the Decap CMS app (don't edit)
 ├── css/
-│   └── site.css            ← THE stylesheet — used by every page
+│   ├── tokens.css           ← design tokens: color, type, spacing (edit here
+│   │                            for a palette/font change site-wide)
+│   └── site.css              ← THE stylesheet — layout & components, used by
+│                                 every page, imports tokens.css
 ├── js/
-│   └── site.js              ← THE script — nav, dark mode, scroll effects,
-│                               back-to-top, reveal animations, used by every page
+│   ├── site.js                ← THE shared script — nav, dark mode, scroll
+│   │                              effects, back-to-top, reveal animations,
+│   │                              lpRenderMedia() — used by every page
+│   ├── theme-init.js           ← tiny anti-flash dark-mode script, loaded in
+│   │                              <head> before first paint on every page
+│   ├── pages/                  ← one file per page's own dynamic content
+│   │   ├── home.js, blogs.js, myskills.js, portfolio.js, blog-post.js
+│   └── vendor/                 ← locally-vendored third-party libs (not CDN)
+│       ├── marked-12.0.2.min.js
+│       └── dompurify-3.4.16.min.js
 ├── data/
 │   ├── experience.json     ← Professional Experience entries
 │   ├── projects.json       ← Projects entries
@@ -29,8 +117,13 @@ lalit/
 │   ├── training.json       ← Training & Professional Development entries
 │   ├── skills.json          ← Skill categories, proficiency bars, tools, languages
 │   │                          (feeds BOTH the homepage and My Skills page)
-│   └── blogs.json           ← Blog listing cards + posts written in the CMS
-├── images/                 ← photos, thumbnails, general site images, favicon.svg
+│   ├── blogs.json           ← Blog listing cards + posts written in the CMS
+│   │                          (an `image` field can be a still image OR an
+│   │                          .mp4/.webm clip — lpRenderMedia() picks the tag)
+│   └── person-schema.json   ← Person JSON-LD, loaded by index.html via
+│                                <script type="application/ld+json" src="...">
+├── images/                 ← photos, thumbnails, general site images, favicon.svg,
+│                              short .mp4/.webm clips + matching -poster.jpg stills
 ├── blogs/                  ← a couple of legacy blog thumbnail images
 ├── fonts/                  ← webfont files (used by blog_templete only)
 ├── cv.pdf                   ← downloadable CV, linked from Home/Portfolio/Contact
@@ -40,15 +133,17 @@ lalit/
 │                                 with a project status filter and a publication search box)
 ├── blogs.html                  ← Blog listing page (data-driven, with category filters + search)
 ├── blog-post.html               ← Displays any blog post written directly in the CMS
-├── contact.html                  ← Contact form (Formspree) + contact details
+├── contact.html                  ← Contact form (Formspree + honeypot) + contact details
 ├── 404.html                       ← Custom "page not found" page for GitHub Pages
 ├── robots.txt, sitemap.xml         ← basic SEO plumbing
 ├── blog_bmm1.html, blog_lsmvdo.html, blog_moutday2025.html
 │                                    ← older, individually hand-built blog post pages
+│                                      (still use inline <script>, so their CSP keeps
+│                                      'unsafe-inline' — see revision notes above)
 ├── blog_templete/                  ← copy blog_templete.html if you ever want to
 │                                      hand-build a post with custom HTML (e.g. embedded video)
-└── form-handler.js                  ← real AJAX submit + inline success/error message for the
-                                        contact form (replaces the old blind "alert()" popup)
+└── form-handler.js                  ← real AJAX submit + honeypot spam check + inline
+                                        success/error message for the contact form
 ```
 
 ## What changed in this update
@@ -135,14 +230,19 @@ JSON files — you never touch the JSON by hand.
 Almost everything visual and structural now lives in one place:
 
 - **Colors, buttons, nav, footer, dark mode, responsive breakpoints** →
-  edit `css/site.css`. This affects every page immediately.
+  edit `css/tokens.css` (color/type/spacing values) or `css/site.css`
+  (layout/components). This affects every page immediately.
 - **Nav behavior, dark mode toggle, scroll effects, back-to-top** → edit
   `js/site.js`.
+- **A page's own dynamic content** (how project cards render, the blog
+  filters, the stats strip) → that page's file in `js/pages/`, not an
+  inline `<script>` in the HTML — keeping scripts external is what lets
+  each page's CSP stay strict.
 - **A page-specific layout** (e.g. how project cards look) → the small
   `<style>` block still inside that page's `<head>`.
 - **Adding a new page to the nav** → add the `<li><a>` to the nav menu in
   every page's `<nav>` block (this one part is still per-page, since each
-  page needs to mark its own link `active`).
+  page needs to mark its own link `active` and `aria-current="page"`).
 
 ## Important things to remember
 

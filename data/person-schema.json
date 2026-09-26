@@ -1,0 +1,15 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Lalit Pathak",
+	"jobTitle": "Research Associate",
+	"worksFor": { "@type": "Organization", "name": "Center of Research for Environment, Energy and Water (CREEW)" },
+	"url": "https://lalitpathak.com.np/",
+	"image": "https://lalitpathak.com.np/images/pic_08.png",
+	"sameAs": [
+		"https://www.linkedin.com/in/altronin/",
+		"https://www.researchgate.net/profile/Lalit-Pathak-3",
+		"https://x.com/Alt_Ronin",
+		"https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en"
+	]
+}

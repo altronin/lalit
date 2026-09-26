@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Design tokens — the single source of truth for color, type, and spacing.
+   Change a value here once; every page and component picks it up via the
+   CSS custom properties below. Kept separate from site.css so the palette/
+   typography can be reviewed and revised without wading through layout code.
+   ========================================================================== */
+
+:root {
+	/* ---- Color: a restrained, desaturated academic-press palette ----
+	   Muted forest (not bright green), deep ink-navy, and a soft brass
+	   accent used sparingly — closer to a university press than an NGO
+	   flyer. Body background is a warm off-white, not stark #fff. */
+	--primary-color: #3a6b52;
+	--primary-dark: #2b5140;
+	--primary-light: #4f8267;
+	--secondary-color: #1c2e45;
+	--accent-color: #c9a15a;
+	--light-color: #f6f4ee;
+	--dark-color: #2b2b28;
+	--gray-color: #5f6660;
+	--light-gray: #e6e3d8;
+	--border-radius: 8px;
+	--box-shadow: 0 4px 12px rgba(28, 46, 69, 0.08);
+	--transition: all 0.3s ease;
+
+	--card-bg: #ffffff;
+	--body-bg: #faf9f5;
+	--nav-bg: rgba(250, 249, 245, 0.95);
+	--border-color: var(--light-gray);
+
+	/* ---- Typography: a serif for headings/long-form reading (the single
+	   biggest lever for a "publication" feel), a sans for UI chrome. ---- */
+	--font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Inter', 'Open Sans', -apple-system, sans-serif;
+
+	/* ---- Spacing scale (1 unit = 1rem) — used for consistent vertical
+	   rhythm instead of ad hoc margin values scattered through pages. ---- */
+	--space-1: 0.5rem;
+	--space-2: 1rem;
+	--space-3: 1.5rem;
+	--space-4: 2rem;
+	--space-5: 3rem;
+	--space-6: 4rem;
+
+	/* Comfortable reading measure for article/prose blocks. */
+	--prose-width: 70ch;
+}
+
+/* ---- Dark theme overrides (toggled via [data-theme="dark"] on <html>) ---- */
+html[data-theme="dark"] {
+	--light-color: #1f241f;
+	--dark-color: #e8e6de;
+	--gray-color: #a7ada4;
+	--light-gray: #333a33;
+	--card-bg: #181d18;
+	--body-bg: #10130f;
+	--nav-bg: rgba(16, 19, 15, 0.92);
+	--border-color: #2b322b;
+	--box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}

@@ -19,6 +19,22 @@ function escapeHTML(str) {
 	return div.innerHTML;
 }
 
+// Renders a thumbnail/hero media source as <video> (muted/looping, no audio
+// track needed) when it's a .mp4/.webm file, or a lazy <img> otherwise. Lets
+// the CMS-editable `image` field point at either an image or a short clip
+// without every page needing its own branching markup.
+function lpRenderMedia(src, alt, className) {
+	const safeSrc = escapeHTML(src || '');
+	const safeAlt = escapeHTML(alt || '');
+	const cls = className ? ` class="${escapeHTML(className)}"` : '';
+	if (/\.(mp4|webm)$/i.test(src || '')) {
+		const poster = (src || '').replace(/\.(mp4|webm)$/i, '-poster.jpg');
+		return `<video${cls} src="${safeSrc}" poster="${escapeHTML(poster)}" autoplay loop muted playsinline aria-label="${safeAlt}"></video>`;
+	}
+	return `<img${cls} src="${safeSrc}" alt="${safeAlt}" loading="lazy">`;
+}
+window.lpRenderMedia = lpRenderMedia;
+
 // Whether the visitor's OS asked for reduced motion — other scripts check this
 // before running purely-decorative animation (count-up, stagger delays, etc).
 const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -167,7 +183,12 @@ window.lpFadeSwap = lpFadeSwap;
 
 	function applyTheme(theme) {
 		document.documentElement.setAttribute('data-theme', theme);
-		if (toggleBtn) toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+		if (toggleBtn) {
+			toggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+			// aria-pressed reflects "is dark mode currently on", so assistive
+			// tech announces the toggle's state, not just its next action.
+			toggleBtn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+		}
 	}
 
 	if (toggleBtn) {

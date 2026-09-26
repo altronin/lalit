@@ -17,12 +17,13 @@
 	<meta name="twitter:image" content="https://lalitpathak.com.np/images/og-image.png">
 	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 	<link rel="alternate" type="application/rss+xml" title="Lalit Pathak - Environmental Insights" href="https://lalitpathak.com.np/feed.xml">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/site.css">
-	<script>(function(){try{if(localStorage.getItem('lp-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+	<script src="js/theme-init.js"></script>
 	<style>
 		.skills-intro .intro-text { text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; }
 
@@ -81,7 +82,7 @@
 			<div class="nav-right">
 				<ul class="nav-menu">
 					<li><a href="index.html">Home</a></li>
-					<li><a class="active" href="myskills.html">My Skills</a></li>
+					<li><a class="active" href="myskills.html" aria-current="page">My Skills</a></li>
 					<li><a href="portfolio.html">Portfolio</a></li>
 					<li><a href="blogs.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
@@ -180,91 +181,6 @@
 	</footer>
 
 	<script src="js/site.js"></script>
-	<script>
-		fetch('data/skills.json')
-			.then(res => res.json())
-			.then(data => {
-				// Core competencies
-				const skillsContainer = document.getElementById('skills-container');
-				skillsContainer.innerHTML = (data.categories || []).map(cat => `
-					<div class="skill-category">
-						<h3><i class="fas ${escapeHTML(cat.icon || 'fa-check')}"></i> ${escapeHTML(cat.title)}</h3>
-						<ul>${(cat.items || []).map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
-					</div>
-				`).join('');
-				lpRevealItems(skillsContainer, '.skill-category');
-
-				// Skill proficiency bars
-				const progressContainer = document.getElementById('progress-container');
-				const progressHTML = (data.proficiency || []).map(p => `
-					<div class="progress-item">
-						<div class="progress-header">
-							<span class="progress-label">${escapeHTML(p.label)}</span>
-							<span class="progress-value">${escapeHTML(p.value)}%</span>
-						</div>
-						<div class="progress-bar">
-							<div class="progress-fill" data-width="${escapeHTML(p.value)}%"></div>
-						</div>
-					</div>
-				`).join('');
-				progressContainer.innerHTML = progressHTML;
-
-				// Fill each bar only once it scrolls into view, so the viewer
-				// actually sees the 0 -> value animation instead of it firing
-				// off-screen while the page first loads.
-				if ('IntersectionObserver' in window) {
-					const barIO = new IntersectionObserver((entries) => {
-						entries.forEach(entry => {
-							if (!entry.isIntersecting) return;
-							entry.target.style.width = entry.target.dataset.width;
-							barIO.unobserve(entry.target);
-						});
-					}, { threshold: 0.4 });
-					document.querySelectorAll('.progress-fill').forEach(bar => barIO.observe(bar));
-				} else {
-					document.querySelectorAll('.progress-fill').forEach(bar => { bar.style.width = bar.dataset.width; });
-				}
-
-				// Tools & technologies
-				const toolsGrid = document.getElementById('tools-grid');
-				toolsGrid.innerHTML = (data.tools || []).map(tool => `
-					<div class="tool-item">
-						<div class="tool-icon"><i class="fa${tool.brand ? 'b' : 's'} ${escapeHTML(tool.icon || 'fa-check')}"></i></div>
-						<div class="tool-name">${escapeHTML(tool.name)}</div>
-					</div>
-				`).join('');
-				lpRevealItems(toolsGrid, '.tool-item');
-
-				// Languages
-				const languagesContainer = document.getElementById('languages-container');
-				languagesContainer.innerHTML = (data.languages || []).map(lang => `
-					<div class="language-item">
-						<div class="language-name">${escapeHTML(lang.name)}</div>
-						<div class="language-level">${escapeHTML(lang.level)}</div>
-					</div>
-				`).join('');
-				lpRevealItems(languagesContainer, '.language-item');
-			})
-			.catch(err => console.error('Could not load skills.json', err));
-
-		// Selected certifications, pulled from the same Training data used on the Portfolio page
-		fetch('data/training.json')
-			.then(res => res.json())
-			.then(data => {
-				const items = (data.items || []).slice(0, 3);
-				const certList = document.getElementById('certifications-list');
-				certList.innerHTML = items.map(item => `
-					<div class="certification-item">
-						<div>
-							<div class="certification-title">${escapeHTML(item.title)}</div>
-							<div class="certification-org">${escapeHTML(item.organization)}</div>
-						</div>
-						<div class="certification-date">${escapeHTML(item.date_range)}</div>
-					</div>
-				`).join('');
-				lpRevealItems(certList, '.certification-item');
-			})
-			.catch(err => console.error('Could not load training.json', err));
-	</script>
+	<script src="js/pages/myskills.js"></script>
 </body>
 </html>
