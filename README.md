@@ -1,4 +1,4 @@
-# lalitpathak.com.np — Website Guide
+# Website Guide
 
 ## Overview
 
