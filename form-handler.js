@@ -19,10 +19,13 @@
 	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
-		// Honeypot check: a real visitor never sees or fills the off-screen
-		// `_gotcha` field, so a non-empty value means a bot filled every input
-		// it could find. Pretend to succeed rather than telling the bot why it
-		// failed, so it doesn't just adapt.
+		// Honeypot check: a real visitor never sees or interacts with this
+		// type="hidden" field (browsers don't autofill hidden inputs, unlike
+		// an earlier version of this check that positioned it off-screen with
+		// CSS — some autofill tools/extensions do reach those). A non-empty
+		// value here means something filled every input it could find, i.e.
+		// a bot. Pretend to succeed rather than explaining why it failed, so
+		// it doesn't just adapt.
 		const honeypot = form.querySelector('input[name="_gotcha"]');
 		if (honeypot && honeypot.value) {
 			statusEl.style.color = 'var(--primary-color, #3a6b52)';

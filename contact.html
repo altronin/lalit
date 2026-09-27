@@ -162,14 +162,13 @@
 						<p>Have a question or want to work together? Send me a message and I'll get back to you as soon as possible.</p>
 
 						<form action="https://formspree.io/f/xdkjdnky" method="POST" id="contactForm">
-							<!-- Honeypot: hidden off-screen (not display:none, since bots that
-							     specifically skip display:none fields still often fill offscreen
-							     ones). form-handler.js blocks submission client-side if it's
-							     filled, and Formspree treats a filled `_gotcha` as spam too. -->
-							<div class="form-group" style="position:absolute; left:-9999px;" aria-hidden="true">
-								<label for="_gotcha">Leave this field empty</label>
-								<input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
-							</div>
+							<!-- Honeypot: a type="hidden" field, which browsers never show or
+							     autofill (an earlier version used a CSS-offscreen div instead --
+							     switched away since some autofill tools/extensions do still reach
+							     off-screen fields, which could make a real visitor's submission
+							     look like a bot's and get silently dropped). Formspree also
+							     treats a filled `_gotcha` as spam. -->
+							<input type="hidden" id="_gotcha" name="_gotcha" value="">
 							<div class="form-group">
 								<label for="name" class="form-label">Your Name</label>
 								<input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
