@@ -54,6 +54,10 @@ collections:
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+              - { label: "Full overview (shown on the project's own page)", name: "body", widget: "markdown", required: false, hint: "Optional. Background, objectives, methods, outputs — you can format text and add photos. If blank, the short description is shown." }
+              - { label: "Cover image or short clip", name: "image", widget: "image", required: false }
+              - { label: "External project link", name: "link", widget: "string", required: false, hint: "Optional, must start with https://" }
+              - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
 
   - name: "publications"
     label: "Publications"
@@ -73,6 +77,9 @@ collections:
               - { label: "Authors", name: "authors", widget: "string" }
               - { label: "Journal / Citation", name: "journal", widget: "string" }
               - { label: "Link (DOI or URL)", name: "link", widget: "string" }
+              - { label: "Abstract", name: "abstract", widget: "markdown", required: false, hint: "Paste the abstract. Shown on the publication's own page." }
+              - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated, e.g. landslide, GIS, Nepal" }
+              - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
               - { label: "Citations (check scholar.google.com and update by hand)", name: "citations", widget: "number", value_type: "int", required: false }
 
   - name: "training"

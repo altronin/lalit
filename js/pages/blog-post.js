@@ -9,7 +9,7 @@ const params = new URLSearchParams(window.location.search);
 const slug = params.get('post');
 const pageUrl = 'https://lalitpathak.com.np/blog-post.html?post=' + encodeURIComponent(slug || '');
 
-fetch('data/blogs.json')
+fetch('data/blogs.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const post = (data.items || []).find(item => item.slug === slug);

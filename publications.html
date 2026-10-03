@@ -3,9 +3,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Page Not Found | Lalit Pathak</title>
-	<meta name="robots" content="noindex">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="format-detection" content="telephone=no">
+	<title id="page-title-tag">Publications | Lalit Pathak - Environmental Scientist</title>
+	<meta name="description" id="page-description-tag" content="Peer-reviewed publications by Lalit Pathak on landslide susceptibility, multi-hazard assessment, water resources and climate resilience in Nepal and the Himalaya.">
+	<link rel="canonical" href="https://lalitpathak.com.np/publications.html">
+	<meta property="og:type" content="website">
+	<meta property="og:title" id="og-title-tag" content="Publications | Lalit Pathak">
+	<meta property="og:description" content="Peer-reviewed publications by Lalit Pathak on landslide susceptibility, multi-hazard assessment, water resources and climate resilience in Nepal and the Himalaya.">
+	<meta property="og:url" content="https://lalitpathak.com.np/publications.html">
+	<meta property="og:image" content="https://lalitpathak.com.np/images/og-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://lalitpathak.com.np/images/og-image.png">
 	<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+	<link rel="alternate" type="application/rss+xml" title="Lalit Pathak - Environmental Insights" href="https://lalitpathak.com.np/feed.xml">
 	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none';">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +24,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/site.css">
 	<script src="js/theme-init.js"></script>
-	<style>
-		.error-wrap { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px 80px; }
-		.error-code { font-family: var(--font-serif); font-size: 6rem; font-weight: 700; color: var(--primary-color); line-height: 1; margin-bottom: 0.5rem; display: inline-block; animation: error-float 3s ease-in-out infinite; }
-		@keyframes error-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-		.error-wrap .btn { transition: var(--transition); }
-	</style>
 </head>
 <body>
 	<a href="#main" class="skip-link">Skip to content</a>
@@ -31,7 +36,7 @@
 					<li><a href="myskills.html">My Skills</a></li>
 					<li><a href="portfolio.html">Portfolio</a></li>
 					<li><a href="projects.html">Projects</a></li>
-					<li><a href="publications.html">Publications</a></li>
+					<li><a class="active" href="publications.html" aria-current="page">Publications</a></li>
 					<li><a href="blogs.html">Blog</a></li>
 					<li><a href="contact.html">Contact</a></li>
 				</ul>
@@ -44,13 +49,30 @@
 		</div>
 	</nav>
 
-	<div class="container error-wrap" id="main">
-		<div class="hero-in" style="--i:0;">
-			<div class="error-code">404</div>
-			<h1>Page Not Found</h1>
-			<p class="intro-text">The page you're looking for doesn't exist or may have moved.</p>
-			<a href="index.html" class="btn">Back to Home</a>
+	<header id="header">
+		<div class="container header-content">
+			<h1 class="page-title" id="page-heading">Publications</h1>
+			<p class="page-subtitle" id="page-sub">Peer-reviewed research in environmental science, GIS and disaster risk management. Select any title to read its abstract.</p>
 		</div>
+	</header>
+
+	<div class="container">
+		<main id="main">
+			<section class="portfolio-section">
+				<div class="section-head-row">
+					<span class="count-badge" id="publication-count"></span>
+				</div>
+				<div class="scholar-stats-row" id="scholar-stats-row"></div>
+				<div class="filter-bar" id="publication-filters"></div>
+				<div class="filter-bar">
+					<input type="search" class="search-input" id="publication-search" placeholder="Search by title, author, journal or keyword&hellip;" aria-label="Search publications">
+				</div>
+				<div class="publication-list" id="publication-list">
+					<div class="skeleton" style="min-height:90px; margin-bottom:1.5rem;"></div>
+					<div class="skeleton" style="min-height:90px; margin-bottom:1.5rem;"></div>
+				</div>
+			</section>
+		</main>
 	</div>
 
 	<footer id="footer">
@@ -63,11 +85,21 @@
 					<li><a href="https://x.com/Alt_Ronin" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
 					<li><a href="https://scholar.google.com/citations?user=g2ElSJYAAAAJ&hl=en" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a></li>
 				</ul>
+				<div class="footer-links">
+					<a href="index.html">Home</a>
+					<a href="myskills.html">My Skills</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="projects.html">Projects</a>
+					<a href="publications.html">Publications</a>
+					<a href="blogs.html">Blog</a>
+					<a href="contact.html">Contact</a>
+				</div>
 				<p class="copy">&copy; <span id="current-year">2026</span> Lalit Pathak. All rights reserved.</p>
 			</div>
 		</div>
 	</footer>
 
 	<script src="js/site.js"></script>
+	<script src="js/pages/publications.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 // ---------- Content rendered from /data JSON files ----------
 
 // Professional Experience
-fetch('data/experience.json')
+fetch('data/experience.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const items = data.items;
@@ -28,7 +28,7 @@ fetch('data/experience.json')
 	})
 	.catch(err => console.error('Could not load experience.json', err));
 
-// Projects (with status filter)
+// Projects (with status filter). Titles link to each project's own page.
 let allProjects = [];
 function renderProjects(filter) {
 	const container = document.getElementById('project-grid');
@@ -44,7 +44,7 @@ function renderProjects(filter) {
 			return `
 				<div class="project-card">
 					<div class="project-header">
-						<h3 class="project-title">${escapeHTML(item.title)}</h3>
+						<h3 class="project-title"><a href="${escapeHTML(lpProjectHref(item))}">${escapeHTML(item.title)}</a></h3>
 						<div class="project-meta">
 							<span>${escapeHTML(item.date_range)}</span>
 							<span class="project-status ${statusClass}">${escapeHTML(item.status)}</span>
@@ -57,14 +57,14 @@ function renderProjects(filter) {
 							<h4>Responsibilities:</h4>
 							<ul>${responsibilities}</ul>
 						</div>
+						<a class="card-more" href="${escapeHTML(lpProjectHref(item))}">View project details &rarr;</a>
 					</div>
-				</div>
-			`;
+				</div>`;
 		}).join('');
 		lpRevealItems(container, '.project-card');
 	});
 }
-fetch('data/projects.json')
+fetch('data/projects.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		allProjects = data.items || [];
@@ -81,37 +81,24 @@ document.getElementById('project-filters').addEventListener('click', function (e
 	renderProjects(btn.dataset.filter);
 });
 
-// Publications (with live search)
+// Publications (with live search). Titles link to each publication's abstract page.
 let allPublications = [];
 function renderPublications(query) {
 	const container = document.getElementById('publication-list');
 	lpFadeSwap(container, () => {
 		const q = (query || '').trim().toLowerCase();
 		const items = !q ? allPublications : allPublications.filter(p =>
-			(p.title + ' ' + p.authors + ' ' + p.journal).toLowerCase().includes(q)
+			(p.title + ' ' + p.authors + ' ' + p.journal + ' ' + (p.keywords || '')).toLowerCase().includes(q)
 		);
 		if (!items.length) {
 			container.innerHTML = '<p class="empty-state">No publications match your search.</p>';
 			return;
 		}
-		container.innerHTML = items.map(item => {
-			const citations = (item.citations === null || item.citations === undefined) ? ''
-				: `<span class="publication-citations"><i class="fas fa-quote-right" aria-hidden="true"></i> Cited by ${escapeHTML(item.citations)}</span>`;
-			return `
-			<p class="publication-item">
-				<span class="publication-authors">${escapeHTML(item.authors)}</span>
-				&mdash; <span class="publication-title">${escapeHTML(item.title)}.</span>
-				<span class="publication-journal">${escapeHTML(item.journal)}.</span>
-				<br>
-				<a href="${escapeHTML(item.link)}" class="publication-link" target="_blank" rel="noopener noreferrer">View publication &rarr;</a>
-				${citations}
-			</p>
-		`;
-		}).join('');
+		container.innerHTML = items.map(pubItemHTML).join('');
 		lpRevealItems(container, '.publication-item');
 	});
 }
-fetch('data/publications.json')
+fetch('data/publications.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		allPublications = data.items || [];
@@ -126,7 +113,7 @@ document.getElementById('publication-search').addEventListener('input', function
 
 // Google Scholar summary (there's no free public Scholar API — these numbers
 // are entered by hand in data/scholar-stats.json whenever they're checked).
-fetch('data/scholar-stats.json')
+fetch('data/scholar-stats.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(stats => {
 		const row = document.getElementById('scholar-stats-row');
@@ -141,7 +128,7 @@ fetch('data/scholar-stats.json')
 	.catch(err => console.error('Could not load scholar-stats.json', err));
 
 // Training & Professional Development
-fetch('data/training.json')
+fetch('data/training.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const items = data.items;

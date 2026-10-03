@@ -3,7 +3,7 @@
  * <script> so myskills.html's CSP can use a strict script-src 'self'.
  */
 
-fetch('data/skills.json')
+fetch('data/skills.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		// Core competencies
@@ -70,7 +70,7 @@ fetch('data/skills.json')
 	.catch(err => console.error('Could not load skills.json', err));
 
 // Selected certifications, pulled from the same Training data used on the Portfolio page
-fetch('data/training.json')
+fetch('data/training.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const items = (data.items || []).slice(0, 3);

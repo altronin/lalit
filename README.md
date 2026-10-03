@@ -52,6 +52,8 @@ lalit/
 ├── myskills.html              ← Full skills breakdown (data-driven from data/skills.json)
 ├── portfolio.html             ← Experience / Projects / Publications / Training (data-driven,
 │                                 with a project status filter and a publication search box)
+├── projects.html / project.html       ← all projects list + one page per project (?project=slug)
+├── publications.html / publication.html ← all publications list + one page per publication, with abstract (?pub=slug)
 ├── blogs.html                  ← Blog listing page (data-driven, with category filters + search)
 ├── blog-post.html               ← Displays any blog post written directly in the CMS
 ├── contact.html                  ← Contact form (Formspree + honeypot) + contact details
@@ -90,3 +92,17 @@ lalit/
    and push. Your live site updates automatically via GitHub Pages within a
    minute or two.
 
+
+
+## Projects & Publications pages
+
+`portfolio.html` shows only the latest 3 projects / 5 publications. The full
+lists live on `projects.html` and `publications.html`, and every entry opens
+its own page (`project.html` / `publication.html`). All of it is driven by
+`data/projects.json` and `data/publications.json`, so adding an entry in the
+admin panel is all it takes. The page URL is created from the title
+automatically (the optional "URL slug" field only matters if you rename a
+title and want the old link to keep working).
+
+- Publications: fill in the **Abstract** (and optional Keywords) in the CMS.
+- Projects: fill in **Full overview** (and optional cover image / link).

@@ -7,11 +7,11 @@
 
 // Live stats strip, computed from the same data files as the Portfolio page.
 Promise.all([
-	fetch('data/projects.json').then(r => r.json()).catch(() => ({ items: [] })),
-	fetch('data/publications.json').then(r => r.json()).catch(() => ({ items: [] })),
-	fetch('data/experience.json').then(r => r.json()).catch(() => ({ items: [] })),
-	fetch('data/training.json').then(r => r.json()).catch(() => ({ items: [] })),
-	fetch('data/scholar-stats.json').then(r => r.json()).catch(() => ({}))
+	fetch('data/projects.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+	fetch('data/publications.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+	fetch('data/experience.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+	fetch('data/training.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+	fetch('data/scholar-stats.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({}))
 ]).then(([projects, publications, experience, training, scholar]) => {
 	const ongoing = (projects.items || []).filter(p => p.status === 'Ongoing').length;
 	const stats = [
@@ -37,7 +37,7 @@ Promise.all([
 }).catch(err => console.error('Could not load stats', err));
 
 // First two skill categories, shared with My Skills page via data/skills.json
-fetch('data/skills.json')
+fetch('data/skills.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const container = document.getElementById('home-skills-container');
@@ -53,7 +53,7 @@ fetch('data/skills.json')
 	.catch(err => console.error('Could not load skills.json', err));
 
 // Latest 3 blog posts, shared with the Blog page via data/blogs.json
-fetch('data/blogs.json')
+fetch('data/blogs.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const container = document.getElementById('home-blog-teaser');

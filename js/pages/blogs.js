@@ -122,7 +122,7 @@ function renderCategories() {
 	});
 }
 
-fetch('data/blogs.json')
+fetch('data/blogs.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		allPosts = sortPostsByDateDesc(data.items || []);
@@ -134,7 +134,7 @@ fetch('data/blogs.json')
 document.getElementById('blog-search').addEventListener('input', e => renderBlogGrid(e.target.value));
 
 // ---------- Featured publications, pulled from the same source as the Portfolio page ----------
-fetch('data/publications.json')
+fetch('data/publications.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const items = (data.items || []).slice(0, 2);
@@ -143,7 +143,7 @@ fetch('data/publications.json')
 			<div class="featured-card">
 				<h3>${escapeHTML(item.title)}</h3>
 				<p>${escapeHTML(item.journal)}</p>
-				<a href="${escapeHTML(item.link)}" class="blog-read-more" target="_blank" rel="noopener noreferrer">View Publication <i class="fas fa-arrow-right"></i></a>
+				<a href="${escapeHTML(lpPubHref(item))}" class="blog-read-more">View Abstract <i class="fas fa-arrow-right"></i></a>
 			</div>
 		`).join('');
 		lpRevealItems(featuredGrid, '.featured-card');

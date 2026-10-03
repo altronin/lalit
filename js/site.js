@@ -19,6 +19,59 @@ function escapeHTML(str) {
 	return div.innerHTML;
 }
 
+
+// ---- Portfolio helpers (shared by portfolio, projects, publications + detail pages) ----
+// Slugs are generated from the title automatically, so a new entry added in
+// the CMS gets its own detail-page URL with no extra field to fill in. An
+// optional `slug` field in the CMS overrides it (use that if you later edit a
+// title but want the old link to keep working).
+function lpSlugify(str) {
+	return String(str || '').toLowerCase()
+		.normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+		.replace(/&/g, ' and ')
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-+|-+$/g, '')
+		.slice(0, 80);
+}
+function lpItemSlug(item) { return (item.slug && item.slug.trim()) ? item.slug.trim() : lpSlugify(item.title); }
+function lpPubYear(item) { const m = String(item.journal || '').match(/\((\d{4})\)\s*$/); return m ? m[1] : ''; }
+function lpPubHref(item) { return 'publication.html?pub=' + encodeURIComponent(lpItemSlug(item)); }
+function lpProjectHref(item) { return 'project.html?project=' + encodeURIComponent(lpItemSlug(item)); }
+// One publication row (used by portfolio.html and publications.html). The two
+// links sit in their own flex row so they never collide with the hanging indent.
+function pubItemHTML(item) {
+	const year = lpPubYear(item);
+	const link = lpSafeUrl(item.link);
+	const citations = (item.citations === null || item.citations === undefined) ? ''
+		: `<span class="publication-citations"><i class="fas fa-quote-right" aria-hidden="true"></i> Cited by ${escapeHTML(item.citations)}</span>`;
+	return `
+		<div class="publication-item">
+			<div class="publication-ref">
+				${year ? `<span class="pub-year">${escapeHTML(year)}</span>` : ''}
+				<span class="publication-authors">${escapeHTML(item.authors)}</span>
+				&mdash; <span class="publication-title"><a href="${escapeHTML(lpPubHref(item))}">${escapeHTML(item.title)}.</a></span>
+				<span class="publication-journal">${escapeHTML(item.journal)}.</span>
+			</div>
+			<div class="publication-links">
+				<a href="${escapeHTML(lpPubHref(item))}" class="publication-link">Abstract &amp; details &rarr;</a>
+				${link ? `<a href="${escapeHTML(link)}" class="publication-link" target="_blank" rel="noopener noreferrer">DOI / publisher &nearr;</a>` : ''}
+				${citations}
+			</div>
+		</div>`;
+}
+window.pubItemHTML = pubItemHTML;
+// Markdown -> sanitized HTML (needs marked + DOMPurify loaded on the page).
+function lpMarkdown(md) {
+	return DOMPurify.sanitize(marked.parse(md || ''), {
+		ADD_TAGS: ['video', 'source'],
+		ADD_ATTR: ['controls', 'autoplay', 'loop', 'muted', 'playsinline', 'poster']
+	});
+}
+// Only allow http(s) links from CMS data into href attributes.
+function lpSafeUrl(url) { return /^https?:\/\//i.test(url || '') ? url : ''; }
+window.lpSlugify = lpSlugify; window.lpItemSlug = lpItemSlug; window.lpPubYear = lpPubYear;
+window.lpPubHref = lpPubHref; window.lpProjectHref = lpProjectHref; window.lpMarkdown = lpMarkdown; window.lpSafeUrl = lpSafeUrl;
+
 // Renders a thumbnail/hero media source as <video> (muted/looping, no audio
 // track needed) when it's a .mp4/.webm file, or a lazy <img> otherwise. Lets
 // the CMS-editable `image` field point at either an image or a short clip
