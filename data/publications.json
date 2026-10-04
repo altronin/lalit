@@ -51,7 +51,8 @@
       "journal": "Lakes & Reservoirs: Research & Management, 30(1), e70012 (2025)",
       "link": "https://doi.org/10.1111/lre.70012",
       "citations": null,
-      "keywords": "Hydrochemistry, Water quality modelling, ANN, Wetland, Himalaya"
+      "keywords": "Hydrochemistry, Water quality modelling, ANN, Wetland, Himalaya",
+      "abstract": "Wetlands are increasingly threatened by human activities and climate change globally. This study provides the first comprehensive assessment of water quality in Nepal’s lowland riparian Ramsar wetlands. It focuses on Jagadishpur Reservoir (JR) and Nakrori Lake (NL), chosen for their ecological significance and contrasting artificial and natural features. The research examines seasonal water quality changes, identifies key hydrochemical processes, and evaluates suitability for drinking and irrigation. During pre- and post-monsoon periods, 156 water samples were collected from both lakes. Samples were analyzed for physicochemical parameters, including total dissolved solids (TDS), and major ions (Ca2+, Mg2+, HCO3-), using standardized laboratory techniques. Statistical analyses and hydrochemical diagrams, such as Piper and Gibbs plots, revealed that both lakes exhibited similar physicochemical profiles …"
     },
     {
       "title": "Water quality and health risk assessment in the Gandaki river basin, central Himalaya, Nepal",
@@ -67,7 +68,8 @@
       "journal": "Journal of Environment Sciences, 9(1), 82–93 (2023)",
       "link": "https://doi.org/10.3126/jes.v9i1.56483",
       "citations": null,
-      "keywords": "Soil erosion, RUSLE, Landslides, Mid-hills, Nepal"
+      "keywords": "Soil erosion, RUSLE, Landslides, Mid-hills, Nepal",
+      "abstract": "An attempt has been made in this research to assess soil erosion and its spatial distribution by the revised universal soil loss equation (RUSLE) model at Rangun Khola Watershed, western Nepal. The erosion factors were acquired from multiple sources (Satellite images, ALOSPALSAR DEM, SOTER soil database, Esri 2020 land cover map, rainfall database of DHM) and an integrated analysis was carried out in raster format of GIS. A landslide inventory was generated on the basis of satellite images and past literature to validate soil erosion intensity in the area. The result map of the RUSLE model was categorized into six levels based on the erosion severity, and 9.06 % of the area was found to be under extremely severe soil erosion risk (> 80 ton ha-1year-1) indicating urgent consequences. The frequency ratios for each level of potential erosion susceptible to landslide exhibited a linear relationship depicting reasonable and satisfactory level of agreement between the landslide event/location data and the erosion map that validates the model result. The result of this study will be helpful to detect the sensitive zones presenting a priority of protection and offer valuable information that aids decision-makers and user agencies in creating adequate conservation planning programs to stop soil erosion and maintain the natural balance."
     },
     {
       "title": "Landslide susceptibility assessment in the Rangun Khola watershed of far western Nepal",
