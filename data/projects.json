@@ -105,6 +105,19 @@
         "Laboratory analysis for physiochemical parameters",
         "Reporting and documentation"
       ]
+    },
+    {
+      "title": "Climate Change Awareness and Adaptation Priorities",
+      "date_range": "March 2025 – July 2025",
+      "status": "Completed",
+      "description": "An investigative mixed-methods study across three districts of Central Nepal evaluating how formal knowledge sources and lived experiences shape climate awareness, risk perceptions, and pro-environmental behaviors.",
+      "role": "Lead Author / Researcher",
+      "responsibilities": [
+        "Designed and implemented a stratified random survey of 300 respondents across urban, peri-urban, and rural settings in Kathmandu, Sindhupalchowk, and Chitwan districts.",
+        "Conducted multi-variable statistical analyses, including Chi-square tests and multiple linear regressions in Python/Google Colab, to identify predictors of the Environmental Behavior Index."
+      ],
+      "body": "Public perception of climate change is shaped by an intricate interplay between formal education, mass media, and lived environmental experiences. This research investigated how diverse knowledge sources influence climate awareness, risk perception, and pro-environmental actions among different socio-professional groups in Central Nepal. \n\nThe study captured urban, rural, and Terai perspectives by surveying 300 participants distributed evenly across **Kathmandu, Sindhupalchowk, and Chitwan districts**.\n\n![](https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs44274-025-00299-3/MediaObjects/44274_2025_299_Fig1_HTML.png?as=webp)\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Stratified Mixed-Methods Sampling:** Administered structured digital and printed surveys using KoboToolbox across 300 diverse respondents stratified by profession, education, age, and geography.\n* **Statistical Modeling:** Implemented rigorous statistical analyses (Chi-square associations and multiple regression models via Python Statsmodels) to evaluate the predictors of pro-environmental behaviors.\n* **Thematic & Textual Analysis:** Utilized natural language processing libraries (TextBlob, WordClouds) to assess open-ended qualitative narratives regarding barriers to local climate action.\n\n- - -\n\n### Major Findings & Epistemological Insights\n\n1. **The Epistemological Divide:** Highlighted a stark contrast where professionals emphasize global-scale risks (such as glacier melt and industrial emissions), whereas rural farmers prioritize immediate, localized livelihood threats (such as crop failure and erratic rainfall).\n2. **Predictors of Pro-Environmental Behavior:** Regression modeling demonstrated that **internalized personal norms ($\\beta = 1.01, p < 0.001$)** are the strongest drivers of pro-environmental actions, whereas formal education played a statistically non-significant direct role ($\\beta = -0.007, p = 0.746$).\n3. **Policy Implications:** Emphasizes that top-down technocratic adaptation plans (such as national NAP frameworks) must integrate grassroots experiential knowledge and support community-led initiatives.\n\n- - -\n\n### Publication & Citation\n\n* **Journal:** *Discover Environment* (Springer Nature, 2025)\n* **DOI:** [10.1007/s44274-025-00299-3](https://doi.org/10.1007/s44274-025-00299-3)\n* **Access:** Open Access",
+      "image": "images/wordcloud_barriers_to_climate_action.png"
     }
   ]
 }
