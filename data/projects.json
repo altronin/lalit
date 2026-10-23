@@ -52,19 +52,6 @@
       ]
     },
     {
-      "title": "GHG Mitigation from Open Waste Burning",
-      "date_range": "July 2023 - Oct 2025",
-      "status": "Completed",
-      "role": "Research Associate",
-      "description": "Research on greenhouse gas emissions from open waste burning.",
-      "responsibilities": [
-        "Proposal development",
-        "Field methodology development",
-        "Data analysis and report writing"
-      ],
-      "body": "“Through engagement in this project, I realize that open waste burning is more than a bad habit; it's a symptom of deeper struggles, the lack of reliable waste collection services, the daily pressure to make ends meet, and the absence of viable alternatives. \n\nTo clear the air, our solutions must be as complex and human cantered as the problem itself. We must address the 'why' before we can change the 'what'.\"\n\n— Mr. Lalit Pathak, CREEW, Nepal"
-    },
-    {
       "body": "Landslides pose severe threats to infrastructure and ecosystems in the active Sub-Himalayan (Chure) zone of Nepal. This independent research project was designed to rigorously evaluate whether complex Deep Learning (DL) architectures provide predictive advantages over classical tree-based Machine Learning (ML) ensemble models when applied to data-limited, tabular geomorphic conditioning factors in steep mountain environments.\n\nThe study covered five hydrologically connected watersheds spanning **305.14 km²** across Morang, Ilam, and Dhankuta districts in Koshi Province.\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Inventory & Factors:** A field-verified inventory of 176 landslide events evaluated against 12 spatial conditioning factors (slope, aspect, elevation, curvatures, TWI, SPI, soil, lithology, land use, and distances to roads/rivers).\n* **Model Implementation:** Implemented 10 models: Frequency Ratio (FR), Random Forest (RF), XGBoost, LightGBM, SVM, Logistic Regression, Artificial Neural Network (ANN), Deep Neural Network (DNN), 1D-CNN, and LSTM.\n* **Ensemble Fusion:** Developed a **Top-3 ML Ensemble** combining RF, XGBoost, and LightGBM to produce spatially coherent, low-error susceptibility maps.\n\n- - -\n\n### Major Findings\n\n1. **Tree-Based Superiority:** Tree-based ensemble models achieved the best performance, with **Random Forest leading at Test AUC = 0.928**, followed by XGBoost (0.881) and LightGBM (0.844).\n2. **Deep Learning Constraints:** Deep learning architectures (ANN: 0.773, CNN: 0.766, DNN: 0.765, LSTM: 0.622) underperformed relative to ML ensembles due to the constraints of limited sample size on tabular data.\n3. **Lowest Prediction Error:** The Top-3 Ensemble achieved the lowest Mean Absolute Error (**MAE = 0.238**) and produced the most geomorphically consistent hazard zoning\\[cite: 2, 15, 19].\n4. **Hazard Exposure:** **22.7% of the total watershed area** was classified under High to Very High landslide susceptibility zones, driven heavily by topographic wetness index (TWI), slope, and weak Siwalik lithology.\n\n- - -\n\n### Publication & Citation\n\n* **Journal:** *Discover Hazards* (Springer Nature, 2026)\n* **DOI:** [10.1007/s44475-026-00029-0](https://doi.org/10.1007/s44475-026-00029-0)\n* **Access:** Open Access",
       "date_range": "December 2025 – April 2026",
       "responsibilities": [
@@ -78,6 +65,19 @@
       "link": "https://link.springer.com/article/10.1007/s44475-026-00029-0",
       "image": "images/figure-1_study_area_map.jpeg",
       "description": "A comprehensive multi-model comparative study evaluating 10 statistical, machine learning, deep learning, and ensemble models for landslide susceptibility mapping in Nepal's fragile eastern Chure region."
+    },
+    {
+      "title": "GHG Mitigation from Open Waste Burning",
+      "date_range": "July 2023 - Oct 2025",
+      "status": "Completed",
+      "role": "Research Associate",
+      "description": "Research on greenhouse gas emissions from open waste burning.",
+      "responsibilities": [
+        "Proposal development",
+        "Field methodology development",
+        "Data analysis and report writing"
+      ],
+      "body": "“Through engagement in this project, I realize that open waste burning is more than a bad habit; it's a symptom of deeper struggles, the lack of reliable waste collection services, the daily pressure to make ends meet, and the absence of viable alternatives. \n\nTo clear the air, our solutions must be as complex and human cantered as the problem itself. We must address the 'why' before we can change the 'what'.\"\n\n— Mr. Lalit Pathak, CREEW, Nepal"
     },
     {
       "title": "LULC Transformation and Human-wildlife Conflicts Ajayameru Rural Municipality",
@@ -95,18 +95,6 @@
       "image": "https://www.researchgate.net/publication/405842722/figure/fig3/AS:11431282397412772@1789005508184/Wild-pig-conflict-susceptibility-map-derived-from-MaxEnt-modeling-showing-five_W640.jpg"
     },
     {
-      "title": "Wastewater Management Master Plan",
-      "date_range": "Nov 2022 - July 2023",
-      "status": "Completed",
-      "role": "Research Associate",
-      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
-      "responsibilities": [
-        "Water sample collection from various sources",
-        "Laboratory analysis for physiochemical parameters",
-        "Reporting and documentation"
-      ]
-    },
-    {
       "title": "Climate Change Awareness and Adaptation Priorities",
       "date_range": "March 2025 – July 2025",
       "status": "Completed",
@@ -120,7 +108,7 @@
       "image": "images/wordcloud_barriers_to_climate_action.png"
     },
     {
-      "body": "Micro, Small, and Medium Enterprises (MSMEs) represent approximately 90% of registered businesses and 45% of national employment in Nepal, yet they face severe vulnerabilities to climate-induced hazards such as floods, droughts, and resource scarcity. This initiative was designed to evaluate climate awareness, operational impacts, and adaptation strategies among Nepalese MSMEs while actively building their technical capacity.\n\n- - -\n\n### Key Responsibilities & Implementation Framework\n\n* **Curriculum & Manual Development:** Developed the core training framework, participant manuals, and standardized pre- and post-test evaluation tools for nature-based MSMEs (focusing on agriculture, aquaculture, NTFPs, and tourism).\n* **Training of Trainers (ToT) & Capacity Building:** Facilitated specialized ToT programs equipping trainers to deliver 2-day regional adaptation workshops across priority conservation landscapes (TAL, CHAL, KCL, KSL).\n* **Nationwide Field Assessment:** Coordinated data collection from 482 MSME respondents across 16 districts, capturing critical metrics on production costs, raw material disruptions, and financial barriers.\n\n- - -\n\n### Major Findings & Research Impact\n\n1. **High Awareness vs. Low Adaptation:** While awareness of climate shifts was widespread, proactive adaptation remained limited primarily due to severe financial and resource gaps.\n2. **Sectoral Vulnerabilities:** Highlighted that Non-Timber Forest Products (NTFPs) and aquaculture businesses suffer heavily from pest outbreaks and declining raw material availability.\n3. **Strategic Recommendations:** Emphasized the urgent need for accessible climate finance, green certification, and localized capacity-building to safeguard Nepal's grassroots economy.\n\n- - -\n\n### Publication & Outputs\n\n* **Peer-Reviewed Paper:** Pathak, L., Malla, R., Lamichhane, B. K., & Dixit, A. M. (2025). Resilience Under Threat: Climate Change Impacts and Adaptive Responses of Nepalese MSMEs. *Journal of Environment Sciences*, XI, 53-62.\n* **DOI Link:** [10.3126/jes.v11i1.80594](https://doi.org/10.3126/jes.v11i1.80594)",
+      "body": "Micro, Small, and Medium Enterprises (MSMEs) represent approximately 90% of registered businesses and 45% of national employment in Nepal, yet they face severe vulnerabilities to climate-induced hazards such as floods, droughts, and resource scarcity. This initiative was designed to evaluate climate awareness, operational impacts, and adaptation strategies among Nepalese MSMEs while actively building their technical capacity.\n\n- - -\n\n### Key Responsibilities & Implementation Framework\n\n* **Curriculum & Manual Development:** Developed the core training framework, participant manuals, and standardized pre- and post-test evaluation tools for nature-based MSMEs (focusing on agriculture, aquaculture, NTFPs, and tourism).\n* **Training of Trainers (ToT) & Capacity Building:** Facilitated specialized ToT programs equipping trainers to deliver 2-day regional adaptation workshops across priority conservation landscapes (TAL, CHAL, KCL, KSL).\n* **Nationwide Field Assessment:** Coordinated data collection from 482 MSME respondents across 16 districts, capturing critical metrics on production costs, raw material disruptions, and financial barriers.\n\n  ![]()\n\n- - -\n\n### Major Findings & Research Impact\n\n1. **High Awareness vs. Low Adaptation:** While awareness of climate shifts was widespread, proactive adaptation remained limited primarily due to severe financial and resource gaps.\n2. **Sectoral Vulnerabilities:** Highlighted that Non-Timber Forest Products (NTFPs) and aquaculture businesses suffer heavily from pest outbreaks and declining raw material availability.\n3. **Strategic Recommendations:** Emphasized the urgent need for accessible climate finance, green certification, and localized capacity-building to safeguard Nepal's grassroots economy.\n\n- - -\n\n### Publication & Outputs\n\n* **Peer-Reviewed Paper:** Pathak, L., Malla, R., Lamichhane, B. K., & Dixit, A. M. (2025). Resilience Under Threat: Climate Change Impacts and Adaptive Responses of Nepalese MSMEs. *Journal of Environment Sciences*, XI, 53-62.\n* **DOI Link:** [10.3126/jes.v11i1.80594](https://doi.org/10.3126/jes.v11i1.80594)",
       "responsibilities": [
         "Led knowledge management and overall project coordination for USAID Biodiversity (Jal Jangal) supported climate adaptation training (CCATNB).",
         "Facilitated Training of Trainers (ToT) sessions to prepare lead and co-trainers for regional deployment across TAL, CHAL, KCL, and KSL conservation landscapes.",
@@ -131,6 +119,18 @@
       "status": "Completed",
       "role": "Project Coordinator (Knowledge Management) & Researcher",
       "description": "Nationwide climate adaptation project and training initiative targeting over 480 MSMEs across 16 districts in Nepal."
+    },
+    {
+      "title": "Wastewater Management Master Plan",
+      "date_range": "Nov 2022 - July 2023",
+      "status": "Completed",
+      "role": "Research Associate",
+      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
+      "responsibilities": [
+        "Water sample collection from various sources",
+        "Laboratory analysis for physiochemical parameters",
+        "Reporting and documentation"
+      ]
     }
   ]
 }
