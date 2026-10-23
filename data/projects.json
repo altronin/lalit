@@ -26,7 +26,7 @@
     {
       "title": "Integrated Multi-Hazard Assessment",
       "date_range": "June 2025 - Ongoing",
-      "status": "Ongoing",
+      "status": "Completed",
       "role": "Project Lead",
       "description": "Climate-resilient watershed management framework development for Nepal's Mid-Hills.",
       "responsibilities": [
@@ -60,18 +60,6 @@
       ]
     },
     {
-      "title": "Wastewater Management Master Plan",
-      "date_range": "Nov 2022 - July 2023",
-      "status": "Completed",
-      "role": "Research Associate",
-      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
-      "responsibilities": [
-        "Water sample collection from various sources",
-        "Laboratory analysis for physiochemical parameters",
-        "Reporting and documentation"
-      ]
-    },
-    {
       "body": "### Project Overview\n\nLandslides pose severe threats to infrastructure and ecosystems in the active Sub-Himalayan (Chure) zone of Nepal. This independent research project was designed to rigorously evaluate whether complex Deep Learning (DL) architectures provide predictive advantages over classical tree-based Machine Learning (ML) ensemble models when applied to data-limited, tabular geomorphic conditioning factors in steep mountain environments.\n\nThe study covered five hydrologically connected watersheds spanning **305.14 km²** across Morang, Ilam, and Dhankuta districts in Koshi Province.\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Inventory & Factors:** A field-verified inventory of 176 landslide events evaluated against 12 spatial conditioning factors (slope, aspect, elevation, curvatures, TWI, SPI, soil, lithology, land use, and distances to roads/rivers).\n* **Model Implementation:** Implemented 10 models: Frequency Ratio (FR), Random Forest (RF), XGBoost, LightGBM, SVM, Logistic Regression, Artificial Neural Network (ANN), Deep Neural Network (DNN), 1D-CNN, and LSTM.\n* **Ensemble Fusion:** Developed a **Top-3 ML Ensemble** combining RF, XGBoost, and LightGBM to produce spatially coherent, low-error susceptibility maps.\n\n- - -\n\n### Major Findings\n\n1. **Tree-Based Superiority:** Tree-based ensemble models achieved the best performance, with **Random Forest leading at Test AUC = 0.928**, followed by XGBoost (0.881) and LightGBM (0.844).\n2. **Deep Learning Constraints:** Deep learning architectures (ANN: 0.773, CNN: 0.766, DNN: 0.765, LSTM: 0.622) underperformed relative to ML ensembles due to the constraints of limited sample size on tabular data.\n3. **Lowest Prediction Error:** The Top-3 Ensemble achieved the lowest Mean Absolute Error (**MAE = 0.238**) and produced the most geomorphically consistent hazard zoning\\[cite: 2, 15, 19].\n4. **Hazard Exposure:** **22.7% of the total watershed area** was classified under High to Very High landslide susceptibility zones, driven heavily by topographic wetness index (TWI), slope, and weak Siwalik lithology.\n\n- - -\n\n### Publication & Citation\n\n* **Journal:** *Discover Hazards* (Springer Nature, 2026)\n* **DOI:** [10.1007/s44475-026-00029-0](https://doi.org/10.1007/s44475-026-00029-0)\n* **Access:** Open Access",
       "date_range": "December 2025 – April 2026",
       "responsibilities": [
@@ -85,6 +73,33 @@
       "link": "https://link.springer.com/article/10.1007/s44475-026-00029-0",
       "image": "images/figure-1_study_area_map.jpeg",
       "description": "A comprehensive multi-model comparative study evaluating 10 statistical, machine learning, deep learning, and ensemble models for landslide susceptibility mapping in Nepal's fragile eastern Chure region."
+    },
+    {
+      "title": "Wastewater Management Master Plan",
+      "date_range": "Nov 2022 - July 2023",
+      "status": "Completed",
+      "role": "Research Associate",
+      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
+      "responsibilities": [
+        "Water sample collection from various sources",
+        "Laboratory analysis for physiochemical parameters",
+        "Reporting and documentation"
+      ]
+    },
+    {
+      "title": "LULC Transformation and Human-wildlife Conflicts Ajayameru Rural Municipality",
+      "date_range": "May 2025 – May 2026",
+      "status": "Completed",
+      "role": "Lead Researcher / Author (Independent Study)",
+      "description": "An integrated assessment combining multi-temporal satellite data, household surveys, and Maximum Entropy (MaxEnt) modeling to examine how agricultural abandonment and forest transitions drive human-wildlife conflict.",
+      "responsibilities": [
+        "Conducted a detailed household survey to capture conflict incidence, crop damage, and land abandonment perceptions.",
+        "Processed multi-temporal satellite imagery via Google Earth Engine and TerrSet (liberaGIS v20) to analyze Land Use/Land Cover (LULC) changes between 2000 and 2024.",
+        "Developed and optimized a Maximum Entropy (MaxEnt) species distribution model using 118 georeferenced conflict points and environmental covariates to map spatial risk zones.",
+        "Identified key landscape drivers—including land cover transformation, slope, and proximity to water and forest edges—governing wild pig (Sus scrofa) crop-raiding patterns."
+      ],
+      "body": "### Project Overview\n\nHuman-wildlife conflict and land cover dynamics are intricately linked in Nepal's mid-hill landscapes. This independent research project investigated the spatio-temporal feedback loops between agricultural abandonment, secondary forest regeneration, and wild pig (*Sus scrofa*) crop-raiding vulnerabilities in the Ajayameru Rural Municipality of Dadeldhura District, Sudurpashchim Province.\n\n\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Socio-Ecological Surveys:** Administered structured in-person questionnaires to 121 households across all six administrative wards to document coping strategies, crop damage frequencies, and drivers of farm abandonment.\n* **LULC Change Analysis:** Leveraged NLCMS 2000 datasets and classified 2024 Sentinel-2 imagery via Google Earth Engine and TerrSet, achieving an overall classification accuracy of 89.3% ($\\kappa = 0.85$).\n* **MaxEnt Conflict Modeling:** Implemented a Maximum Entropy presence-only model driven by five spatial variables: LULC, elevation, slope, distance to forest, and distance to water sources.\n\n- - -\n\n### Major Findings\n\n1. **Forest Transition & Cropland Loss:** Between 2000 and 2024, the municipality experienced a **net forest gain of $10.23 \\text{ km}^2$** alongside a **cropland reduction of $7.19 \\text{ km}^2$**, driven primarily by outmigration and agricultural abandonment\\[cite: 27, 31].\n2. **High Conflict Incidence:** Survey results revealed that **88% of respondents** experienced recurring crop raids (predominantly targeting maize), leading **48% of forest-adjacent households** to abandon their fields.\n3. **Primary Predictive Drivers:** MaxEnt modeling indicated that LULC (46.2% contribution) and slope (29.7% contribution) were the strongest predictors of conflict susceptibility, with areas converted from forest to cropland exhibiting the highest risk scores\\[cite: 27, 31].\n4. **Spatio-Temporal Feedback Loop:** Crop damage accelerates farmland abandonment, fostering natural reforestation or pine dominance that shifts future wildlife foraging ranges and creates dynamic conflict hotspots\\[cite: 27, 32].\n\n- - -\n\n### Policy Recommendations & Interventions\n\n* **Ecological Buffers:** Promote sustainable agroforestry and mixed-species buffer plantations on marginal land edges rather than monoculture pine to enhance biodiversity and suppress wild pig entry.\n* **Targeted Mitigation:** Implement community-based monitoring, early warning systems, and strategic fencing in high-risk wards (specifically Wards 2, 1, and 3).\n\n- - -\n\n### Publication & Citation\n\n* **Journal:** *Regional Environmental Change* (Springer Nature, 2026)\n* **DOI:** [10.1007/s10113-026-02617-8](https://doi.org/10.1007/s10113-026-02617-8)\n* **Access:** Open Access / Research Article",
+      "image": "https://www.researchgate.net/publication/405842722/figure/fig3/AS:11431282397412772@1789005508184/Wild-pig-conflict-susceptibility-map-derived-from-MaxEnt-modeling-showing-five_W640.jpg"
     }
   ]
 }
