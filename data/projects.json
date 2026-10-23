@@ -3,14 +3,15 @@
     {
       "title": "Churia–Terai River Corridor Dynamics",
       "date_range": "January 2026 – Ongoing",
-      "role": "Project Lead; GIS & Remote Sensing Researcher",
-      "description": "A Geospatial Assessment of Soil Erosion Potential, Sediment Transportation and Channel Migration ",
+      "role": "Lead Researcher & Author",
+      "description": "A comprehensive multi-decadal geospatial framework quantifying river channel dynamics, lateral migration, erosion-accretion patterns, and morphological adjustments across fourteen medium-sized river basins of Nepal.",
       "responsibilities": [
-        "Geospatial Workflow & Pipeline Development",
-        "Automated Vector & Morphometric Extraction",
-        "Transect-Based Migration Modeling"
+        "Developed a robust automated Python-based workflow using skeletonization, graph network pruning (NetworkX), and manual GIS quality control to extract consistent river centerlines.",
+        "Quantified spatial erosion, bar accretion, lateral activity ratios (LAR), and multi-temporal channel persistence classes (episodic, transitional, permanent).",
+        "Authored the comprehensive multi-basin study synthesizing physiographic controls, sediment transport, and river corridor hazards across the Churia-Terai transition."
       ],
-      "status": "Ongoing"
+      "status": "Ongoing",
+      "body": "### Project Overview\n\nRiver systems originating from the Siwalik (Churia) and Mahabharat mountain ranges of Nepal exhibit extreme channel instability, rapid sediment transport, and frequent floodplain reorganization. This ongoing research project establishes a comprehensive basin-scale comparative evaluation of channel dynamics across **fourteen representative river basins** in Nepal (including Babai, Bagmati, Baklaya, Bakra, Banganga, Kamala, Kankai, Khutia, Mohana, Parmar, Rapti, Ratua, Rohini, and Suheli) over a two-decade observation window (2005–2025).\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Multi-Temporal Data Extraction:** Mapped active channel extents for 2005, 2015, and 2025, standardizing all spatial layers into binary raster masks under WGS 84 / UTM Zone 45N.\n* **Hybrid Centerline Extraction:** Automated centerline generation via morphological skeletonization and graph-based longest-path extraction (NetworkX), paired with rigorous manual quality control for upstream-downstream consistency.\n* **Transect-Based Migration Analysis:** Generated stable valley baselines from the union of all temporal extents and applied a DSAS-inspired perpendicular transect approach at 500 m intervals to calculate lateral migration magnitudes.\n* **Dynamic Geomorphic Metrics:** Computed erosion-accretion rates, Lateral Activity Ratios (LAR), sinuosity indices, and spatial channel persistence classifications (distinguishing permanent, transitional, and episodic corridors).\n\n- - -\n\n### Expected Scientific Contributions & Findings\n\n1. **Basin-Scale Typology:** Establishes a clear morphological classification distinguishing highly dynamic Churia-dominated rivers from relatively stable Mahabharat-origin systems.\n2. **Quantified Erosion Hotspots:** Identifies spatial concentrations of severe bank erosion and bar accretion linked to unmanaged sediment supply, road corridor expansion, and weak geological lithology.\n3. **Conceptual Evolutionary Framework:** Proposes a four-stage evolutionary model tracking mountain sediment production, rapid channel widening/avulsion and piedmont fan lateral migration to lower Tarai partial stabilization.\n4. **Disaster Risk Reduction Support:** Provides vital empirical data for bridge engineering, river corridor zoning, and flood hazard mitigation across Nepal's fragile foothill environments.\n\n- - -\n\n### Project Status & Outputs\n\n* **Status:** Ongoing research / Manuscript accepted for publication pipeline.\n* **Core Tools:** Python (GeoPandas, Rasterio, Shapely, Scikit-Image, NetworkX, SciPy, Matplotlib), QGIS."
     },
     {
       "title": "Fire-to-Soil (F2S)",
@@ -75,18 +76,6 @@
       "description": "A comprehensive multi-model comparative study evaluating 10 statistical, machine learning, deep learning, and ensemble models for landslide susceptibility mapping in Nepal's fragile eastern Chure region."
     },
     {
-      "title": "Wastewater Management Master Plan",
-      "date_range": "Nov 2022 - July 2023",
-      "status": "Completed",
-      "role": "Research Associate",
-      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
-      "responsibilities": [
-        "Water sample collection from various sources",
-        "Laboratory analysis for physiochemical parameters",
-        "Reporting and documentation"
-      ]
-    },
-    {
       "title": "LULC Transformation and Human-wildlife Conflicts Ajayameru Rural Municipality",
       "date_range": "May 2025 – May 2026",
       "status": "Completed",
@@ -100,6 +89,18 @@
       ],
       "body": "### Project Overview\n\nHuman-wildlife conflict and land cover dynamics are intricately linked in Nepal's mid-hill landscapes. This independent research project investigated the spatio-temporal feedback loops between agricultural abandonment, secondary forest regeneration, and wild pig (*Sus scrofa*) crop-raiding vulnerabilities in the Ajayameru Rural Municipality of Dadeldhura District, Sudurpashchim Province.\n\n\n\n- - -\n\n### Key Methodology & Workflow\n\n* **Socio-Ecological Surveys:** Administered structured in-person questionnaires to 121 households across all six administrative wards to document coping strategies, crop damage frequencies, and drivers of farm abandonment.\n* **LULC Change Analysis:** Leveraged NLCMS 2000 datasets and classified 2024 Sentinel-2 imagery via Google Earth Engine and TerrSet, achieving an overall classification accuracy of 89.3% ($\\kappa = 0.85$).\n* **MaxEnt Conflict Modeling:** Implemented a Maximum Entropy presence-only model driven by five spatial variables: LULC, elevation, slope, distance to forest, and distance to water sources.\n\n- - -\n\n### Major Findings\n\n1. **Forest Transition & Cropland Loss:** Between 2000 and 2024, the municipality experienced a **net forest gain of $10.23 \\text{ km}^2$** alongside a **cropland reduction of $7.19 \\text{ km}^2$**, driven primarily by outmigration and agricultural abandonment\\[cite: 27, 31].\n2. **High Conflict Incidence:** Survey results revealed that **88% of respondents** experienced recurring crop raids (predominantly targeting maize), leading **48% of forest-adjacent households** to abandon their fields.\n3. **Primary Predictive Drivers:** MaxEnt modeling indicated that LULC (46.2% contribution) and slope (29.7% contribution) were the strongest predictors of conflict susceptibility, with areas converted from forest to cropland exhibiting the highest risk scores\\[cite: 27, 31].\n4. **Spatio-Temporal Feedback Loop:** Crop damage accelerates farmland abandonment, fostering natural reforestation or pine dominance that shifts future wildlife foraging ranges and creates dynamic conflict hotspots\\[cite: 27, 32].\n\n- - -\n\n### Policy Recommendations & Interventions\n\n* **Ecological Buffers:** Promote sustainable agroforestry and mixed-species buffer plantations on marginal land edges rather than monoculture pine to enhance biodiversity and suppress wild pig entry.\n* **Targeted Mitigation:** Implement community-based monitoring, early warning systems, and strategic fencing in high-risk wards (specifically Wards 2, 1, and 3).\n\n- - -\n\n### Publication & Citation\n\n* **Journal:** *Regional Environmental Change* (Springer Nature, 2026)\n* **DOI:** [10.1007/s10113-026-02617-8](https://doi.org/10.1007/s10113-026-02617-8)\n* **Access:** Open Access / Research Article",
       "image": "https://www.researchgate.net/publication/405842722/figure/fig3/AS:11431282397412772@1789005508184/Wild-pig-conflict-susceptibility-map-derived-from-MaxEnt-modeling-showing-five_W640.jpg"
+    },
+    {
+      "title": "Wastewater Management Master Plan",
+      "date_range": "Nov 2022 - July 2023",
+      "status": "Completed",
+      "role": "Research Associate",
+      "description": "Development of Master Plan for Wastewater Management in Pokhara Metropolitan City.",
+      "responsibilities": [
+        "Water sample collection from various sources",
+        "Laboratory analysis for physiochemical parameters",
+        "Reporting and documentation"
+      ]
     }
   ]
 }
