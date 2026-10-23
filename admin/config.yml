@@ -57,7 +57,6 @@ collections:
               - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
               - { label: "Full overview (shown on the project's own page)", name: "body", widget: "markdown", required: false, hint: "Optional. Background, objectives, methods, outputs — you can format text and add photos. If blank, the short description is shown." }
               - { label: "Cover image or short clip", name: "image", widget: "image", required: false }
-              - { label: "Presentation / Document (PDF/PPT)", name: "presentation", widget: "file", required: false, hint: "Upload PDF or Presentation slides here" }
               - { label: "External project link", name: "link", widget: "string", required: false, hint: "Optional, must start with https://" }
               - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
 
