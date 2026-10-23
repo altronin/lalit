@@ -1,0 +1,183 @@
+backend:
+  name: github
+  repo: altronin/lalit
+  branch: main
+  # Decap CMS needs an OAuth handshake to write to GitHub on your behalf.
+  # GitHub Pages can't run that handshake itself, so point this at a small
+  # OAuth proxy (e.g. https://github.com/sterlingwes/netlify-cms-github-oauth-provider
+  # deployed as a free Cloudflare Worker / Vercel function, or Netlify's own
+  # proxy if any part of the deploy pipeline touches Netlify). Uncomment and
+  # fill in once that's deployed — until then, editors can still write files
+  # directly on GitHub or via `admin/config.dev.yml` locally.
+  # base_url: https://your-oauth-proxy.example.com
+  # auth_endpoint: auth
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "experience"
+    label: "Professional Experience"
+    label_singular: "Experience Entry"
+    files:
+      - name: "experience"
+        label: "Experience Timeline"
+        file: "data/experience.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Entry"
+            summary: "{{fields.role}} — {{fields.organization}}"
+            fields:
+              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. 2022-Current" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    files:
+      - name: "projects"
+        label: "Projects List"
+        file: "data/projects.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Project"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. June 2025 - Ongoing" }
+              - { label: "Status", name: "status", widget: "select", options: ["Ongoing", "Completed"] }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+              - { label: "Full overview (shown on the project's own page)", name: "body", widget: "markdown", required: false, hint: "Optional. Background, objectives, methods, outputs — you can format text and add photos. If blank, the short description is shown." }
+              - { label: "Cover image or short clip", name: "image", widget: "image", required: false }
+              - { label: "Presentation / Document (PDF/PPT)", name: "presentation", widget: "file", required: false, hint: "Upload PDF or Presentation slides here" }
+              - { label: "External project link", name: "link", widget: "string", required: false, hint: "Optional, must start with https://" }
+              - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
+
+  - name: "publications"
+    label: "Publications"
+    label_singular: "Publication"
+    files:
+      - name: "publications"
+        label: "Publications List"
+        file: "data/publications.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Publication"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Journal / Citation", name: "journal", widget: "string" }
+              - { label: "Link (DOI or URL)", name: "link", widget: "string" }
+              - { label: "Abstract", name: "abstract", widget: "markdown", required: false, hint: "Paste the abstract. Shown on the publication's own page." }
+              - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated, e.g. landslide, GIS, Nepal" }
+              - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
+              - { label: "Citations (check scholar.google.com and update by hand)", name: "citations", widget: "number", value_type: "int", required: false }
+
+  - name: "training"
+    label: "Training & Professional Development"
+    label_singular: "Training"
+    files:
+      - name: "training"
+        label: "Training List"
+        file: "data/training.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Training"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date Range", name: "date_range", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+
+  - name: "scholar_stats"
+    label: "Google Scholar Stats"
+    label_singular: "Scholar Stats"
+    files:
+      - name: "scholar-stats"
+        label: "Scholar Stats"
+        file: "data/scholar-stats.json"
+        fields:
+          - { label: "Google Scholar profile URL", name: "profile_url", widget: "string" }
+          - { label: "Total Citations", name: "total_citations", widget: "number", value_type: "int" }
+          - { label: "h-index", name: "h_index", widget: "number", value_type: "int" }
+          - { label: "i10-index", name: "i10_index", widget: "number", value_type: "int" }
+          - { label: "Last checked (YYYY-MM-DD)", name: "last_updated", widget: "string" }
+
+  - name: "skills"
+    label: "Skills (My Skills + Homepage)"
+    label_singular: "Skills Data"
+    files:
+      - name: "skills"
+        label: "Skills Data"
+        file: "data/skills.json"
+        fields:
+          - name: "categories"
+            label: "Skill Categories"
+            widget: "list"
+            label_singular: "Category"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string", hint: "e.g. Technical Skills" }
+              - { label: "Font Awesome icon class", name: "icon", widget: "string", hint: "e.g. fa-laptop-code (see fontawesome.com/icons)" }
+              - { label: "Items", name: "items", widget: "list", field: { label: "Skill", name: "item", widget: "string" } }
+          - name: "proficiency"
+            label: "Skill Proficiency Bars"
+            widget: "list"
+            label_singular: "Proficiency"
+            summary: "{{fields.label}} — {{fields.value}}%"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Value (0-100)", name: "value", widget: "number", value_type: "int", min: 0, max: 100 }
+          - name: "tools"
+            label: "Tools & Technologies"
+            widget: "list"
+            label_singular: "Tool"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Font Awesome icon name (without fa-)", name: "icon", widget: "string", hint: "e.g. fa-map, fa-python" }
+              - { label: "Is this a brand icon? (Python, R, etc.)", name: "brand", widget: "boolean", default: false, required: false }
+          - name: "languages"
+            label: "Languages"
+            widget: "list"
+            label_singular: "Language"
+            summary: "{{fields.name}} — {{fields.level}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Proficiency level", name: "level", widget: "string", hint: "e.g. Native Proficiency" }
+
+  - name: "blogs"
+    label: "Blog Posts (Listing Cards)"
+    label_singular: "Blog Card"
+    files:
+      - name: "blogs"
+        label: "Blog Listing"
+        file: "data/blogs.json"
+        fields:
+          - name: "items"
+            label: "Entries"
+            widget: "list"
+            label_singular: "Post"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string", hint: "e.g. December 12, 2025" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Thumbnail / Cover Image", name: "image", widget: "image" }
+              - { label: "Excerpt (shown on the blog listing card)", name: "excerpt", widget: "text" }
+              - { label: "URL slug (required)", name: "slug", widget: "string", hint: "Short, no spaces, e.g. my-new-post — this becomes part of the post's web address. REQUIRED — the post won't be findable without it.", required: false }
+              - { label: "Write your post here", name: "body", widget: "markdown", required: false, hint: "Use this OR the file link below — not both. This lets you write text, add photos, and format directly." }
+              - { label: "Link to a custom HTML post file (advanced, optional)", name: "link", widget: "string", required: false, hint: "Only fill this in if you built a full custom HTML page yourself (like the older posts). Leave blank if you wrote the post above." }
