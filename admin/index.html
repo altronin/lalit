@@ -7,23 +7,18 @@
     <meta name="theme-color" content="#3a6b52" />
     <title>Content Manager — Lalit Pathak</title>
     <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-    <!-- Look & mobile layout. (A <link>, not a <style src>: <style> tags cannot load files.) -->
+    <!-- Colours only. (A <link>, not a <style src>: <style> tags cannot load files.) -->
     <link rel="stylesheet" href="custom-admin.css" />
   </head>
   <body>
-    <!-- Friendly loading screen; admin.js removes it as soon as the editor appears -->
-    <div id="admin-splash" role="status" aria-live="polite">
-      <div class="ad-spin" aria-hidden="true"></div>
-      <p id="admin-splash-text">Loading your content manager…</p>
-      <noscript><p>Please enable JavaScript to use the content manager.</p></noscript>
-    </div>
+    <noscript><p style="padding:1rem">Please enable JavaScript to use the content manager.</p></noscript>
 
     <!-- Pinned to an exact version on purpose: custom-admin.css targets Decap's
          internal class names, which can change between releases. Test before bumping. -->
     <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
     <!-- Adds the "Embed (video / PDF / slides)" button to every rich-text editor -->
     <script src="embed-component.js"></script>
-    <!-- Help button, "saved" confirmation, loading screen -->
+    <!-- Help button and "saved" confirmation -->
     <script src="admin.js"></script>
   </body>
 </html>

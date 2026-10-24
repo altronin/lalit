@@ -1,28 +1,10 @@
 /* Friendly extras for the Decap admin panel (loaded after decap-cms.js).
- * - removes the loading screen once the editor is on screen
  * - floating "?" help button with short, plain-language tips
  * - a clear "Saved — live in about a minute" message after every save
  * Everything here is optional: if it fails, the CMS itself keeps working.
  */
 (function () {
 	'use strict';
-
-	/* ---------- loading screen ---------- */
-	var splash = document.getElementById('admin-splash');
-	function hideSplash() {
-		if (!splash) return;
-		splash.classList.add('is-gone');
-		setTimeout(function () { splash && splash.remove(); splash = null; }, 400);
-	}
-	var watch = new MutationObserver(function () {
-		var root = document.getElementById('nc-root');
-		if (root && root.children.length) { watch.disconnect(); setTimeout(hideSplash, 150); }
-	});
-	watch.observe(document.body, { childList: true, subtree: true });
-	setTimeout(function () {
-		var t = document.getElementById('admin-splash-text');
-		if (t) t.textContent = 'Still loading… please check your internet connection, then refresh.';
-	}, 12000);
 
 	/* ---------- toast ---------- */
 	var toastTimer = 0;
