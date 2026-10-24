@@ -1,18 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lalit Pathak - Website Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#3a6b52" />
+    <title>Content Manager — Lalit Pathak</title>
+    <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+    <!-- Look & mobile layout. (A <link>, not a <style src>: <style> tags cannot load files.) -->
+    <link rel="stylesheet" href="custom-admin.css" />
   </head>
   <body>
-    <!-- Pinned to an exact version (not ^3.1.2) so this admin panel never
-         silently picks up a new major/minor release from unpkg without you
-         choosing to bump it. Decap's bundle changes per release, so it isn't
-         practical to pin with Subresource Integrity here — treat any future
-         version bump as a small trust decision, same as any dependency. -->
+    <!-- Friendly loading screen; admin.js removes it as soon as the editor appears -->
+    <div id="admin-splash" role="status" aria-live="polite">
+      <div class="ad-spin" aria-hidden="true"></div>
+      <p id="admin-splash-text">Loading your content manager…</p>
+      <noscript><p>Please enable JavaScript to use the content manager.</p></noscript>
+    </div>
+
+    <!-- Pinned to an exact version on purpose: custom-admin.css targets Decap's
+         internal class names, which can change between releases. Test before bumping. -->
     <script src="https://unpkg.com/decap-cms@3.1.2/dist/decap-cms.js"></script>
     <!-- Adds the "Embed (video / PDF / slides)" button to every rich-text editor -->
     <script src="embed-component.js"></script>
+    <!-- Help button, "saved" confirmation, loading screen -->
+    <script src="admin.js"></script>
   </body>
 </html>

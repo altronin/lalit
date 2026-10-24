@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Lalit Pathak — admin panel theme + mobile layout for Decap CMS 3.1.2
+   Decap hard-codes min-width:800px, a fixed 250px sidebar and a 280px content
+   offset, which is why it breaks on phones. The "mobile" block at the bottom
+   undoes those. Selectors use Decap's emotion class labels (e.g. *="SidebarContainer");
+   if you ever upgrade Decap, re-test this file.
+   ========================================================================== */
+
+:root {
+	--ad-green: #3a6b52;
+	--ad-green-dark: #2b5140;
+	--ad-green-soft: #e8f0eb;
+	--ad-accent: #c9a15a;
+	--ad-cream: #f6f4ee;
+	--ad-ink: #1c2e45;
+}
+
+/* ---------------- Overall look ---------------- */
+html, body {
+	font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	-webkit-text-size-adjust: 100%;
+}
+body { background-color: var(--ad-cream) !important; }
+::selection { background: rgba(58, 107, 82, 0.22); }
+
+header[class*="AppHeader"] { border-top: 3px solid var(--ad-green); }
+
+/* Sidebar: active collection */
+[class*="sidebarNavLinkActive"] {
+	border-left-color: var(--ad-accent) !important;
+	color: var(--ad-green-dark) !important;
+	background-color: var(--ad-green-soft) !important;
+	font-weight: 600;
+}
+[class*="SidebarNavLink"]:hover { color: var(--ad-green-dark); }
+
+/* Main action buttons */
+a[class*="CollectionTopNewButton"],
+button[class*="LoginButton"] {
+	background-color: var(--ad-green) !important;
+	border-radius: 8px !important;
+	transition: background-color 0.2s ease, transform 0.15s ease;
+}
+a[class*="CollectionTopNewButton"]:hover,
+button[class*="LoginButton"]:hover { background-color: var(--ad-green-dark) !important; }
+a[class*="CollectionTopNewButton"]:active,
+button[class*="LoginButton"]:active { transform: scale(0.98); }
+
+/* Inputs: clear focus ring in the site's green */
+input[type="text"]:focus, input[type="url"]:focus, input[type="number"]:focus,
+input[type="email"]:focus, textarea:focus, select:focus {
+	border-color: var(--ad-green) !important;
+	box-shadow: 0 0 0 3px rgba(58, 107, 82, 0.16);
+	outline: none;
+}
+*:focus-visible { outline: 2px solid var(--ad-green); outline-offset: 2px; }
+
+/* Cards & list items feel a little softer */
+[class*="StyledListItemTopBar"] { border-radius: 8px 8px 0 0; }
+
+/* ---------------- Loading screen ---------------- */
+#admin-splash {
+	position: fixed; inset: 0; z-index: 9999;
+	display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+	background: var(--ad-cream); color: var(--ad-ink);
+	transition: opacity 0.35s ease; text-align: center; padding: 1.5rem;
+}
+#admin-splash.is-gone { opacity: 0; pointer-events: none; }
+#admin-splash p { margin: 0; font-size: 1rem; }
+.ad-spin {
+	width: 38px; height: 38px; border-radius: 50%;
+	border: 4px solid rgba(58, 107, 82, 0.18); border-top-color: var(--ad-green);
+	animation: ad-spin 0.8s linear infinite;
+}
+@keyframes ad-spin { to { transform: rotate(360deg); } }
+
+/* ---------------- Help button, dialog, toast ---------------- */
+.ad-fab {
+	position: fixed; z-index: 400;
+	right: calc(16px + env(safe-area-inset-right, 0px));
+	bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+	width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+	background: var(--ad-green); color: #fff; font-size: 1.4rem; font-weight: 700;
+	box-shadow: 0 6px 18px rgba(28, 46, 69, 0.3);
+	transition: transform 0.15s ease, background-color 0.2s ease;
+}
+.ad-fab:hover { background: var(--ad-green-dark); transform: translateY(-2px); }
+
+.ad-modal {
+	position: fixed; inset: 0; z-index: 3000; display: flex; align-items: center; justify-content: center;
+	padding: 1rem; background: rgba(20, 30, 25, 0.55);
+}
+.ad-modal[hidden] { display: none; }
+.ad-modal-card {
+	width: 100%; max-width: 560px; max-height: 86vh; display: flex; flex-direction: column;
+	background: #fff; border-radius: 14px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35); overflow: hidden;
+}
+.ad-modal-head {
+	display: flex; align-items: center; justify-content: space-between;
+	padding: 0.9rem 1.2rem; background: var(--ad-green); color: #fff;
+}
+.ad-modal-head h2 { margin: 0; font-size: 1.1rem; }
+.ad-modal-close {
+	background: transparent; border: 0; color: #fff; font-size: 1.8rem; line-height: 1;
+	width: 40px; height: 40px; cursor: pointer; border-radius: 50%;
+}
+.ad-modal-close:hover { background: rgba(255, 255, 255, 0.18); }
+.ad-modal-body { padding: 0.4rem 1.2rem 1.2rem; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.ad-modal-body h3 { margin: 1rem 0 0.2rem; font-size: 0.95rem; color: var(--ad-green-dark); }
+.ad-modal-body p { margin: 0; font-size: 0.92rem; line-height: 1.55; color: #3d4852; }
+
+.ad-toast {
+	position: fixed; z-index: 3500; left: 50%;
+	bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+	transform: translate(-50%, 24px); opacity: 0; pointer-events: none;
+	max-width: min(92vw, 520px); padding: 0.8rem 1.2rem; border-radius: 10px;
+	background: var(--ad-ink); color: #fff; font-size: 0.92rem; text-align: center;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.ad-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* ==========================================================================
+   MOBILE / TABLET  (≤ 900px)
+   ========================================================================== */
+@media screen and (max-width: 900px) {
+
+	/* 1. Remove Decap's fixed minimum widths — the root cause of sideways scrolling */
+	div[class*="AppMainContainer"],
+	div[class*="AppHeaderContent"],
+	div[class*="EditorContainer"],
+	div[class*="ToolbarContainer"] { min-width: 0 !important; }
+
+	/* 2. Header: allow the tabs to scroll/wrap instead of overflowing */
+	div[class*="AppHeaderContent"] { padding: 0 6px !important; overflow-x: auto; }
+	nav[class*="AppHeaderNav"], div[class*="AppHeaderActions"] { flex-shrink: 0; }
+
+	/* 3. Collections sidebar becomes a swipeable strip of tabs above the content */
+	div[class*="CollectionContainer"] { margin: 10px !important; }
+	aside[class*="SidebarContainer"] {
+		position: static !important; width: auto !important; max-height: none !important;
+		padding: 6px 0 8px !important; margin-bottom: 12px;
+	}
+	h2[class*="SidebarHeading"] { font-size: 17px !important; line-height: 1.3 !important; margin: 6px 12px !important; }
+	ul[class*="SidebarNavList"] {
+		display: flex !important; flex-direction: row; gap: 6px; margin: 4px 0 0 !important;
+		padding: 0 10px 4px; overflow-x: auto !important; -webkit-overflow-scrolling: touch;
+		scrollbar-width: thin;
+	}
+	ul[class*="SidebarNavList"] > li { flex: 0 0 auto; }
+	a[class*="SidebarNavLink"] {
+		white-space: nowrap; border-left: 0 !important; border-bottom: 3px solid transparent;
+		border-radius: 8px; padding: 8px 14px !important; background: #f3f4f6;
+	}
+	[class*="sidebarNavLinkActive"] { border-bottom-color: var(--ad-accent) !important; }
+
+	/* 4. Entry list becomes one column */
+	main[class*="CollectionMain"] { padding-left: 0 !important; }
+	ul[class*="CardsGrid"] { margin-left: 0 !important; }
+	li[class*="GridCard"], [class*="ListCard"] {
+		flex: 1 1 100% !important; width: 100% !important; max-width: 100% !important;
+		margin-left: 0 !important; height: auto !important; min-height: 0;
+	}
+	div[class*="CollectionTopRow"], div[class*="CollectionTopContainer"] { flex-wrap: wrap; gap: 8px; }
+	div[class*="ViewControls"] { position: static !important; margin: 0 0 8px; }
+
+	/* 5. Editor: top bar fits the screen, form uses the full width */
+	div[class*="ToolbarContainer"] { height: 60px !important; }
+	div[class*="EditorContainer"] { padding-top: 60px !important; }
+	a[class*="ToolbarSectionBackLink"] { padding: 0 12px !important; max-width: 40vw; overflow: hidden; font-size: 13px; }
+	div[class*="ToolbarSectionMain"] { padding: 0 4px !important; gap: 4px; overflow-x: auto; }
+	div[class*="ControlPaneContainer"] { padding: 0 12px 24px !important; }
+
+	/* If a preview pane is ever turned on, show only the form on small screens */
+	.SplitPane { position: relative !important; flex-direction: column !important; }
+	.SplitPane .Pane1 { width: 100% !important; }
+	.SplitPane .Pane2, .SplitPane .Resizer { display: none !important; }
+
+	/* 6. iOS Safari zooms into inputs smaller than 16px — stop that */
+	input, textarea, select { font-size: 16px !important; }
+
+	/* 7. Help button clear of the bottom edge / Save bar */
+	.ad-fab { width: 44px; height: 44px; font-size: 1.25rem; }
+}
+
+/* Easier tapping on touch screens (only the controls that need it) */
+@media (pointer: coarse) {
+	[class*="StyledListItemTopBar"],
+	[class*="ToolbarButton"],
+	a[class*="CollectionTopNewButton"],
+	button[class*="LoginButton"],
+	[class*="AppHeaderButton"] { min-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ad-spin { animation-duration: 2s; }
+	#admin-splash, .ad-toast, .ad-fab { transition: none; }
+}
