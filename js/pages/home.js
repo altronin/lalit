@@ -40,6 +40,20 @@ Promise.all([
 fetch('data/skills.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
+		// Skills & tools drifting right-to-left (CSS-only animation; pauses on hover/touch)
+		const marquee = document.getElementById('home-skills-marquee');
+		const toolChips = (data.tools || []).map(tool =>
+			`<span class="marquee-chip"><i class="fa${tool.brand ? 'b' : 's'} ${escapeHTML(tool.icon || 'fa-check')}" aria-hidden="true"></i>${escapeHTML(tool.name)}</span>`);
+		const skillChips = (data.categories || []).reduce((all, c) => all.concat(c.items || []), [])
+			.map(item => `<span class="marquee-chip is-text">${escapeHTML(item)}</span>`);
+		const makeRow = (chips, secondsPerChip) => {
+			if (!chips.length) return '';
+			const set = chips.join('');
+			return `<div class="marquee"><div class="marquee-track" style="--dur:${Math.max(30, chips.length * secondsPerChip)}s">` +
+				`<div class="marquee-set">${set}</div><div class="marquee-set" aria-hidden="true">${set}</div></div></div>`;
+		};
+		marquee.innerHTML = makeRow(toolChips, 4.5) + makeRow(skillChips, 3.2);
+
 		const container = document.getElementById('home-skills-container');
 		const categories = (data.categories || []).slice(0, 2);
 		container.innerHTML = categories.map(cat => `
@@ -57,7 +71,7 @@ fetch('data/blogs.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
 		const container = document.getElementById('home-blog-teaser');
-		const items = sortPostsByDateDesc(data.items || []).slice(0, 3);
+		const items = sortPostsByDateDesc(data.items || []).slice(0, 6);
 		if (!items.length) {
 			container.innerHTML = '<p class="empty-state">No posts yet — check back soon.</p>';
 			return;
@@ -76,6 +90,8 @@ fetch('data/blogs.json', { cache: 'no-cache' })
 				</div>
 			`;
 		}).join('');
-		lpRevealItems(container, '.blog-teaser-card');
+		// Slowly drifting rail — gentle auto-scroll, pauses on touch/hover, swipeable.
+		// (No scroll-reveal here: off-screen-to-the-side cards would never "enter".)
+		lpDriftRail(container);
 	})
 	.catch(err => console.error('Could not load blogs.json', err));

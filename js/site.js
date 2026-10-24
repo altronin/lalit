@@ -7,16 +7,56 @@
 // Shared helper: sorts blog post objects newest-first by their `date` field,
 // so a new post always appears first without needing manual reordering in the CMS.
 function sortPostsByDateDesc(posts) {
-	return [...posts].sort(function (a, b) {
-		return new Date(b.date) - new Date(a.date);
-	});
+	const ts = function (p) { const t = new Date(p.date).getTime(); return isNaN(t) ? 0 : t; };
+	return posts.map(function (p, i) { return { p: p, i: i }; })
+		.sort(function (a, b) { return (ts(b.p) - ts(a.p)) || (a.i - b.i); })
+		.map(function (x) { return x.p; });
+}
+
+// ---- Chronological ordering (projects, experience, training, publications) ----
+// Items are ordered by their dates automatically, so a new entry lands in the
+// right place no matter where it was added in the CMS list. Understands
+// "June 2025 - Ongoing", "Nov 2022 - July 2023", "2022-Current", "14 August 2026",
+// "23-25 Nov 2022"... Newest start first; if starts tie, the one that runs
+// longest (ongoing) comes first; items with no readable date go last, in their
+// original order.
+const LP_MONTHS = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+function lpParseRange(str) {
+	const s = String(str || '').toLowerCase();
+	const re = /(?:(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+)?(\d{4})/g;
+	const stamps = [];
+	let m;
+	while ((m = re.exec(s))) stamps.push(Date.UTC(+m[2], m[1] ? LP_MONTHS[m[1]] : 0, 1));
+	if (!stamps.length) return null;
+	const ongoing = /(ongoing|current|present|to date|\bnow\b)/.test(s);
+	return { start: stamps[0], end: ongoing ? Infinity : stamps[stamps.length - 1] };
+}
+function lpSortByDateRange(items, field) {
+	field = field || 'date_range';
+	return (items || []).map(function (it, i) { return { it: it, i: i, r: lpParseRange(it[field]) }; })
+		.sort(function (a, b) {
+			if (!a.r && !b.r) return a.i - b.i;
+			if (!a.r) return 1;
+			if (!b.r) return -1;
+			if (b.r.start !== a.r.start) return b.r.start - a.r.start;
+			if (b.r.end !== a.r.end) return b.r.end > a.r.end ? 1 : -1;
+			return a.i - b.i;
+		}).map(function (x) { return x.it; });
+}
+// Publications carry their year at the end of the citation: "... 129 (2026)".
+function lpSortPubsByYear(items) {
+	return (items || []).map(function (it, i) { return { it: it, i: i, y: parseInt(lpPubYear(it), 10) || 0 }; })
+		.sort(function (a, b) { return (b.y - a.y) || (a.i - b.i); })
+		.map(function (x) { return x.it; });
 }
 
 // Small helper reused by every page's fetch() renderer to avoid XSS.
 function escapeHTML(str) {
 	const div = document.createElement('div');
 	div.textContent = str == null ? '' : str;
-	return div.innerHTML;
+	// textContent->innerHTML escapes & < > but not quotes; escape those too so the
+	// result is also safe inside "double-quoted" HTML attributes (href, title, alt…).
+	return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
 
@@ -61,12 +101,146 @@ function pubItemHTML(item) {
 }
 window.pubItemHTML = pubItemHTML;
 // Markdown -> sanitized HTML (needs marked + DOMPurify loaded on the page).
+// Also turns the CMS "Embed" component — a line like
+//   {{embed https://youtu.be/xxxx | Optional caption}}
+// — into a responsive viewer (YouTube, Vimeo, Google Drive / Docs / Slides,
+// PDF, PowerPoint/Word/Excel). Embeds are built here from a validated URL, never
+// copied from user HTML, so DOMPurify can keep stripping every <iframe> from
+// the Markdown itself.
 function lpMarkdown(md) {
-	return DOMPurify.sanitize(marked.parse(md || ''), {
+	const specs = [];
+	const prepared = String(md || '').replace(/^[ \t]*\{\{\s*embed\s+(\S+?)(?:\s*\|\s*([^}\n]*?))?\s*\}\}[ \t]*$/gmi, function (_, url, caption) {
+		specs.push({ url: url, caption: caption || '' });
+		return '\n\nLPEMBEDTOKEN' + (specs.length - 1) + 'X\n\n';
+	});
+	let html = DOMPurify.sanitize(marked.parse(prepared), {
 		ADD_TAGS: ['video', 'source'],
 		ADD_ATTR: ['controls', 'autoplay', 'loop', 'muted', 'playsinline', 'poster']
 	});
+	specs.forEach(function (spec, i) {
+		const token = 'LPEMBEDTOKEN' + i + 'X';
+		const out = lpEmbedHTML(spec.url, spec.caption);
+		html = html.replace('<p>' + token + '</p>', out).replace(token, out);
+	});
+	return html;
 }
+
+// Works out how to show one URL. Returns null when it isn't something we can
+// embed (the caller then shows a plain "Open link" card).
+function lpEmbedSpec(raw) {
+	let u;
+	try { u = new URL(String(raw || '').trim(), window.location.href); } catch (e) { return null; }
+	if (u.protocol !== 'https:' && u.protocol !== 'http:') return null;
+	const host = u.hostname.replace(/^www\./, '').replace(/^m\./, '');
+	const path = u.pathname;
+	const ok = function (re, s) { return re.test(s); };
+
+	// YouTube
+	let yt = null;
+	if (host === 'youtu.be') yt = path.slice(1).split('/')[0];
+	else if (host === 'youtube.com' || host === 'youtube-nocookie.com') {
+		const m = path.match(/^\/(?:shorts|embed|live|v)\/([\w-]{6,})/);
+		yt = m ? m[1] : u.searchParams.get('v');
+		if (!yt && u.searchParams.get('list') && ok(/^\/playlist/, path)) {
+			const list = u.searchParams.get('list');
+			if (ok(/^[\w-]+$/, list)) return { kind: 'video', ratio: '16 / 9', label: 'YouTube playlist', open: u.href, src: 'https://www.youtube-nocookie.com/embed/videoseries?list=' + list };
+		}
+	}
+	if (yt && ok(/^[\w-]{6,}$/, yt)) {
+		const t = parseInt(u.searchParams.get('t') || u.searchParams.get('start') || '0', 10);
+		return { kind: 'video', ratio: '16 / 9', label: 'YouTube video', open: u.href, src: 'https://www.youtube-nocookie.com/embed/' + yt + '?rel=0' + (t > 0 ? '&start=' + t : '') };
+	}
+
+	// Vimeo
+	if (host === 'vimeo.com' || host === 'player.vimeo.com') {
+		const m = path.match(/(\d{5,})/);
+		if (m) return { kind: 'video', ratio: '16 / 9', label: 'Vimeo video', open: u.href, src: 'https://player.vimeo.com/video/' + m[1] };
+	}
+
+	// Google Drive (a shared PDF, PowerPoint, Word file, video or folder)
+	if (host === 'drive.google.com') {
+		let m = path.match(/\/file\/d\/([\w-]+)/);
+		const id = m ? m[1] : u.searchParams.get('id');
+		if (id && ok(/^[\w-]+$/, id) && !ok(/\/folders\//, path)) return { kind: 'doc', ratio: '', label: 'Google Drive file', open: 'https://drive.google.com/file/d/' + id + '/view', src: 'https://drive.google.com/file/d/' + id + '/preview' };
+		m = path.match(/\/folders\/([\w-]+)/);
+		if (m) return { kind: 'doc', ratio: '', label: 'Google Drive folder', open: u.href, src: 'https://drive.google.com/embeddedfolderview?id=' + m[1] + '#grid' };
+	}
+
+	// Google Slides / Docs / Sheets
+	if (host === 'docs.google.com') {
+		let m = path.match(/^\/presentation\/d\/e\/([\w-]+)/);
+		if (m) return { kind: 'slides', ratio: '16 / 9', label: 'Google Slides', open: u.href, src: 'https://docs.google.com/presentation/d/e/' + m[1] + '/embed?start=false&loop=false&delayms=4000' };
+		m = path.match(/^\/presentation\/d\/([\w-]+)/);
+		if (m) return { kind: 'slides', ratio: '16 / 9', label: 'Google Slides', open: 'https://docs.google.com/presentation/d/' + m[1] + '/view', src: 'https://docs.google.com/presentation/d/' + m[1] + '/preview' };
+		m = path.match(/^\/(document|spreadsheets)\/d\/e\/([\w-]+)/);
+		if (m) return { kind: 'doc', ratio: '', label: m[1] === 'document' ? 'Google Doc' : 'Google Sheet', open: u.href, src: 'https://docs.google.com/' + m[1] + '/d/e/' + m[2] + '/pub?embedded=true' };
+		m = path.match(/^\/(document|spreadsheets)\/d\/([\w-]+)/);
+		if (m) return { kind: 'doc', ratio: '', label: m[1] === 'document' ? 'Google Doc' : 'Google Sheet', open: u.href, src: 'https://docs.google.com/' + m[1] + '/d/' + m[2] + '/preview' };
+	}
+
+	// Files by extension
+	const sameSite = u.origin === window.location.origin;
+	if (ok(/\.pdf$/i, path)) {
+		if (sameSite) return { kind: 'pdf', ratio: '', label: 'PDF', open: u.href, download: true, src: u.href + '#view=FitH' };
+		return { kind: 'pdf', ratio: '', label: 'PDF', open: u.href, src: 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(u.href) };
+	}
+	if (ok(/\.(pptx?|docx?|xlsx?)$/i, path)) {
+		const label = ok(/\.pptx?$/i, path) ? 'PowerPoint' : ok(/\.docx?$/i, path) ? 'Word document' : 'Excel sheet';
+		return { kind: ok(/\.pptx?$/i, path) ? 'slides' : 'doc', ratio: ok(/\.pptx?$/i, path) ? '16 / 9' : '', label: label, open: u.href, download: sameSite, src: 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(u.href) };
+	}
+	return null;
+}
+
+function lpEmbedHTML(rawUrl, caption) {
+	const spec = lpEmbedSpec(rawUrl);
+	const cap = caption ? `<span class="lp-embed-caption">${escapeHTML(caption)}</span>` : '<span class="lp-embed-caption"></span>';
+	if (!spec) {
+		const safe = lpSafeUrl(rawUrl);
+		return safe
+			? `<p class="lp-embed-link"><a class="btn-link" href="${escapeHTML(safe)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-up-right-from-square" aria-hidden="true"></i> ${escapeHTML(caption || 'Open link')}</a></p>`
+			: '';
+	}
+	const style = spec.ratio ? ` style="--ratio:${spec.ratio}"` : '';
+	const title = escapeHTML(caption || spec.label);
+	return `
+	<figure class="lp-embed lp-embed--${spec.kind}${spec.ratio ? ' has-ratio' : ''}"${style}>
+		<div class="lp-embed-frame">
+			<div class="lp-embed-loading" aria-hidden="true"><span></span></div>
+			<iframe src="${escapeHTML(spec.src)}" title="${title}" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen; picture-in-picture; encrypted-media"></iframe>
+		</div>
+		<figcaption class="lp-embed-bar">
+			<span class="lp-embed-type"><i class="fas ${spec.kind === 'video' ? 'fa-circle-play' : spec.kind === 'slides' ? 'fa-display' : 'fa-file-lines'}" aria-hidden="true"></i> ${escapeHTML(spec.label)}</span>
+			${cap}
+			<span class="lp-embed-actions">
+				<button type="button" class="lp-embed-expand" aria-label="Expand to full screen"><i class="fas fa-expand" aria-hidden="true"></i><span>Expand</span></button>
+				<a href="${escapeHTML(spec.open)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-up-right-from-square" aria-hidden="true"></i><span>Open</span></a>
+				${spec.download ? `<a href="${escapeHTML(spec.open)}" download><i class="fas fa-download" aria-hidden="true"></i><span>Download</span></a>` : ''}
+			</span>
+		</figcaption>
+	</figure>`;
+}
+window.lpEmbedSpec = lpEmbedSpec; window.lpEmbedHTML = lpEmbedHTML;
+window.lpParseRange = lpParseRange; window.lpSortByDateRange = lpSortByDateRange; window.lpSortPubsByYear = lpSortPubsByYear;
+
+// Full-screen toggle for embeds (handy for slides and PDFs on a phone).
+document.addEventListener('click', function (e) {
+	const btn = e.target.closest && e.target.closest('.lp-embed-expand');
+	if (btn) {
+		const fig = btn.closest('.lp-embed');
+		const on = fig.classList.toggle('is-expanded');
+		document.body.classList.toggle('lp-embed-lock', on);
+		btn.querySelector('span').textContent = on ? 'Close' : 'Expand';
+		btn.querySelector('i').className = 'fas ' + (on ? 'fa-xmark' : 'fa-expand');
+	}
+});
+document.addEventListener('keydown', function (e) {
+	if (e.key !== 'Escape') return;
+	const open = document.querySelector('.lp-embed.is-expanded');
+	if (open) open.querySelector('.lp-embed-expand').click();
+});
+document.addEventListener('load', function (e) {
+	if (e.target && e.target.tagName === 'IFRAME' && e.target.closest('.lp-embed')) e.target.closest('.lp-embed').classList.add('is-ready');
+}, true);
 // Only allow http(s) links from CMS data into href attributes.
 function lpSafeUrl(url) { return /^https?:\/\//i.test(url || '') ? url : ''; }
 window.lpSlugify = lpSlugify; window.lpItemSlug = lpItemSlug; window.lpPubYear = lpPubYear;
@@ -102,15 +276,28 @@ function lpObserveReveal(elements) {
 		list.forEach(function (el) { el.classList.add('is-visible'); });
 		return;
 	}
+	// threshold 0 (not 0.1): a tall block — e.g. the blog grid, which is one long
+	// column on a phone — can never be "10% visible" at once, so it used to stay
+	// invisible (the blank page on mobile). Any pixel in view is enough now.
 	const io = new IntersectionObserver(function (entries) {
 		entries.forEach(function (entry) {
 			if (entry.isIntersecting) {
 				entry.target.classList.add('is-visible');
 				io.unobserve(entry.target);
+				// once the entrance has played, drop the stagger delay so later
+				// hover/tilt effects respond instantly
+				window.setTimeout(function () { entry.target.classList.add('reveal-done'); }, 1200);
 			}
 		});
-	}, { threshold: 0.1 });
+	}, { threshold: 0, rootMargin: '0px 0px -4% 0px' });
 	list.forEach(function (el) { io.observe(el); });
+	// Safety net (odd browsers / in-app webviews): anything already on screen or
+	// above the fold after 2s is shown, so content is never left invisible.
+	window.setTimeout(function () {
+		list.forEach(function (el) {
+			if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+		});
+	}, 2000);
 }
 
 // Call after rendering a grid/list of cards (project-grid, blog-grid, etc.) so

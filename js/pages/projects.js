@@ -50,7 +50,7 @@ document.getElementById('project-search').addEventListener('input', renderProjec
 
 fetch('data/projects.json', { cache: 'no-cache' })
 	.then(res => res.json())
-	.then(data => { allProjects = data.items || []; renderProjects(); })
+	.then(data => { allProjects = lpSortByDateRange(data.items || []); renderProjects(); })
 	.catch(err => {
 		console.error('Could not load projects.json', err);
 		document.getElementById('project-grid').innerHTML = '<p class="empty-state">Could not load projects.</p>';

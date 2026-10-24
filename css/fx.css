@@ -1,0 +1,199 @@
+/* ==========================================================================
+   Lalit Pathak — Motion, micro-interactions & embeds
+   Imported by site.css. Everything here is progressive enhancement: with
+   JavaScript off or "reduce motion" on, the site still reads perfectly.
+   ========================================================================== */
+
+:root {
+	--fx-glare: rgba(58, 107, 82, 0.13);
+	--fx-spot: rgba(201, 161, 90, 0.10);
+}
+html[data-theme="dark"] {
+	--fx-glare: rgba(255, 255, 255, 0.09);
+	--fx-spot: rgba(110, 200, 160, 0.09);
+}
+
+/* Smooth cross-page transitions in browsers that support them (Chrome/Edge/Safari 18+) */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.35s; }
+
+/* Once a card's entrance is over, drop its stagger delay so hover feels instant */
+.reveal-item.reveal-done { transition-delay: 0s; }
+
+/* ---------------- Hero: living flow-field canvas ---------------- */
+canvas.fx-flow {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
+}
+#header .header-content { z-index: 1; }
+
+/* ---------------- Cursor spotlight (desktop only) ---------------- */
+.fx-spot {
+	position: fixed;
+	inset: 0;
+	z-index: 5;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+	background: radial-gradient(520px circle at var(--sx, 50%) var(--sy, 50%), var(--fx-spot), transparent 60%);
+}
+.fx-spot.is-on { opacity: 1; }
+
+/* ---------------- Card tilt + glare ---------------- */
+.fx-tilt { position: relative; will-change: transform; }
+.fx-tilt:hover {
+	transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-5px) !important;
+}
+.fx-tilt::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), var(--fx-glare), transparent 55%);
+}
+.fx-tilt:hover::after { opacity: 1; }
+
+/* ---------------- Button ripple ---------------- */
+.btn, .btn-link, .filter-btn { position: relative; overflow: hidden; }
+.fx-ripple {
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+	background: rgba(255, 255, 255, 0.45);
+	transform: scale(0);
+	animation: fx-ripple 0.6s ease-out forwards;
+}
+@keyframes fx-ripple { to { transform: scale(1); opacity: 0; } }
+
+/* ---------------- Marquee: skills drifting right → left ---------------- */
+.marquee {
+	position: relative;
+	overflow: hidden;
+	margin: 1.6rem 0 0.4rem;
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+	mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.marquee + .marquee { margin-top: 0.7rem; }
+.marquee-track {
+	display: flex;
+	width: max-content;
+	animation: marquee-rtl var(--dur, 50s) linear infinite;
+	will-change: transform;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee:active .marquee-track { animation-play-state: paused; }
+.marquee-set { display: flex; gap: 0.8rem; padding-right: 0.8rem; flex-shrink: 0; }
+@keyframes marquee-rtl { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.marquee-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	white-space: nowrap;
+	padding: 0.55rem 1.1rem;
+	border-radius: 999px;
+	background: var(--card-bg);
+	border: 1px solid var(--light-gray);
+	box-shadow: var(--box-shadow);
+	font-size: 0.92rem;
+	font-weight: 500;
+	color: var(--dark-color);
+	transition: border-color 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+.marquee-chip i { color: var(--primary-color); font-size: 1rem; }
+.marquee-chip:hover { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-2px); }
+.marquee-chip.is-text { font-size: 0.85rem; background: var(--light-color); box-shadow: none; }
+.marquee-chip.is-text::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-color); }
+
+/* ---------------- Blog rail: slow drift ---------------- */
+.blog-teaser-grid.is-rail {
+	display: flex;
+	gap: 1.5rem;
+	overflow-x: auto;
+	overflow-y: hidden;
+	padding: 0.6rem 0.2rem 1.2rem;
+	margin-top: 1rem;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior-x: contain;
+}
+.blog-teaser-grid.is-rail::-webkit-scrollbar { display: none; }
+.blog-teaser-grid.is-rail > .blog-teaser-card { flex: 0 0 min(310px, 80vw); }
+.rail-hint { font-size: 0.8rem; color: var(--gray-color); margin-top: -0.4rem; }
+
+/* ---------------- Embeds (YouTube, Drive, Slides, PDF…) ---------------- */
+.lp-embed {
+	margin: 2rem 0;
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--card-bg);
+	border: 1px solid var(--light-gray);
+	box-shadow: var(--box-shadow);
+}
+.lp-embed-frame { position: relative; width: 100%; background: #0e1410; }
+.lp-embed.has-ratio .lp-embed-frame { aspect-ratio: var(--ratio, 16 / 9); }
+.lp-embed--pdf .lp-embed-frame,
+.lp-embed--doc .lp-embed-frame { height: min(78vh, 760px); min-height: 420px; }
+.lp-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+.lp-embed-loading { position: absolute; inset: 0; display: grid; place-items: center; }
+.lp-embed-loading span {
+	width: 30px; height: 30px; border-radius: 50%;
+	border: 3px solid rgba(255, 255, 255, 0.2); border-top-color: var(--accent-color);
+	animation: lp-spin 0.8s linear infinite;
+}
+.lp-embed.is-ready .lp-embed-loading { display: none; }
+
+.lp-embed-bar {
+	display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+	padding: 0.6rem 0.9rem;
+	font-family: var(--font-sans); font-size: 0.85rem;
+	border-top: 1px solid var(--light-gray);
+}
+.lp-embed-type { font-weight: 600; color: var(--primary-color); white-space: nowrap; }
+.lp-embed-caption { flex: 1; min-width: 120px; color: var(--gray-color); }
+.lp-embed-actions { display: flex; gap: 0.4rem; margin-left: auto; }
+.lp-embed-actions a, .lp-embed-actions button {
+	display: inline-flex; align-items: center; gap: 0.4rem;
+	padding: 0.35rem 0.8rem; border-radius: 999px;
+	background: var(--light-color); border: 1px solid var(--light-gray);
+	color: var(--primary-color); font: inherit; font-weight: 600; font-size: 0.8rem;
+	text-decoration: none !important; cursor: pointer;
+	transition: var(--transition);
+}
+.lp-embed-actions a:hover, .lp-embed-actions button:hover { background: var(--primary-color); border-color: var(--primary-color); color: #fff; }
+.lp-embed-link { margin: 1.5rem 0; }
+
+/* Expanded (full-screen) viewer */
+body.lp-embed-lock { overflow: hidden; }
+.lp-embed.is-expanded {
+	position: fixed; inset: 0; z-index: 3000; margin: 0; border-radius: 0; border: 0;
+	display: flex; flex-direction: column; background: #0e1410;
+}
+.lp-embed.is-expanded .lp-embed-frame { flex: 1; aspect-ratio: auto; height: auto; min-height: 0; }
+.lp-embed.is-expanded .lp-embed-bar { background: var(--card-bg); padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px)); }
+
+@media (max-width: 576px) {
+	.lp-embed { margin: 1.5rem -0.4rem; border-radius: 10px; }
+	.lp-embed-actions span { display: none; }           /* icon-only buttons on phones */
+	.lp-embed-actions .lp-embed-expand span { display: inline; }
+	.lp-embed-caption { flex-basis: 100%; order: 3; }
+	.lp-embed--pdf .lp-embed-frame, .lp-embed--doc .lp-embed-frame { height: 62vh; min-height: 340px; }
+}
+
+/* ---------------- Reduced motion: calm everything down ---------------- */
+@media (prefers-reduced-motion: reduce) {
+	canvas.fx-flow, .fx-spot { display: none !important; }
+	.fx-tilt:hover { transform: none !important; }
+	.marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+	.marquee-track { animation: none; }
+	.marquee-set[aria-hidden="true"] { display: none; }
+	.fx-ripple { display: none; }
+}

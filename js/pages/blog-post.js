@@ -36,11 +36,9 @@ fetch('data/blogs.json', { cache: 'no-cache' })
 		// happily passes raw <script>/<img onerror> through by design, so this is
 		// the one line standing between a compromised CMS session (or a malicious
 		// PR to data/blogs.json) and stored XSS on every visitor's browser.
-		const rawHTML = post.body ? marked.parse(post.body) : '<p>' + escapeHTML(post.excerpt || '') + '</p>';
-		const bodyHTML = DOMPurify.sanitize(rawHTML, {
-			ADD_TAGS: ['video', 'source'],
-			ADD_ATTR: ['controls', 'autoplay', 'loop', 'muted', 'playsinline', 'poster']
-		});
+		// lpMarkdown (js/site.js) does exactly this — marked + DOMPurify — and
+		// also renders the CMS "Embed" component (YouTube / Drive / PDF / slides).
+		const bodyHTML = post.body ? lpMarkdown(post.body) : '<p>' + escapeHTML(post.excerpt || '') + '</p>';
 		const wordCount = (post.body || post.excerpt || '').split(/\s+/).filter(Boolean).length;
 		const readingMinutes = Math.max(1, Math.round(wordCount / 200));
 

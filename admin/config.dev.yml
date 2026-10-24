@@ -49,12 +49,12 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. June 2025 - Ongoing" }
+              - { label: "Date Range", name: "date_range", widget: "string", hint: "e.g. June 2025 - Ongoing or Nov 2022 - July 2023. Projects are ordered by this date automatically (newest first), so you never need to drag them into place." }
               - { label: "Status", name: "status", widget: "select", options: ["Ongoing", "Completed"] }
               - { label: "Role", name: "role", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Responsibilities", name: "responsibilities", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
-              - { label: "Full overview (shown on the project's own page)", name: "body", widget: "markdown", required: false, hint: "Optional. Background, objectives, methods, outputs — you can format text and add photos. If blank, the short description is shown." }
+              - { label: "Full overview (shown on the project's own page)", name: "body", widget: "markdown", required: false, hint: "Optional. Background, objectives, methods, outputs — you can format text and add photos. Use the + button → Embed to add a YouTube video, Google Drive / Slides / PDF file. If blank, the short description is shown." }
               - { label: "Cover image or short clip", name: "image", widget: "image", required: false }
               - { label: "External project link", name: "link", widget: "string", required: false, hint: "Optional, must start with https://" }
               - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
@@ -77,7 +77,7 @@ collections:
               - { label: "Authors", name: "authors", widget: "string" }
               - { label: "Journal / Citation", name: "journal", widget: "string" }
               - { label: "Link (DOI or URL)", name: "link", widget: "string" }
-              - { label: "Abstract", name: "abstract", widget: "markdown", required: false, hint: "Paste the abstract. Shown on the publication's own page." }
+              - { label: "Abstract", name: "abstract", widget: "markdown", required: false, hint: "Paste the abstract. Shown on the publication's own page. The + button → Embed can add a PDF or slides viewer." }
               - { label: "Keywords", name: "keywords", widget: "string", required: false, hint: "Comma-separated, e.g. landslide, GIS, Nepal" }
               - { label: "URL slug (optional)", name: "slug", widget: "string", required: false, hint: "Leave blank — it is created from the title automatically. Only fill in to keep an old link working after renaming." }
               - { label: "Citations (check scholar.google.com and update by hand)", name: "citations", widget: "number", value_type: "int", required: false }
@@ -177,5 +177,5 @@ collections:
               - { label: "Thumbnail / Cover Image", name: "image", widget: "image" }
               - { label: "Excerpt (shown on the blog listing card)", name: "excerpt", widget: "text" }
               - { label: "URL slug (required)", name: "slug", widget: "string", hint: "Short, no spaces, e.g. my-new-post — this becomes part of the post's web address. REQUIRED — the post won't be findable without it.", required: false }
-              - { label: "Write your post here", name: "body", widget: "markdown", required: false, hint: "Use this OR the file link below — not both. This lets you write text, add photos, and format directly." }
+              - { label: "Write your post here", name: "body", widget: "markdown", required: false, hint: "Use this OR the file link below — not both. Write text, add photos, and format directly. Use the + button → Embed to add a YouTube video, Google Drive / Slides link or a PDF viewer. Posts are listed newest-first by Date automatically." }
               - { label: "Link to a custom HTML post file (advanced, optional)", name: "link", widget: "string", required: false, hint: "Only fill this in if you built a full custom HTML page yourself (like the older posts). Leave blank if you wrote the post above." }

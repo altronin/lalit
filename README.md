@@ -106,3 +106,24 @@ title and want the old link to keep working).
 
 - Publications: fill in the **Abstract** (and optional Keywords) in the CMS.
 - Projects: fill in **Full overview** (and optional cover image / link).
+
+
+## Motion, embeds & ordering (added Oct 2026)
+
+- **Embeds** — in any rich-text box (blog body, project overview, publication
+  abstract) use the **+ → Embed (video / PDF / slides)** button. Paste a YouTube,
+  Vimeo, Google Drive, Google Slides/Docs/Sheets or PDF link, or upload a PDF /
+  PowerPoint. Stored as one line: `{{embed URL | caption}}`. Google Drive files
+  must be shared as "Anyone with the link". Rendering: `lpEmbedHTML()` in
+  `js/site.js`; the allowed hosts are listed in the `frame-src` part of the CSP
+  in `blog-post.html`, `project.html` and `publication.html`.
+- **Chronological order** — projects, experience, training and publications are
+  sorted by their dates automatically (`lpSortByDateRange` / `lpSortPubsByYear`
+  in `js/site.js`); blog posts by their Date. List order in the CMS no longer
+  matters. Write dates like `June 2025 - Ongoing`, `Nov 2022 - July 2023`,
+  `2022-Current` or `14 August 2026`.
+- **Motion** — `js/fx.js` + `css/fx.css`: flow-field particle canvas in every
+  page header, card tilt/glare, magnetic buttons, ripples, cursor spotlight, the
+  homepage skills marquee and slow blog rail. All of it switches off for visitors
+  who set "reduce motion", pauses off-screen, and is lighter on phones. To remove
+  an effect, delete its call in `boot()` at the bottom of `js/fx.js`.

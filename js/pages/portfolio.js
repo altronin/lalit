@@ -10,7 +10,7 @@
 fetch('data/experience.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		const items = data.items;
+		const items = lpSortByDateRange(data.items || []);
 		const container = document.getElementById('experience-timeline');
 		container.innerHTML = items.map(item => `
 			<div class="experience-item">
@@ -40,7 +40,6 @@ function renderProjects(filter) {
 		}
 		container.innerHTML = items.map(item => {
 			const statusClass = item.status === 'Completed' ? 'status-completed' : 'status-ongoing';
-			const responsibilities = (item.responsibilities || []).map(r => `<li>${escapeHTML(r)}</li>`).join('');
 			return `
 				<div class="project-card">
 					<div class="project-header">
@@ -53,10 +52,6 @@ function renderProjects(filter) {
 					<div class="project-body">
 						<div class="project-role">${escapeHTML(item.role)}</div>
 						<p class="project-description">${escapeHTML(item.description)}</p>
-						<div class="project-responsibilities">
-							<h4>Responsibilities:</h4>
-							<ul>${responsibilities}</ul>
-						</div>
 						<a class="card-more" href="${escapeHTML(lpProjectHref(item))}">View project details &rarr;</a>
 					</div>
 				</div>`;
@@ -67,7 +62,7 @@ function renderProjects(filter) {
 fetch('data/projects.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		allProjects = data.items || [];
+		allProjects = lpSortByDateRange(data.items || []);
 		document.getElementById('project-count').textContent = `${allProjects.length} total`;
 		renderProjects('all');
 	})
@@ -101,7 +96,7 @@ function renderPublications(query) {
 fetch('data/publications.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		allPublications = data.items || [];
+		allPublications = lpSortPubsByYear(data.items || []);
 		document.getElementById('publication-count').textContent = `${allPublications.length} total`;
 		renderPublications('');
 	})
@@ -131,7 +126,7 @@ fetch('data/scholar-stats.json', { cache: 'no-cache' })
 fetch('data/training.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		const items = data.items;
+		const items = lpSortByDateRange(data.items || []);
 		const container = document.getElementById('training-grid');
 		container.innerHTML = items.map(item => `
 			<div class="training-card">

@@ -137,7 +137,7 @@ document.getElementById('blog-search').addEventListener('input', e => renderBlog
 fetch('data/publications.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		const items = (data.items || []).slice(0, 2);
+		const items = lpSortPubsByYear(data.items || []).slice(0, 2);
 		const featuredGrid = document.getElementById('featured-grid');
 		featuredGrid.innerHTML = items.map(item => `
 			<div class="featured-card">

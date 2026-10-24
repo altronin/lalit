@@ -7,7 +7,7 @@ const pubSlug = new URLSearchParams(window.location.search).get('pub');
 fetch('data/publications.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		const items = data.items || [];
+		const items = lpSortPubsByYear(data.items || []);
 		const idx = items.findIndex(p => lpItemSlug(p) === pubSlug);
 		const container = document.getElementById('detail-container');
 

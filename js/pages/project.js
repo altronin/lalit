@@ -7,7 +7,7 @@ const projectSlug = new URLSearchParams(window.location.search).get('project');
 fetch('data/projects.json', { cache: 'no-cache' })
 	.then(res => res.json())
 	.then(data => {
-		const items = data.items || [];
+		const items = lpSortByDateRange(data.items || []);
 		const idx = items.findIndex(p => lpItemSlug(p) === projectSlug);
 		const container = document.getElementById('detail-container');
 

@@ -5,6 +5,7 @@
    ========================================================================== */
 
 @import url('tokens.css');
+@import url('fx.css');
 
 html[data-theme="dark"] body { color: var(--dark-color); background-color: var(--body-bg); }
 html[data-theme="dark"] h1,
