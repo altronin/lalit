@@ -2,6 +2,9 @@ backend:
   name: github
   repo: altronin/lalit
   branch: main
+  base_url: https://decap-proxy.micropathak.workers.dev
+  auth_endpoint: auth
+  
   # Decap CMS needs an OAuth handshake to write to GitHub on your behalf.
   # GitHub Pages can't run that handshake itself, so point this at a small
   # OAuth proxy (e.g. https://github.com/sterlingwes/netlify-cms-github-oauth-provider
