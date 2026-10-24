@@ -165,7 +165,7 @@
       "date": "December 4, 2019",
       "category": "Opinion",
       "excerpt": "abc def ghi",
-      "body": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dGDr3BrmmNw?si=g2jby4R7PZMNYMbs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n\n\n<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dGDr3BrmmNw?si=g2jby4R7PZMNYMbs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\nlook\n\n{{embed https://www.youtube.com/embed/dGDr3BrmmNw?si=g2jby4R7PZMNYMbs}}",
+      "body": "{{embed https://www.youtube.com/watch?v=dGDr3BrmmNw&t=6s}}",
       "image": "images/himalaya.jpg",
       "slug": "abc-def"
     }
