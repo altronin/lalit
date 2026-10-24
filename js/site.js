@@ -181,12 +181,12 @@ function lpEmbedSpec(raw) {
 	// Files by extension
 	const sameSite = u.origin === window.location.origin;
 	if (ok(/\.pdf$/i, path)) {
-		if (sameSite) return { kind: 'pdf', ratio: '', label: 'PDF', open: u.href, download: true, src: u.href + '#view=FitH' };
+		if (sameSite) return { kind: 'pdf', ratio: '', label: 'PDF', open: u.href, local: u.href, src: u.href };
 		return { kind: 'pdf', ratio: '', label: 'PDF', open: u.href, src: 'https://docs.google.com/viewer?embedded=true&url=' + encodeURIComponent(u.href) };
 	}
 	if (ok(/\.(pptx?|docx?|xlsx?)$/i, path)) {
 		const label = ok(/\.pptx?$/i, path) ? 'PowerPoint' : ok(/\.docx?$/i, path) ? 'Word document' : 'Excel sheet';
-		return { kind: ok(/\.pptx?$/i, path) ? 'slides' : 'doc', ratio: ok(/\.pptx?$/i, path) ? '16 / 9' : '', label: label, open: u.href, download: sameSite, src: 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(u.href) };
+		return { kind: ok(/\.pptx?$/i, path) ? 'slides' : 'doc', ratio: ok(/\.pptx?$/i, path) ? '16 / 9' : '', label: label, open: u.href, src: 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(u.href) };
 	}
 	return null;
 }
@@ -202,6 +202,27 @@ function lpEmbedHTML(rawUrl, caption) {
 	}
 	const style = spec.ratio ? ` style="--ratio:${spec.ratio}"` : '';
 	const title = escapeHTML(caption || spec.label);
+	// PDFs hosted on this site get a custom page-by-page viewer (PDF.js): no
+	// browser toolbar, so no download / print buttons — just view and flip.
+	if (spec.local) {
+		return `
+	<figure class="lp-embed lp-embed--pdf lp-pdf" data-pdf-src="${escapeHTML(spec.local)}" tabindex="0" aria-label="${title}">
+		<div class="lp-pdf-stage">
+			<div class="lp-embed-loading" aria-hidden="true"><span></span></div>
+			<canvas class="lp-pdf-canvas" role="img" aria-label="${title}"></canvas>
+			<button type="button" class="lp-pdf-nav prev" aria-label="Previous page" disabled><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+			<button type="button" class="lp-pdf-nav next" aria-label="Next page" disabled><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+		</div>
+		<figcaption class="lp-embed-bar">
+			<span class="lp-embed-type"><i class="fas fa-file-lines" aria-hidden="true"></i> PDF</span>
+			${cap}
+			<span class="lp-embed-actions">
+				<span class="lp-pdf-count" aria-live="polite">…</span>
+				<button type="button" class="lp-embed-expand" aria-label="Expand to full screen"><i class="fas fa-expand" aria-hidden="true"></i><span>Expand</span></button>
+			</span>
+		</figcaption>
+	</figure>`;
+	}
 	return `
 	<figure class="lp-embed lp-embed--${spec.kind}${spec.ratio ? ' has-ratio' : ''}"${style}>
 		<div class="lp-embed-frame">
@@ -214,7 +235,7 @@ function lpEmbedHTML(rawUrl, caption) {
 			<span class="lp-embed-actions">
 				<button type="button" class="lp-embed-expand" aria-label="Expand to full screen"><i class="fas fa-expand" aria-hidden="true"></i><span>Expand</span></button>
 				<a href="${escapeHTML(spec.open)}" target="_blank" rel="noopener noreferrer"><i class="fas fa-up-right-from-square" aria-hidden="true"></i><span>Open</span></a>
-				${spec.download ? `<a href="${escapeHTML(spec.open)}" download><i class="fas fa-download" aria-hidden="true"></i><span>Download</span></a>` : ''}
+				
 			</span>
 		</figcaption>
 	</figure>`;
@@ -500,4 +521,100 @@ window.lpFadeSwap = lpFadeSwap;
 		onScrollProgress();
 	};
 	if (document.querySelector('.blog-article')) window.lpInitReadingProgress();
+})();
+
+
+// ---- Page-by-page PDF viewer (PDF.js, vendored in js/vendor/pdfjs/) ----
+// Draws one page at a time onto a canvas: no toolbar, no download/print
+// buttons, right-click disabled. Prev/next arrows, ← → keys and swipe to flip.
+// (A file on a public website can always be fetched by a technically
+// determined visitor — this removes the buttons, it is not DRM.)
+function lpLoadPdfJs() {
+	if (window.__lpPdfjs) return window.__lpPdfjs;
+	window.__lpPdfjs = new Promise(function (resolve, reject) {
+		const el = document.createElement('script');
+		el.src = new URL('js/vendor/pdfjs/pdf.min.js', document.baseURI).href;
+		el.onload = function () {
+			window.pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('js/vendor/pdfjs/pdf.worker.min.js', document.baseURI).href;
+			resolve(window.pdfjsLib);
+		};
+		el.onerror = reject;
+		document.head.appendChild(el);
+	});
+	return window.__lpPdfjs;
+}
+function lpInitPdf(fig) {
+	if (fig.dataset.init) return;
+	fig.dataset.init = '1';
+	const stage = fig.querySelector('.lp-pdf-stage');
+	const canvas = fig.querySelector('canvas');
+	const count = fig.querySelector('.lp-pdf-count');
+	const prev = fig.querySelector('.lp-pdf-nav.prev');
+	const next = fig.querySelector('.lp-pdf-nav.next');
+	let pdf = null, page = 1, busy = false, pending = null, lastKey = '';
+
+	async function show(n) {
+		if (!pdf) return;
+		n = Math.max(1, Math.min(pdf.numPages, n));
+		if (busy) { pending = n; return; }
+		busy = true; page = n;
+		try {
+			const pg = await pdf.getPage(n);
+			const v1 = pg.getViewport({ scale: 1 });
+			const expanded = fig.classList.contains('is-expanded');
+			const w = stage.clientWidth;
+			const maxH = expanded ? stage.clientHeight : Math.min(window.innerHeight * 0.78, 820);
+			const scale = Math.min(w / v1.width, maxH / v1.height);
+			const dpr = Math.min(window.devicePixelRatio || 1, 2);
+			const vp = pg.getViewport({ scale: scale * dpr });
+			canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
+			canvas.style.width = Math.floor(vp.width / dpr) + 'px';
+			canvas.style.height = Math.floor(vp.height / dpr) + 'px';
+			await pg.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+			count.textContent = page + ' / ' + pdf.numPages;
+			prev.disabled = page <= 1; next.disabled = page >= pdf.numPages;
+			lastKey = stage.clientWidth + 'x' + (expanded ? stage.clientHeight : '');
+		} catch (e) { /* a cancelled/failed render just leaves the previous page */ }
+		busy = false;
+		if (pending !== null) { const p = pending; pending = null; show(p); }
+	}
+
+	lpLoadPdfJs()
+		.then(function (lib) { return lib.getDocument({ url: fig.dataset.pdfSrc, isEvalSupported: false }).promise; })
+		.then(function (doc) { pdf = doc; fig.classList.add('is-ready'); return show(1); })
+		.catch(function () {
+			stage.innerHTML = '<p class="lp-pdf-error">Sorry, this PDF could not be loaded.</p>';
+		});
+
+	prev.addEventListener('click', function () { show(page - 1); });
+	next.addEventListener('click', function () { show(page + 1); });
+	fig.addEventListener('keydown', function (e) {
+		if (e.key === 'ArrowRight' || e.key === 'PageDown') { show(page + 1); e.preventDefault(); }
+		if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(page - 1); e.preventDefault(); }
+	});
+	let x0 = null;
+	stage.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+	stage.addEventListener('touchend', function (e) {
+		if (x0 === null) return;
+		const dx = e.changedTouches[0].clientX - x0; x0 = null;
+		if (Math.abs(dx) > 50) show(page + (dx < 0 ? 1 : -1));
+	}, { passive: true });
+	['contextmenu', 'dragstart'].forEach(function (n) { stage.addEventListener(n, function (e) { e.preventDefault(); }); });
+
+	// Re-draw when the box changes size (rotate phone, Expand / Close, resize)
+	let t = 0;
+	function onResize() {
+		if (!pdf) return;
+		const key = stage.clientWidth + 'x' + (fig.classList.contains('is-expanded') ? stage.clientHeight : '');
+		if (key === lastKey) return;
+		clearTimeout(t); t = setTimeout(function () { show(page); }, 120);
+	}
+	if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(stage);
+	else window.addEventListener('resize', onResize);
+}
+(function () {
+	function scan() { document.querySelectorAll('.lp-pdf:not([data-init])').forEach(lpInitPdf); }
+	// pages inject post bodies after fetch(), so watch for viewers appearing
+	new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true });
+	scan();
 })();

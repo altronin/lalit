@@ -127,3 +127,8 @@ title and want the old link to keep working).
   homepage skills marquee and slow blog rail. All of it switches off for visitors
   who set "reduce motion", pauses off-screen, and is lighter on phones. To remove
   an effect, delete its call in `boot()` at the bottom of `js/fx.js`.
+
+**PDF viewer:** PDFs uploaded to this site (e.g. `images/file.pdf`) open in a
+custom PDF.js viewer (`js/vendor/pdfjs/`, Apache-2.0) — one page at a time with
+arrows/swipe, no download or print buttons. It removes the buttons; it cannot
+stop a determined visitor from fetching a public file.
