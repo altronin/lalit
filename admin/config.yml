@@ -1,4 +1,5 @@
-backend:name: github
+backend:
+  name: github
   repo: altronin/lalit
   branch: main
   base_url: https://decap-proxy.micropathak.workers.dev
